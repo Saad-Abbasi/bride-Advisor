@@ -1,0 +1,71 @@
+<div class="bg flex">
+<div >
+ <div class="container-fluid " style="height: 100%;">
+        <div class="row text-center mb-3" >
+          <div class="col-12">
+            <h1>Plan Your Perfect Wedding</h1>
+            <p class="mx-auto mb-0" style="max-width:400px"><em>The</em> place to find wedding suppliers and vendors tried and tested by real brides</p>
+          </div>
+         </div>
+
+    <!-- Search form goes here -->
+   
+   
+    <form id="search-form" action="#">
+        <div class="row mx-auto mb-3 " style="max-width:800px">
+          <div class="col-12 col-md-4">
+            <div class="form-group">
+                <select name="category" id="category" class="form-control"><option value="">Choose a Service</option><option value="1">Food and Drink</option>
+      <option class = "fa fa-user" value="2">Celebrants and Officiants</option>
+      <option value="3">Dresses, Suits and Accessories</option>
+      <option value="4">Entertainment</option>
+      <option value="6">Hair, Make-Up and Beauty</option>
+      <option value="7">Invitations and Stationery</option>
+      <option value="8">Jewellery</option>
+      <option value="9">Music</option>
+      <option value="12">Transport</option>
+      <option value="13">Venues</option>
+      <option value="14">Wedding Planners</option>
+      <option value="70">Cake Makers</option>
+      <option value="5">Flowers</option>
+      <option value="71">Decorations and Hire</option>
+      <option value="72">Accommodation</option>
+      <option value="10">&#xf007; Photography</option>
+      <option value="76">Videography</option>
+      <option value="77">Gifts and Favors</option></select>
+            </div>
+          </div>
+          <div class="col-12 col-md-4">
+            <div class="form-group">
+                <select name="countries" id="countries" class="form-control"  (change)="onChangeCountry($event.target.value)" value="Choose Country">
+                    <option value="">Choose a Country</option>
+                    <option *ngFor="let country of countries" [value]="country.id">
+                        {{country.name}}
+                    </option>
+                </select>
+            </div>
+          </div>
+          <div class="col-12 col-md-4" >
+            <div class="form-group">
+                <select name="regions" id="regions" class="form-control" [disabled]="isCountrySelected">
+                    <option value="">Choose a Region</option>
+                    <option *ngFor="let region of regions" [value]="region.id">
+                        {{region.name}}
+                    </option>
+                </select>
+            </div>
+          </div>
+          </div>
+          <div class="col-12">
+            <div class="response" style="text-shadow:none"></div>
+            <div class="text-center">
+              <input type="submit" name="commit" value="Find" id="search-form-submit" class="submit btn btn-lg btn-primary" data-disable-with="Find" />
+            </div>
+          </div>
+        
+      </form>
+      
+        
+</div>
+</div>
+</div>

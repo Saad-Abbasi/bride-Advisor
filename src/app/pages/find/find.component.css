@@ -1,0 +1,23 @@
+select {
+    font-family: 'FontAwesome';
+    
+  }
+.bg{
+    background-image: url("../../../assets/search-baner.jpg");
+    background-size: cover;
+    
+    height: 600px;
+    
+    
+    
+}
+.flex{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+h1,h2,h3,h4,h5{
+    font-family: sans-serif;
+}
+
