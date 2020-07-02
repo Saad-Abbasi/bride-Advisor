@@ -1,8 +1,9 @@
 
 <div class="container">
+    
     <nav class="navbar navbar-expand-md  align-items-center  navbar-light bg-faded text-uppercase " style="font-size:0.9375rem;text-shadow: 0.15em 0.15em 0.15em rgba(0,0,0,0.25)">
         <a href="#" class="navbar-brand">
-            <img src="../../../assets/logo.png" height="79" width="200" alt="CoolBrand">
+            <img src="../../../assets/logo.png" height="79" width="200" alt="bridal-Advisor">
         </a>
         <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
             <span class="navbar-toggler-icon"></span>
@@ -10,23 +11,24 @@
     
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ml-auto">
-                <a href="#" class="nav-item nav-link active mr-3">FIND VENUES & VENDORS
+                <a href="/find" class="nav-item nav-link active mr-3">FIND VENUES & VENDORS
                 </a>
-                <a href="#" class="nav-item nav-link mr-3">LEAVE A REVIEW</a>
-                <a href="#" class="nav-item nav-link mr-3">ARE YOU A VENDOR?</a>
-                <a href="#" class="nav-item nav-link disabled mr-3" tabindex="-1">SUPPORT
+                <a routerLink='/leave-review' class="nav-item nav-link mr-3">LEAVE A REVIEW</a>
+                <a routerLink='/pricing' class="nav-item nav-link mr-3">ARE YOU A VENDOR?</a>
+                <a routerLink='/support' class="nav-item nav-link  mr-3">SUPPORT
                 </a>
                 
-            </div>
-            <div class="navbar-nav  align-items-center text-sm"style="position:absolute;top:1rem;right:1rem;text-shadow:none">
+           
+            <div class=" ml-auto collapse navbar-collapse text-sm " id="#navbarCollapse" style="position:absolute;top:1rem;right:1rem;text-shadow:none">
                <small>
-                <a href="#" class="nav-item nav-link">Login</a>
+                <a routerLink='/signup' class="nav-item nav-link">Login</a>
                </small>
                <small>/</small>
                <small>
-                <a href="#" class="nav-item nav-link mr-3">Register</a>
+                <a routerLink='/signin' class="nav-item nav-link mr-3">Register</a>
                </small>
             </div>
+        </div>
         </div>
     </nav>
 </div>

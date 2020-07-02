@@ -10,6 +10,7 @@ import { SupportComponent } from './pages/support/support.component';
 import { SignInComponent } from './pages/sign-in/sign-in.component';
 import { SignUpComponent } from './pages/sign-up/sign-up.component';
 import { LeaveReviewComponent } from './pages/leave-review/leave-review.component';
+import { PricingComponent } from './pages/pricing/pricing.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { LeaveReviewComponent } from './pages/leave-review/leave-review.componen
     SupportComponent,
     SignInComponent,
     SignUpComponent,
-    LeaveReviewComponent
+    LeaveReviewComponent,
+    PricingComponent
   ],
   imports: [
     BrowserModule,

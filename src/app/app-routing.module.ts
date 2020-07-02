@@ -7,6 +7,7 @@ import { SupportComponent } from './pages/support/support.component';
 import { SignInComponent } from './pages/sign-in/sign-in.component';
 import { SignUpComponent } from './pages/sign-up/sign-up.component';
 import { LeaveReviewComponent } from './pages/leave-review/leave-review.component';
+import { PricingComponent } from './pages/pricing/pricing.component';
 
 
 const routes: Routes = [
@@ -17,7 +18,8 @@ const routes: Routes = [
   {path : 'signin', component : SignInComponent},
   {path : 'signup', component : SignUpComponent},
   {path : 'leave-review', component : LeaveReviewComponent},
-  {path : '' , pathMatch : 'full' , redirectTo : '/'}
+  {path : 'pricing', component : PricingComponent},
+  {path : '' , pathMatch : 'full' ,component:FindComponent}
 ];
 
 @NgModule({

@@ -5,11 +5,7 @@ select {
 .bg{
     background-image: url("../../../assets/search-baner.jpg");
     background-size: cover;
-    
     height: 600px;
-    
-    
-    
 }
 .flex{
     display: flex;
