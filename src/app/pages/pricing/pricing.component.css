@@ -10,10 +10,13 @@
     text-align: left;
 }
 .bg{
-    background-image: url("../../../assets/search-banerd1.jpg");
+    margin-top: -100px;
+    background-image: url("../../../assets/banner-o.jpg");
     background-size: cover;
     height: 300px;
+    
     color: white;
+    
 }
 .textTop{
     height: 100%;;

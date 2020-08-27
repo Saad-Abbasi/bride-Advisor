@@ -1,8 +1,29 @@
-<div class="bg">
+<mat-sidenav-container >
+  
+    <mat-sidenav #sidenav role="navigation">
+      <app-side-nav (sidenavClose)="sidenav.close()"></app-side-nav>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <app-nav-header (sidenavToggle)="sidenav.toggle()"></app-nav-header>
+      <main>
+        <router-outlet></router-outlet>
+     </main>
+ 
+  
+   <app-my-footer></app-my-footer>
+   </mat-sidenav-content>
+</mat-sidenav-container>
+
+
+
+
+
+
+<!-- <div class="bg">
 
 
 <app-nav-header></app-nav-header>
 <router-outlet></router-outlet>
 <app-my-footer></app-my-footer>
 
-</div>
+</div> -->

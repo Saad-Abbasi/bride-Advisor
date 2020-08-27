@@ -1,4 +1,69 @@
+<div class="container">
+<div class=" flex-container" fxLayout="column">
+  <mat-toolbar class="pt-5">
+    <div fxHide.gt-xs>
+        <button color="primary" mat-icon-button (click)="onToggleSidenav()">
+            <mat-icon>menu</mat-icon>
+        </button>
+    </div>
+    <div>
+      <img src="./../../../assets/logo2.png" height="79" width="200" alt="bridal-Advisor">
+        <!-- <a routerLink="/home">Owner-Account</a> -->
+    </div>
+    
+    <div fxFlex fxLayout fxLayoutAlign="end" fxHide.xs >
+      
+        <ul fxLayout fxLayoutGap="15px" class="navigation-items">
+            <li>
+              <a routerLink='/find' >FIND VENUES & VENDORS
+              </a>
+            </li>
+            <li>
+              <a routerLink='/leave-review'>LEAVE A REVIEW</a>
+            </li>
+            <li>
+              <a routerLink='/pricing'>ARE YOU A VENDOR?</a>
+            </li>
+            <li>
+              <a routerLink='/support' >SUPPORT
+              </a>
+            </li>
+            <li>
+              <a ><emp *ngIf="login()">Welcome {{user?.firstName + user?.lastName}}</emp></a>
+              
+            </li>
+             <li>
+             <button mat-icon-button onclick="this.blur()" [matMenuTriggerFor]="menu">
+               <mat-icon color="primary">account_circle</mat-icon>
+             </button>
+              <mat-menu #menu="matMenu" >
+                
+                <button mat-menu-item routerLink='/signin' *ngIf="!login()">Login
+                  <mat-icon color="primary">login</mat-icon>
+                </button>
+                <!-- <button mat-menu-item routerLink='' *ngIf="login()">User
+                  <mat-icon color="primary">user</mat-icon>
+                </button> -->
+                <button mat-menu-item (click)="logOut()" *ngIf="login()">Logout
+                  <mat-icon color="primary">login</mat-icon>
+                </button>
+                <button mat-menu-item routerLink='/signup'  *ngIf="!login()">Register
+                  <mat-icon color="primary">how_to_reg</mat-icon>
+                </button>
+              </mat-menu>
+            </li>
+           <!-- <li>
+              <a routerLink='/leave-review'>LEAVE A REVIEW</a>
+            </li> -->
+        </ul>
+    </div>
+  </mat-toolbar>
+</div>
+  
+</div>
 
+
+<!-- 
 <div class="container">
     
     <nav class="navbar navbar-expand-md  align-items-center  navbar-light bg-faded text-uppercase " style="font-size:0.9375rem;text-shadow: 0.15em 0.15em 0.15em rgba(0,0,0,0.25)">
@@ -31,4 +96,4 @@
         </div>
         </div>
     </nav>
-</div>
+</div> -->

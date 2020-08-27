@@ -1,0 +1,21 @@
+.example-card {
+    max-width: 800px;
+    max-height: 400px ;
+  }
+  
+  .example-header-image {
+   
+    background-size: cover;
+  }
+  body {font-family: Arial, Helvetica, sans-serif;}
+
+  mat-dialog-container{
+    padding:2px !important;
+    text-align: center;
+    
+}
+img{
+    max-height: 400px;
+    width: 650px;
+    max-width: 700px;
+}

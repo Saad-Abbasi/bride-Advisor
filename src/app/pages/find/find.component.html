@@ -1,71 +1,532 @@
-<div class="bg flex">
-<div >
- <div class="container-fluid " style="height: 100%;">
-        <div class="row text-center mb-3" >
-          <div class="col-12">
-            <h1>Plan Your Perfect Wedding</h1>
-            <p class="mx-auto mb-0" style="max-width:400px"><em>The</em> place to find wedding suppliers and vendors tried and tested by real brides</p>
-          </div>
-         </div>
+<div class="bg absolute flex container-fluid">
+  <div>
+    <div class="container-fluid  test" style="height: 100%;">
+      <div class="row text-center mb-3">
+        <div class="col-12">
+          <h1 class="head">Plan Your Perfect Wedding</h1>
+          <p class="mx-auto mb-0" style="max-width:400px"><em>The</em> place to find wedding suppliers and vendors tried
+            and tested by real brides</p>
+            <span class="btnSearch">
+              <button mat-raised-button color="primary" type="submit" (click)="searchListing()">Find {{selectedCategory}}</button>
+            </span>
+           
+        </div>
+        
+      </div>
+     
+    </div>
+    
+  </div>
+  
+</div>
+<div class="container-fluid  container-find">
 
-    <!-- Search form goes here -->
-   
-   
-    <form id="search-form" action="#">
-        <div class="row mx-auto mb-3 " style="max-width:800px">
-          <div class="col-12 col-md-4">
-            <div class="form-group">
-                <select name="category" id="category" class="form-control"><option value="">Choose a Service</option><option value="1">Food and Drink</option>
-      <option class = "fa fa-user" value="2">Celebrants and Officiants</option>
-      <option value="3">Dresses, Suits and Accessories</option>
-      <option value="4">Entertainment</option>
-      <option value="6">Hair, Make-Up and Beauty</option>
-      <option value="7">Invitations and Stationery</option>
-      <option value="8">Jewellery</option>
-      <option value="9">Music</option>
-      <option value="12">Transport</option>
-      <option value="13">Venues</option>
-      <option value="14">Wedding Planners</option>
-      <option value="70">Cake Makers</option>
-      <option value="5">Flowers</option>
-      <option value="71">Decorations and Hire</option>
-      <option value="72">Accommodation</option>
-      <option value="10">&#xf007; Photography</option>
-      <option value="76">Videography</option>
-      <option value="77">Gifts and Favors</option></select>
+
+  <mat-tab-group animationDuration="2000ms" mat-align-tabs="center">
+    <mat-tab label="Select Category" >
+      <mat-toolbar class="category">
+        <a matTooltip="Food And Drink" matTooltipPosition="above" class="category-icon"
+          aria-label="Bride Advisor catergory search button">
+          <mat-icon (click)="selectCategory(1)">
+            <img src="../../../assets/food.png" alt="food & drink" width="25px" height="25px">
+          </mat-icon>
+        </a>
+        <a matTooltip="Celebrants and Officiants"  matTooltipPosition="above"
+        class="category-icon" aria-label="Bride Advisor catergory search button">
+          <mat-icon (click)="selectCategory(2)">
+            <img src="../../../assets/online-security.png" alt="Celebrants and Officiants" width="25px" height="25px">
+          </mat-icon>
+        </a>
+        <a matTooltip="Dresses, Suits and Accessories"  matTooltipPosition="above"
+        class="category-icon" aria-label="Bride Advisor catergory search button">
+          <mat-icon (click)="selectCategory(3)">
+            <img src="../../../assets/dress.png" alt="Dresses Suits and Accessories" width="25px" height="25px">
+          </mat-icon >
+        </a>
+        <a  matTooltip="Entertainment"  matTooltipPosition="above"
+        class="category-icon" aria-label="Bride Advisor catergory search button">
+          <mat-icon (click)="selectCategory(4)">
+            <img src="../../../assets/etertainment.png" alt="Entertainment" width="25px" height="25px">
+          </mat-icon>
+        </a>
+        <a  matTooltip="Flowers"  matTooltipPosition="above"
+        class="category-icon" aria-label="Bride Advisor catergory search button">
+          <mat-icon (click)="selectCategory(5)">
+            <img src="../../../assets/flower.png" alt="Hair makeup Beauty" width="25px" height="25px">
+          </mat-icon>
+        </a>
+        <a matTooltip="Hair, Make-Up and Beauty"  matTooltipPosition="above"
+        class="category-icon" aria-label="Bride Advisor catergory search button">
+          <mat-icon (click)="selectCategory(6)">
+            <img src="../../../assets/makeup.png" alt="invitation and Stationery" width="25px" height="25px">
+          </mat-icon>
+        </a>
+        <a matTooltip="Invitations and Stationery"  matTooltipPosition="above"
+        class="category-icon" aria-label="Bride Advisor catergory search button">
+          <mat-icon (click)="selectCategory(7)">
+            <img src="../../../assets/invitation.png" alt="jewelery" width="25px" height="25px">
+          </mat-icon>
+        </a>
+  
+        <a matTooltip="Jewellery"  matTooltipPosition="above"
+        class="category-icon" aria-label="Bride Advisor catergory search button">
+          <mat-icon (click)="selectCategory(8)">
+            <img src="../../../assets/jewelery.png" alt="transport" width="25px" height="25px">
+          </mat-icon>
+        </a>
+        <a matTooltip="Music"  matTooltipPosition="above"
+        class="category-icon" aria-label="Bride Advisor catergory search button">
+          <mat-icon (click)="selectCategory(9)">
+            <img src="../../../assets/music.png" alt="Venues" width="25px" height="25px">
+          </mat-icon>
+        </a>
+        <a matTooltip="photography"  matTooltipPosition="above"
+        class="category-icon" aria-label="Bride Advisor catergory search button">
+          <mat-icon (click)="selectCategory(10)">
+            <img src="../../../assets/photography.png" alt="wedding Planners" width="25px" height="25px">
+          </mat-icon>
+        </a>
+        <a matTooltip="Cake Makers"  matTooltipPosition="above"
+        class="category-icon" aria-label="Bride Advisor catergory search button">
+          <mat-icon (click)="selectCategory(11)">
+            <img src="../../../assets/cake.png" alt="cake makers " width="25px" height="25px">
+          </mat-icon>
+        </a>
+        <a matTooltip="Transport"  matTooltipPosition="above"
+        class="category-icon" aria-label="Bride Advisor catergory search button">
+          <mat-icon (click)="selectCategory(12)">
+            <img src="../../../assets/transport.png" alt="Flowers" width="25px" height="25px">
+          </mat-icon>
+        </a>
+        <a matTooltip="Venues"  matTooltipPosition="above"
+        class="category-icon" aria-label="Bride Advisor catergory search button">
+          <mat-icon (click)="selectCategory(13)">
+            <img src="../../../assets/venue.png" alt="Decorations and Hire" width="25px" height="25px">
+          </mat-icon>
+        </a>
+        <a matTooltip="Wedding Planners"  matTooltipPosition="above"
+        class="category-icon" aria-label="Bride Advisor catergory search button">
+          <mat-icon (click)="selectCategory(14)">
+            <img src="../../../assets/planner.png" alt="Accommodation" width="25px" height="25px">
+          </mat-icon>
+        </a>
+        <a matTooltip="Decorations and Hire"  matTooltipPosition="above"
+        class="category-icon" aria-label="Bride Advisor catergory search button">
+          <mat-icon (click)="selectCategory(15)">
+            <img src="../../../assets/decoration.png" alt="photography" width="25px" height="25px">
+          </mat-icon>
+        </a>
+        <a matTooltip="Accommodation"  matTooltipPosition="above"
+        class="category-icon" aria-label="Bride Advisor catergory search button">
+          <mat-icon (click)="selectCategory(16)">
+            <img src="../../../assets/accomodation.png" alt="videography" width="25px" height="25px">
+          </mat-icon>
+        </a>
+        <a matTooltip="Videography"  matTooltipPosition="above"
+        class="category-icon" aria-label="Bride Advisor catergory search button">
+          <mat-icon (click)="selectCategory(17)">
+            <img src="../../../assets/videography.png" alt="gift and favours" width="25px" height="25px">
+          </mat-icon>
+        </a>
+        <a matTooltip="Gifts and Favors"  matTooltipPosition="above"
+         class="category-icon" aria-label="Bride Advisor catergory search button">
+          <mat-icon (click)="selectCategory(18)">
+            <img src="../../../assets/gift.png" alt="music" width="25px" height="25px">
+          </mat-icon>
+        </a>
+      </mat-toolbar>
+    </mat-tab>
+    <mat-tab label="Select Country / Region" color="primary">
+
+      <mat-grid-list cols="1" rowHeight="40px">
+        <mat-grid-tile>
+          <h1 class="region"> Asia</h1>
+        </mat-grid-tile>
+      </mat-grid-list>
+      <mat-grid-list cols="4" rowHeight="80px" gutterSize="0px">
+        
+       <mat-grid-tile>
+          <mat-list>
+            <mat-list-item (click)="findRegion('in')">india </mat-list-item>
+            <mat-list-item>israel </mat-list-item>
+           </mat-list>
+         </mat-grid-tile>
+        <mat-grid-tile>
+          <mat-list>
+            
+            <mat-list-item>Singapore </mat-list-item>
+            <mat-list-item>South Korea</mat-list-item>
+           </mat-list>
+        </mat-grid-tile>
+        
+        <mat-grid-tile>
+          <mat-list>
+            <mat-list-item>Thailand </mat-list-item>
+            <mat-list-item> Vetnam </mat-list-item>
+           </mat-list>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <mat-list>
+              <mat-list-item> </mat-list-item>
+              <mat-list-item> </mat-list-item>
+             </mat-list>
+            </mat-grid-tile>
+      </mat-grid-list>
+      <mat-divider ></mat-divider>
+      <mat-grid-list cols="1" rowHeight="40px">
+        <mat-grid-tile>
+         
+          
+          <h1 class="region"> United States</h1>
+          
+        </mat-grid-tile>
+      </mat-grid-list>
+      <mat-grid-list cols="4" rowHeight="520px" gutterSize="0px">
+        
+       <mat-grid-tile>
+          <mat-list>
+            <mat-list-item>ALabama</mat-list-item>
+            <mat-list-item> indiana </mat-list-item>
+            <mat-list-item>Alaska</mat-list-item>
+            <mat-list-item>Arizona</mat-list-item>
+            <mat-list-item>Arkansas</mat-list-item>
+            <mat-list-item>California</mat-list-item>
+            <mat-list-item>Colorado</mat-list-item>
+            <mat-list-item>Connecticut</mat-list-item>
+            <mat-list-item>Florida</mat-list-item>
+            <mat-list-item>Georgia</mat-list-item>
+            <mat-list-item>Hawaii</mat-list-item>
+            <mat-list-item>ldaho</mat-list-item>
+            <mat-list-item>Illinois</mat-list-item>
+           
+           </mat-list>
+         </mat-grid-tile>
+         <mat-grid-tile>
+          <mat-list>
+            <mat-list-item>indiana</mat-list-item>
+            <mat-list-item>lowa</mat-list-item>
+            <mat-list-item>Kansas</mat-list-item>
+            <mat-list-item>Kentucky</mat-list-item>
+            <mat-list-item>Louisiana</mat-list-item>
+            <mat-list-item>Maine</mat-list-item>
+            <mat-list-item>Maryland</mat-list-item>
+            <mat-list-item>Massachusetts</mat-list-item>
+            <mat-list-item>Michigan</mat-list-item>
+            <mat-list-item>Minnesota</mat-list-item>
+            <mat-list-item>Mississippi</mat-list-item>
+            <mat-list-item>Missouri</mat-list-item>
+            <mat-list-item></mat-list-item>
+            
+           
+           </mat-list>
+         </mat-grid-tile>
+        <mat-grid-tile>
+          <mat-list>
+            <mat-list-item>Montana</mat-list-item>
+            <mat-list-item>Nebraska</mat-list-item>
+            <mat-list-item>Nevada</mat-list-item>
+            <mat-list-item>New Hampshire</mat-list-item>
+            <mat-list-item>New Jersey</mat-list-item>
+            <mat-list-item>New Mexico</mat-list-item>
+            <mat-list-item>New York</mat-list-item>
+            <mat-list-item>North Carolina</mat-list-item>
+            <mat-list-item>North Dakota</mat-list-item>
+            <mat-list-item>Ohio</mat-list-item>
+            <mat-list-item>Oklahoma</mat-list-item>
+            <mat-list-item>Oregon</mat-list-item>
+            <mat-list-item></mat-list-item>
+            <mat-list-item> </mat-list-item>
+            <mat-list-item></mat-list-item>
+            <!-- <mat-list-item> </mat-list-item>
+            <mat-list-item> </mat-list-item>
+            <mat-list-item> </mat-list-item>
+            <mat-list-item> </mat-list-item>
+            <mat-list-item> </mat-list-item>
+            <mat-list-item> </mat-list-item>
+            <mat-list-item> </mat-list-item>
+            <mat-list-item> </mat-list-item>
+            <mat-list-item> </mat-list-item>
+            <mat-list-item> </mat-list-item> 
+            <mat-list-item> </mat-list-item>
+            <mat-list-item> </mat-list-item>
+            <mat-list-item> </mat-list-item>
+            <mat-list-item> </mat-list-item>
+            <mat-list-item> </mat-list-item>
+            <mat-list-item> </mat-list-item>
+            <mat-list-item> </mat-list-item>
+            <mat-list-item> </mat-list-item>
+            <mat-list-item> </mat-list-item>
+            <mat-list-item> </mat-list-item>
+            <mat-list-item> </mat-list-item> -->
+           </mat-list>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <mat-list>
+              <mat-list-item>Pennsylvania</mat-list-item>
+              <mat-list-item>South Carolina</mat-list-item>
+              <mat-list-item>South Dakota</mat-list-item>
+              <mat-list-item>Tennessee</mat-list-item>
+              <mat-list-item>Texas</mat-list-item>
+              <mat-list-item>Utah</mat-list-item>
+              <mat-list-item>Vermont</mat-list-item>
+              <mat-list-item>Virginia</mat-list-item>
+              <mat-list-item>Washington</mat-list-item>
+              <mat-list-item>Washington Dc</mat-list-item>
+              <mat-list-item>Wisconsin</mat-list-item>
+             </mat-list>
+            </mat-grid-tile>
+      </mat-grid-list>
+       <mat-divider></mat-divider>
+       <mat-grid-list cols="1" rowHeight="40px">
+        <mat-grid-tile>
+          <h1 class="region">Canada</h1>
+        </mat-grid-tile>
+      </mat-grid-list>
+      <mat-grid-list cols="4" rowHeight="80px" gutterSize="0px">
+        
+       <mat-grid-tile>
+          <mat-list>
+            <mat-list-item>Alberta</mat-list-item>
+            <mat-list-item>British Columbia</mat-list-item>
+           </mat-list>
+         </mat-grid-tile>
+        <mat-grid-tile>
+          <mat-list>
+            
+            <mat-list-item>Manitoba</mat-list-item>
+            <mat-list-item>New Brunswick</mat-list-item>
+           </mat-list>
+        </mat-grid-tile>
+        
+        <mat-grid-tile>
+          <mat-list>
+            <mat-list-item>Nova Scotia</mat-list-item>
+            <mat-list-item>Ontario</mat-list-item>
+           </mat-list>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <mat-list>
+              <mat-list-item>Quebec</mat-list-item>
+              <mat-list-item> </mat-list-item>
+             </mat-list>
+            </mat-grid-tile>
+      </mat-grid-list>
+      <mat-divider></mat-divider>
+       <mat-grid-list cols="1" rowHeight="40px">
+        <mat-grid-tile>
+          <h1 class="region">Euorope</h1>
+        </mat-grid-tile>
+      </mat-grid-list>
+      <mat-grid-list cols="4" rowHeight="300px" gutterSize="0px">
+        
+        <mat-grid-tile>
+           <mat-list>
+            <mat-list-item>Austria</mat-list-item>
+            <mat-list-item>Belgium</mat-list-item>
+            <mat-list-item>Croatia</mat-list-item>
+            <mat-list-item>Czech Republic</mat-list-item>
+            <mat-list-item>Denmark</mat-list-item>
+            <mat-list-item>France</mat-list-item>
+            </mat-list>
+          </mat-grid-tile>
+         <mat-grid-tile>
+           <mat-list>
+            <mat-list-item>Germany</mat-list-item>
+            <mat-list-item>Greece</mat-list-item>
+            <mat-list-item>Hungary</mat-list-item>
+            <mat-list-item>Iceland</mat-list-item>
+            <mat-list-item>Ireland</mat-list-item>
+            <mat-list-item (click)="findRegion('IT')">Italy</mat-list-item>
+            </mat-list>
+         </mat-grid-tile>
+         
+         <mat-grid-tile>
+           <mat-list>
+            <mat-list-item>Montenegro</mat-list-item>
+            <mat-list-item>Netheriands</mat-list-item>
+            <mat-list-item>Norway</mat-list-item>
+            <mat-list-item>Poland</mat-list-item>
+            <mat-list-item>Portugal</mat-list-item>
+            <mat-list-item>Russia</mat-list-item>
+            </mat-list>
+           </mat-grid-tile>
+           <mat-grid-tile>
+             <mat-list>
+              <mat-list-item>Slovenia</mat-list-item>
+              <mat-list-item>Spain</mat-list-item>
+              <mat-list-item>Sweden</mat-list-item>
+              <mat-list-item>Switzerland</mat-list-item>
+              <mat-list-item>United Kingdom</mat-list-item>
+              <mat-list-item> </mat-list-item>
+              </mat-list>
+             </mat-grid-tile>
+       </mat-grid-list>
+       <mat-divider></mat-divider>
+       <mat-grid-list cols="1" rowHeight="40px">
+        <mat-grid-tile>
+          <h1 class="region">Australia and South Pacific</h1>
+        </mat-grid-tile>
+      </mat-grid-list>
+      <mat-grid-list cols="4" rowHeight="80px" gutterSize="0px">
+        
+       <mat-grid-tile>
+          <mat-list>
+            <mat-list-item>Australia</mat-list-item>
+            <mat-list-item>Fiji</mat-list-item>
+           </mat-list>
+         </mat-grid-tile>
+        <mat-grid-tile>
+          <mat-list>
+            
+            <mat-list-item>French Polynesia</mat-list-item>
+            <mat-list-item>Indonesia</mat-list-item>
+           </mat-list>
+        </mat-grid-tile>
+        
+        <mat-grid-tile>
+          <mat-list>
+            <mat-list-item>New Zealand</mat-list-item>
+            <mat-list-item></mat-list-item>
+           </mat-list>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <mat-list>
+              <mat-list-item></mat-list-item>
+              <mat-list-item> </mat-list-item>
+             </mat-list>
+            </mat-grid-tile>
+      </mat-grid-list>
+      <mat-divider></mat-divider>
+      <mat-grid-list cols="1" rowHeight="40px">
+       <mat-grid-tile>
+         <h1 class="region">Africa</h1>
+       </mat-grid-tile>
+     </mat-grid-list>
+     <mat-grid-list cols="4" rowHeight="80px" gutterSize="0px">
+       
+      <mat-grid-tile>
+         <mat-list>
+           <mat-list-item>Morocco</mat-list-item>
+           
+          </mat-list>
+        </mat-grid-tile>
+       <mat-grid-tile>
+         <mat-list>
+           
+           <mat-list-item>South Africa</mat-list-item>
+           
+          </mat-list>
+       </mat-grid-tile>
+       
+       <mat-grid-tile>
+         <mat-list>
+           <mat-list-item></mat-list-item>
+           
+          </mat-list>
+         </mat-grid-tile>
+         <mat-grid-tile>
+           <mat-list>
+             <mat-list-item></mat-list-item>
+             <mat-list-item> </mat-list-item>
+            </mat-list>
+           </mat-grid-tile>
+     </mat-grid-list>
+     <mat-divider></mat-divider>
+       <mat-grid-list cols="1" rowHeight="40px">
+        <mat-grid-tile>
+          <h1 class="region">Americas</h1>
+        </mat-grid-tile>
+      </mat-grid-list>
+      <mat-grid-list cols="4" rowHeight="80px" gutterSize="0px">
+        
+       <mat-grid-tile>
+          <mat-list>
+            <mat-list-item>Bahamas</mat-list-item>
+            <mat-list-item>Brazil</mat-list-item>
+           </mat-list>
+         </mat-grid-tile>
+        <mat-grid-tile>
+          <mat-list>
+            
+            <mat-list-item>Costa Rica</mat-list-item>
+            <mat-list-item>Ecuador</mat-list-item>
+           </mat-list>
+        </mat-grid-tile>
+        
+        <mat-grid-tile>
+          <mat-list>
+            <mat-list-item>Grenada</mat-list-item>
+            <mat-list-item>Mexico</mat-list-item>
+           </mat-list>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <mat-list>
+              <mat-list-item></mat-list-item>
+              <mat-list-item> </mat-list-item>
+             </mat-list>
+            </mat-grid-tile>
+      </mat-grid-list>
+    </mat-tab> 
+  </mat-tab-group>
+        <!-- Search form goes here -->
+        
+        <!-- <button mat-raised-button color="primary">Hi I am </button> -->
+        <!-- <form id="search-form" action="#">
+          <div class="row mx-auto mb-3 " style="max-width:800px">
+            <div class="col-12 col-md-4">
+              <div class="form-group">
+                 <select [(ngModel)]="selectedCategory" name="category" id="category" class="form-control">
+                  <option value="">Choose a Service</option>
+                  <option value="1">Food and Drink</option>
+                  <option value="2">Celebrants and Officiants</option>
+                  <option value="3">Dresses, Suits and Accessories</option>
+                  <option value="4">Entertainment</option>
+                  <option value="5">Flowers</option>
+                  <option value="6">Hair, Make-Up and Beauty</option>
+                  <option value="7">Invitations and Stationery</option>
+                  <option value="8">Jewellery</option>
+                  <option value="9">Music</option>
+                  <option value="10"> Photography</option>
+                  <option value="11">Cake Makers</option>
+                  <option value="12">Transport</option>
+                  <option value="13">Venues</option>
+                  <option value="14">Wedding Planners</option>
+                  <option value="15">Decorations and Hire</option>
+                  <option value="16">Accommodation</option>
+                  <option value="17">Videography</option>
+                  <option value="18">Gifts and Favors</option>
+                </select> 
+              </div>
             </div>
-          </div>
-          <div class="col-12 col-md-4">
-            <div class="form-group">
-                <select name="countries" id="countries" class="form-control"  (change)="onChangeCountry($event.target.value)" value="Choose Country">
-                    <option value="">Choose a Country</option>
-                    <option *ngFor="let country of countries" [value]="country.id">
-                        {{country.name}}
-                    </option>
+            <div class="col-12 col-md-4">
+              <div class="form-group">
+                <select color="primary" name="countries" id="countries" class="form-control"
+                  (change)="onChangeCountry($event.target.value)" value="Choose Country">
+                  <option value="">Choose a Country</option>
+                  <option *ngFor="let country of countries" [value]="country.id">
+                    {{country.name}}
+                  </option>
                 </select>
+              </div>
             </div>
-          </div>
-          <div class="col-12 col-md-4" >
-            <div class="form-group">
+            <div class="col-12 col-md-4">
+              <div class="form-group">
                 <select name="regions" id="regions" class="form-control" [disabled]="isCountrySelected">
-                    <option value="">Choose a Region</option>
-                    <option *ngFor="let region of regions" [value]="region.id">
-                        {{region.name}}
-                    </option>
+                  <option value="">Choose a Region</option>
+                  <option *ngFor="let region of regions" [value]="region.id">
+                    {{region.name}}
+                  </option>
                 </select>
+              </div>
             </div>
-          </div>
           </div>
           <div class="col-12">
             <div class="response" style="text-shadow:none"></div>
             <div class="text-center">
-              <input type="submit" name="commit" value="Find" id="search-form-submit" class="submit btn btn-lg btn-primary" data-disable-with="Find" />
+              <button mat-raised-button color="primary" type="submit">Find {{selectedCategory}}</button>
+              <input type="submit" name="commit" value="Find" id="search-form-submit" class="submit btn btn-lg btn-primary" data-disable-with="Find" /> need to comment again
             </div>
           </div>
-        
-      </form>
-      
-        
-</div>
-</div>
-</div>
+  
+        </form> -->
+      </div>

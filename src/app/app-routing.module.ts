@@ -8,6 +8,12 @@ import { SignInComponent } from './pages/sign-in/sign-in.component';
 import { SignUpComponent } from './pages/sign-up/sign-up.component';
 import { LeaveReviewComponent } from './pages/leave-review/leave-review.component';
 import { PricingComponent } from './pages/pricing/pricing.component';
+import { ListingComponent } from './pages/listing/listing.component';
+import { AuthGuard } from './auth.guard';
+import {ProfileComponent} from './pages/profile/profile.component'
+import { ProfileViewComponent } from './pages/profile-view/profile-view.component';
+import { SearchViewComponent } from './pages/search-view/search-view.component';
+
 
 
 const routes: Routes = [
@@ -17,8 +23,12 @@ const routes: Routes = [
   {path : 'support', component : SupportComponent},
   {path : 'signin', component : SignInComponent},
   {path : 'signup', component : SignUpComponent},
-  {path : 'leave-review', component : LeaveReviewComponent},
+  {path : 'leave-review', component : LeaveReviewComponent,canActivate:[AuthGuard]},
   {path : 'pricing', component : PricingComponent},
+  {path : 'listing', component : ListingComponent},
+  {path : 'profile', component:ProfileComponent,canActivate:[AuthGuard]},
+  {path : 'profile-view', component:ProfileViewComponent ,canActivate:[AuthGuard]},
+  {path : 'search-view', component : SearchViewComponent},
   {path : '' , pathMatch : 'full' ,component:FindComponent}
 ];
 

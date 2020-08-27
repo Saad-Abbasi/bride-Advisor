@@ -1,5 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
-.navbar-nav{
+html, body { 
+    margin: 0;
+    height: 100%;
+}
+
+
+
+/* .navbar-nav{
     font-size:0.9375rem;
     text-shadow: 0.15em 0.15em 0.15em rgba(0,0,0,0.25)
 }
@@ -8,9 +15,30 @@ h2 { margin: 0;  font-weight: bold;  font-size: 1.6em; }
 h3 { margin: 0;  font-weight: bold;  font-size: 1.3em; }
 h4 { margin: 0;  font-weight: bold;  font-size: 1.18em; }
 
-.primary{
-    background-color: #00BCD4;
-}
+
 body, td {
 	font: 14px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
 	}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; } */
+.btn-primary, .edit-btn{
+    background-color: #00BCD4 !important;
+}
+.bg-primary{
+    background-color: #00BCD4 !important;
+}
+.app-full-bleed-dialog .mat-dialog-container {
+    padding: 0;
+    
+  }
+  .app-full-bleed-dialog .mat-dialog-content{
+    margin: auto;
+    padding-left: 2px;
+    padding-right: 2px;
+  }
+.edit-btn{
+    border-color:  #00BCD4;
+}
+.edit-btn:focus{
+    border-color: red;
+}

@@ -1,0 +1,495 @@
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+ 
+</head>
+<div class="container-fluid">
+
+</div>
+<div class="container">
+  <mat-card class="flex-container" fxLayout="row" fxLayoutAlign="space-between end">
+
+    <mat-toolbar>
+
+      <div fxFlex="60" fxLayoutAlign="end space-between" class="pr-2">
+        <!-- <button mat-button >Open dialog</button> -->
+        <label class="hoverable text-center" (click)="profileImageDialog()">
+          <img class="logoimg" [src]="profileImage" >
+          <!-- <img class="logoimg" src="../../../assets//logo.png" > -->
+          <div class="hover-text">
+            <mat-icon class="hover-text">edit</mat-icon>
+          </div>
+          <div class="background"></div>
+        </label>
+     
+      </div>
+      <button mat-icon-button class="changePswd btn1" aria-label="" fxFlex="20" fxHide.lt-md  [routerLink]="['/profile-view']">
+        <mat-icon>visibility</mat-icon>Preview your listing
+      </button>
+      <button mat-icon-button class="changePswd btn3" fxFlex="20" fxFlex.lt-md="40%">
+        <mat-icon>edit</mat-icon> Change Pasword
+      </button>
+    </mat-toolbar>
+  </mat-card>
+</div>
+<div class="container">
+  <mat-card fxLayout  fxLayoutAlign="space-between" fxLayoutGap="5px" class="custom">
+    <mat-card fxFlex class="child-1">Space for review embed</mat-card>
+
+                                               <!-- Update Listing -->
+
+    <mat-card fxFlex="45" class="child-2" >
+      <mat-card-title fxLayoutAlign="center">{{listingTitle}}</mat-card-title>
+      <mat-card-content>
+
+        <div class="">
+         
+          <hr>
+          <form  [formGroup]="businessDetails" (ngSubmit)="saveBusiness()">
+           
+            <div class="row mb-3">
+              <div class="col">
+                <button type="button" onclick="location.reload()" class="btn btn-block btn-secondary">Discard
+                  Changes</button>
+              </div>
+              <div class="col">
+                <input type="submit" name="commit" value="Save Changes" class="btn btn-block btn-primary"
+                  data-disable-with="Save Changes">
+              </div>
+            </div>
+            <fieldset>
+              <legend>Business Details</legend>
+              <div class="form-group">
+                <label for="listing_listing_type">Listing Type</label>
+                <input value="Top" class="form-control"  type="text">
+              </div>
+              <div class="form-group">
+                <label for="listing_name">Business Name</label>
+                <div class="d-flex">
+                  <input formControlName="business" class="form-control" placeholder="Business Name" type="text"
+                    value="" name="" id="">
+                  <div class="edit-btn text-white p-2">
+                    <span class="fa fa-pencil"></span>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="listing_trading_name">Trading Name (optional)</label>
+                <div class="d-flex">
+                  <input formControlName="tradingName" class="form-control" placeholder="Trading Name (optional)" type="text"
+                    value="" name="" id="">
+                  <div class="edit-btn text-white p-2">
+                    <span class="fa fa-pencil"></span>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="listing_email">Email Address</label>
+                <div class="d-flex">
+                  <input formControlName="email" class="form-control" placeholder="Email Address" type="email"
+                    value="" name="" id="">
+                  <div class="edit-btn text-white p-2">
+                    <span class="fa fa-pencil"></span>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="listing_phone">Phone Number</label>
+                <div class="d-flex">
+                  <input formControlName="phone" class="form-control" placeholder="Phone Number" type="tel" value=""
+                    name="" id="">
+                  <div class="edit-btn text-white p-2">
+                    <span class="fa fa-pencil"></span>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="listing_website">Website</label>
+                <div class="d-flex">
+                  <input formControlName="website" class="form-control" placeholder="Website" type="text"
+                    value="" name="" id="">
+                  <div class="edit-btn text-white p-2">
+                    <span class="fa fa-pencil"></span>
+                  </div>
+                </div>
+              </div>
+            
+              <div class="form-group">
+                <label for="listing_website">Website</label>
+                <div class="d-flex">
+                  <input formControlName="website" class="form-control" placeholder="Website" type="text"
+                    value="" name="" id="">
+                  <div class="edit-btn text-white p-2">
+                    <span class="fa fa-pencil"></span>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+               <!-- <mat-label for="listing_website">Country/Region</mat-label> -->
+                <label for="listing_website">Choose a Location</label>
+                <div class="d-flex">
+                  <select id="country" name="listing[country]"formControlName="address" class="form-control">
+                    <option>Choose a Location</option>
+                    <option value="AU" data-name="Australia">Australia</option>
+                    <option value="BB">Barbados</option>
+                    <option value="BR">Brazil</option>
+                    <option value="CA" data-name="Canada">Canada</option>
+                    <option value="CR">Costa Rica</option>
+                    <option value="HR">Croatia</option>
+                    <option value="FJ">Figi</option>
+                    <option value="FR" data-name="France">France</option>
+                    <option value="DE">Germany</option>
+                    <option value="GI">Gibraltar</option>
+                    <option value="GR">Greece</option>
+                    <option value="IS">Iceland</option>
+                    <option value="ID">Indonesia - Bali</option>
+                    <option value="IT" data-name="Italy">Italy</option>
+                    <option value="MT">Malta</option>
+                    <option value="MU">Mauritius</option>
+                    <option value="MX">Mexico</option>
+                    <option value="NZ">New Zealand</option>
+                    <option value="PE">Peru</option>
+                    <option value="PH" data-name="Philippines">Philippines</option>
+                    <option value="PT">Portugal</option>
+                    <option value="IE">Republic of Ireland</option>
+                    <option value="SG">Singapore</option>
+                    <option value="ZA">South Africa</option>
+                    <option value="ES">Spain</option>
+                    <option value="TH">Thailand</option>
+                    <option value="BS">The Bahamas</option>
+                    <option value="GB" data-name="Scotland">United Kingdom</option>
+                    <option value="US" data-name="United States">United States</option>
+                  </select>
+                  <!-- <mat-select [(ngModel)]="selectedValue" color="primary" name="food" formControlName="website" class="form-control" >
+                    <mat-label>Country/Region</mat-label>
+                    <mat-option *ngFor="let food of foods" [value]="food.value">
+                      {{food.viewValue}}
+                    </mat-option>
+                  </mat-select> -->
+                  <!-- <input formControlName="website" class="form-control" placeholder="Website" type="text"
+                    value="" name="" id=""> -->
+                  <div class="edit-btn text-white p-2">
+                    <span class="fa fa-pencil"></span>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <!-- <mat-label for="listing_website">Country/Region</mat-label> -->
+                 <label for="listing_website">Select a Category</label>
+                 <div class="d-flex">
+                  
+                    <select class="form-control" name="listing[category_id]" id="listing_category_id" formControlName="category">
+                      <option value="">Select a Category</option>
+                      <option value="1">Food and Drink</option>
+                      <option value="2">Celebrants and Officiants</option>
+                      <option value="3">Dresses, Suits and Accessories</option>
+                      <option value="4">Entertainment</option>
+                      <option value="6">Hair, Make-Up and Beauty</option>
+                      <option value="7">Invitations and Stationery</option>
+                      <option value="8">Jewellery</option>
+                      <option value="9">Music</option>
+                      <option value="12">Transport</option>
+                      <option value="13">Venues</option>
+                      <option value="14">Wedding Planners</option>
+                      <option value="70">Cake Makers</option>
+                      <option value="5">Flowers</option>
+                      <option value="71">Decorations and Hire</option>
+                      <option value="72">Accommodation</option>
+                      <option value="10">Photography</option>
+                      <option value="76">Videography</option>
+                      <option value="77">Gifts and Favors</option>
+                    </select>
+                 
+                   <!-- <mat-select [(ngModel)]="selectedValue" color="primary" name="food" formControlName="website" class="form-control" >
+                     <mat-label>Country/Region</mat-label>
+                     <mat-option *ngFor="let food of foods" [value]="food.value">
+                       {{food.viewValue}}
+                     </mat-option>
+                   </mat-select> -->
+                   <!-- <input formControlName="website" class="form-control" placeholder="Website" type="text"
+                     value="" name="" id=""> -->
+                   <div class="edit-btn text-white p-2">
+                     <span class="fa fa-pencil"></span>
+                   </div>
+                 </div>
+               </div>
+              <!-- <div class="form-group">
+                <label for="listing_address">Address</label>
+                <div class="d-flex">
+                  <input formControlName="address" id="address-autocomplete" class="form-control pac-target-input" placeholder="Address"
+                    type="text" value="" name=""
+                    autocomplete="off">
+                  <div class="edit-btn text-white p-2">
+                    <span class="fa fa-pencil"></span>
+                  </div>
+                </div>
+                <input  id="country" type="hidden" value="" name="">
+                <input  id="latitude" type="hidden" value="" name="">
+                <input  id="longitude" type="hidden" value="" name="">
+              </div> -->
+            </fieldset>
+            <!-- <hr>
+            <p class="text-muted text-sm">If you want to appear in the search for multiple locations you can add more
+              areas</p>
+            <a class="btn btn-block btn-primary" href="#">Add Additional Areas</a>
+            <hr> -->
+            <!-- <fieldset>
+              <legend>Sub Categories</legend>
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input formControlName="fullPlaning" class="subcategory form-check-input" type="checkbox" value="">
+                  <span class="form-check-indicator"></span>
+                  <span class="">Full Planning</span>
+                </label>
+              </div>
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input formControlName="partPlaning" class="subcategory form-check-input" type="checkbox" value="" >
+                  <span class="form-check-indicator"></span>
+                  <span class="">Part Planning</span>
+                </label>
+              </div>
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input formControlName="coordinator" class="subcategory form-check-input" type="checkbox" value="" >
+                  <span class="form-check-indicator"></span>
+                  <span class="">Coordinator on the Day</span>
+                </label>
+              </div>
+            </fieldset> -->
+            <hr>
+            <fieldset>
+              <legend>Description</legend>
+              <div class="form-group">
+                <label for="listing_tagline">Tagline</label>
+                <input formControlName="tagline" class="form-control" placeholder="Tagline" type="text"
+                  value=" " name="" id="listing_tagline">
+              </div>
+              <div class="form-group">
+                <label for="listing_description">Description</label>
+                <textarea formControlName="description" class="form-control" placeholder="Description" rows="6" name="listing[description]"
+                  id="listing_description">  </textarea>
+              </div>
+              <hr>
+            </fieldset>
+            <fieldset class="">
+              <legend>Social Media</legend>
+
+              <div class="form-group row"  >
+                <label class="col-4 col-form-label" for="listing_option_facebook">facebook.com/</label>
+                <div class="col-7 pr-0">
+                  <input formControlName="fLink" value="" class="form-control" type="text" name="" id="listing_option_facebook">
+                </div>
+                <div class="col-1 pl-0 d-flex align-items-stretch justify-content-stretch">
+                  <button type="button" data-toggle="form-control" data-target="#listing_option_facebook"
+                    class="edit-btn text-white btn-reset" style="width:100%" data-original-title="" title=""
+                    (click)="toggleEnable(1)" (focusout)="toggleDisable(1)">
+                    <span class="fa fa-pencil"></span>
+                  </button>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-4 col-form-label" for="listing_option_twitter">twitter.com/</label>
+                <div class="col-7 pr-0">
+                  <input formControlName="tLink" value="" class="form-control" 
+                    type="text" name="" id="listing_option_twitter">
+                </div>
+                <div class="col-1 pl-0 d-flex align-items-stretch justify-content-stretch">
+                  <button type="button" data-toggle="form-control" data-target="#listing_option_twitter"
+                    class="edit-btn text-white btn-reset" style="width:100%" data-original-title="" title="" (click)="toggleEnable(2)" (focusout)="toggleDisable(2)">
+                    <span class="fa fa-pencil"></span>
+                  </button>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-4 col-form-label" for="listing_option_google">plus.google.com/</label>
+                <div class="col-7 pr-0">
+                  <input formControlName="gLink" value="" class="form-control"  type="text" name="listing_option[google]"
+                    id="listing_option_google">
+                </div>
+                <div class="col-1 pl-0 d-flex align-items-stretch justify-content-stretch">
+                  <button type="button" data-toggle="form-control" data-target="#listing_option_google"
+                    class="edit-btn text-white btn-reset" style="width:100%" data-original-title="" title="" (click)="toggleEnable(3)" (focusout)="toggleDisable(3)">
+                    <span class="fa fa-pencil"></span>
+                  </button>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-4 col-form-label" for="listing_option_instagram">instagram.com/</label>
+                <div class="col-7 pr-0">
+                  <input formControlName="iLink" value="" class="form-control" 
+                    type="text" name="" id="listing_option_instagram">
+                </div>
+                <div class="col-1 pl-0 d-flex align-items-stretch justify-content-stretch">
+                  <button type="button" data-toggle="form-control" data-target="#listing_option_instagram"
+                    class="edit-btn text-white btn-reset" style="width:100%" data-original-title="" title="" (click)="toggleEnable(4)" (focusout)="toggleDisable(4)">
+                    <span class="fa fa-pencil"></span>
+                  </button>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-4 col-form-label" for="listing_option_pinterest">pinterest.com/</label>
+                <div class="col-7 pr-0">
+                  <input formControlName="pLink" value="" class="form-control" 
+                    type="text" name="" id="listing_option_pinterest">
+                </div>
+                <div class="col-1 pl-0 d-flex align-items-stretch justify-content-stretch">
+                  <button type="button" data-toggle="form-control" data-target="#listing_option_pinterest"
+                    class="edit-btn text-white btn-reset" style="width:100%" data-original-title="" title="" (click)="toggleEnable(5)" (focusout)="toggleDisable(5)">
+                    <span class="fa fa-pencil"></span>
+                  </button>
+                </div>
+              </div>
+              <hr>
+            </fieldset>
+            <fieldset>
+              <legend>Featured Video</legend>
+
+              <div class="form-group row">
+                <label class="col-6 col-form-label"
+                  for="listing_option_featured_video_youtube">youtube.com/watch?v=</label>
+                <div class="col-5 pr-0">
+                  <input formControlName="yVideoLink" value="" class="form-control"  type="text"
+                    name="listing_option[]" id="listing_option_featured_video_youtube">
+                </div>
+                <div class="col-1 pl-0 d-flex align-items-stretch justify-content-stretch">
+                  <button type="button" data-toggle="form-control" data-target="#listing_option_featured_video_youtube"
+                    class="edit-btn text-white btn-reset" style="width:100%" data-original-title="" title="" (click)="toggleEnable(6)" (focusout)="toggleDisable(6)">
+                    <span class="fa fa-pencil"></span>
+                  </button>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-6 col-form-label" for="listing_option_featured_video_vimeo">vimeo.com/</label>
+                <div class="col-5 pr-0">
+                  <input formControlName="vVideoLink" value=" " class="form-control"  type="text"
+                    name="listing_option[]" id="listing_option_featured_video_vimeo">
+                </div>
+                <div class="col-1 pl-0 d-flex align-items-stretch justify-content-stretch">
+                  <button type="button" data-toggle="form-control" data-target="#listing_option_featured_video_vimeo"
+                    class="edit-btn text-white btn-reset" style="width:100%" data-original-title="" title="" (click)="toggleEnable(7)" (focusout)="toggleDisable(7)">
+                    <span class="fa fa-pencil"></span>
+                  </button>
+                </div>
+              </div>
+              <hr>
+            </fieldset>
+            <fieldset>
+              <legend>Invoices</legend>
+
+              <div class="form-group row">
+                <label class="col-6 col-form-label" for="listing_option_invoice_vat_number">Invoice VAT Number</label>
+                <div class="col-5 pr-0">
+                  <input formControlName="vatNumber" class="form-control"  type="text" name="listing_option[]"
+                    id="listing_option_invoice_vat_number">
+                </div>
+                <div class="col-1 pl-0 d-flex align-items-stretch justify-content-stretch">
+                  <button type="button" data-toggle="form-control" data-target="#listing_option_invoice_vat_number"
+                    class="edit-btn text-white btn-reset" style="width:100%" data-original-title="" title="" (click)="toggleEnable(8)" (focusout)="toggleDisable(8)">
+                    <span class="fa fa-pencil"></span>
+                  </button>
+                </div>
+              </div>
+              <hr>
+            </fieldset>
+            <div class="row">
+              <div class="col">
+                <button type="button" onclick="location.reload()" class="btn btn-block btn-secondary">Discard
+                  Changes</button>
+              </div>
+              <div class="col">
+                <input type="submit" name="commit" value="Save Changes" class="btn btn-block btn-primary"
+                  data-disable-with="Save Changes">
+              </div>
+            </div>
+          </form>
+        </div>
+      </mat-card-content>
+
+    </mat-card>
+
+
+                                                                 <!-- Gallery -->
+
+                                                                 
+    <mat-card class="custom" fxFlex >
+      <mat-card-title fxLayoutAlign="center center" class="m-3">Gallery</mat-card-title>
+      <mat-card-content>
+       
+        <hr>
+        <mat-grid-list *ngIf="galleryData" cols="2" rowHeight="2:2" gutterSize="5px" role="list">
+         
+          <mat-grid-tile  role="listitem" *ngFor="let g of galleryData.gallery">
+            <div class="img-wrap">
+              <mat-icon class="close"  color="warn" (click)="deleteGallery(g._id)">delete</mat-icon>
+              <img class="gallery-img"[src]="g.image" alt="">
+            </div>
+           </mat-grid-tile>
+           <mat-grid-tile role="listitem" >
+            <mat-icon class="add-image" color="primary" aria-labelledby="Add image to gallery" (click)="galleryDialog()" >add</mat-icon>
+          </mat-grid-tile >
+         </mat-grid-list>  
+
+                                              <!-- Update listing Section  -->
+
+         <div class="mb-4 mt-5">
+          <mat-card-title fxLayoutAlign="center">Upgrade Listing</mat-card-title> 
+          <hr>
+          <p class="text-muted text-sm">Upgrade your listing to appear in multiple categories</p>
+          <button type="button" data-remodal-target="addon-category" class="btn btn-block btn-primary">Add an extra category</button>
+          <hr>
+          <p class="text-muted text-sm">Upgrade your listing to appear in multiple countries</p>
+          <button type="button" data-remodal-target="addon-country" class="btn btn-block btn-primary">Add an extra country</button>
+        </div>
+        
+                                                        <!-- Payment Section -->
+
+          <div class="mb-3 mt-5">
+          <mat-card-title fxLayoutAlign="center" >Change Payment Card</mat-card-title>
+          
+          <hr>
+          <p class="text-muted text-sm">Add and remove credit/debit cards and set your default card.</p>
+          <table class="table table-stripe">
+            <thead>
+              <tr>
+                <th class=""></th>
+                <th class="">Number</th>
+                <th class="text-right">Expiry</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr id="card-205" class="text-right">
+                  <td>Visa</td>
+                  <td>•••• •••• •••• 1126</td>
+                  <td>10/2020</td>
+                  <td>
+                      <span class="badge badge-primary text-sm">Default</span>
+                  </td>
+                </tr>
+                <tr id="card-121" class="text-right">
+                  <td>American Express</td>
+                  <td>•••• •••• •••• 2009</td>
+                  <td>3/2023</td>
+                  <td>
+                      <button type="button" data-id="121" class="delete-card btn btn-sm btn-secondary"><span class="fa fa-trash"></span></button>
+                  </td>
+                </tr>
+                <tr id="card-1" class="text-right">
+                  <td>MasterCard</td>
+                  <td>•••• •••• •••• 2783</td>
+                  <td>9/2018</td>
+                  <td>
+                      <button type="button" data-id="1" class="delete-card btn btn-sm btn-secondary"><span class="fa fa-trash"></span></button>
+                  </td>
+                </tr>
+            </tbody>
+          </table>
+          <button type="button" data-remodal-target="add-card" class="btn btn-block btn-primary">Add New Default Card</button>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+  </mat-card>
+</div>

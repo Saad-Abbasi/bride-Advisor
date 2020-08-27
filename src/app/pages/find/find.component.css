@@ -3,17 +3,115 @@ select {
     
   }
 .bg{
-    background-image: url("../../../assets/search-baner.jpg");
+    margin-top: -100px;
+    background-image: url("../../../assets/banner-o.jpg");
     background-size: cover;
-    height: 600px;
+    min-height: 450px;
 }
 .flex{
     display: flex;
     align-items: center;
     justify-content: center;
+}
+ .head{ 
+   
+    text-shadow: 0.1em 0.1em rgba(0,0,0,0.2) !important;
+    font-size: 37.5px !important;
+    font-weight: 500px !important;
+    line-height: 1.1;
+    color:#fff;
+    font-size: 2.5rem;
     
 }
-h1,h2,h3,h4,h5{
-    font-family: sans-serif;
-}
 
+
+
+.blk{
+    font-weight: bold;
+    text-shadow: 0.1em 0.1em rgba(0,0,0,0.2) !important;
+    line-height: 1.1rem;
+    filter: brightness(80%);
+}
+button{
+    font-size: 1rem;
+    color: #fff !important;
+    /* padding-top: 0.3rem; */
+    padding-left: 2px;
+    padding-right: 2px;
+    /* padding-bottom: 0.3rem; */
+    
+}
+.btnSearch{
+    position: relative;
+    top: 1rem;
+    
+}
+p{
+    color: #fff !important;
+    line-height: 1.1rem;
+    
+}
+select{
+    color: black !important;
+    border-style: none !important;
+}
+button:focus{
+    outline: none !important;
+}
+.category{
+    background-color:transparent !important;
+    color: white;
+    text-overflow: none;
+    position: relative;
+    justify-content: center;
+    /* top: -1rem; */
+}
+.category-icon{
+    padding:0px 5px;
+    cursor: pointer;
+    
+    
+}
+::ng-deep .mat-tooltip{
+    background-color: #00BCD4;
+    color: #fff !important;
+    font-size: medium;
+}
+::ng-deep .mat-tab-list .mat-tab-labels .mat-tab-label-active{
+    /* background-color: #00BCD4; */
+    color: #fff !important;
+    font-size: medium;
+ }
+ mat-grid-tile {
+    background:  #fff;
+    
+  }
+ 
+  .container-find{
+      position: relative;
+      top:-8rem;
+      margin: auto;
+      justify-content: center;
+  }
+  .region{
+    padding-top: 10px;
+    color: #00BCD4 !important;
+     
+  }
+  mat-divider {
+    
+    width:20%;
+    background-color: gray !important;
+    padding-top: 1px;
+    font-size: 1px solid;
+    margin: auto;
+    margin-top: 5px;
+}
+mat-list-item{
+    position: relative;
+    top: auto !important;
+    cursor: pointer;
+}
+mat-list-item:hover{
+font-weight: bold;
+}

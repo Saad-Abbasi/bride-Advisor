@@ -1,0 +1,117 @@
+<div class="container-fluid bg">
+    <div fxLayout="row" fxLayoutAlign="center center" class="row-height">
+        <div style="position:relative" class="container-fluid">
+            <span class="d-inline-block text-uppercase text-white btn-primary  py-2 px-3"
+                style="position:absolute;top:1rem;right:0;background-color:#ADB3BC">
+                Top Listing
+            </span>
+            <div class="pt-3 pb-6" *ngIf="listingData">
+                <div class="container">
+                    <div class="row text-center">
+                        <div class="col-12">
+                            <div class="d-inline-block mb-3  " style="position:relative">
+                                <img class="img-circle z-depth-1 shadow-lg " alt="WeddingBox Lake Como Logo" width="96"
+                                    height="96" [src]="profileImage">
+                                <!-- <button id="favourite-listing" type="button" data-toggle="tooltip" data-placement="right" title=""
+                                    data-method="delete"
+                                    class="d-flex align-items-center justify-content-center btn-reset bg-white z-depth-1"
+                                    style="position:absolute;bottom:0;right:0;border-radius:50%;font-size:1.25rem;width:2rem;height:2rem"
+                                    data-original-title="Unfavourite">
+                                     <span class="fa fa-heart text-danger"></span> 
+                                </button> -->
+                            </div>
+                            <h1>{{listingData.business}}</h1>
+                            <div class="mb-2">
+                                <div class="text-lg" style="text-shadow:none">
+                                    <span class="rating">
+                                        <ul class="list-inline rating-list" *ngFor="let star of stars"
+                                            style="display: inline-block">
+                                            <li (click)="countStar(star)"
+                                                [ngClass]="{'selected': (star <= selectedValue)}">
+                                                <i class="fa fa-star"></i>
+                                            </li>
+                                        </ul>
+                                        <!-- <span  class="rating-star active" data-rating="5">☆</span>
+                                        <span class="rating-star" data-rating="4">☆</span>
+                                        <span class="rating-star" data-rating="3">☆</span>
+                                        <span class="rating-star" data-rating="2">☆</span>
+                                        <span class="rating-star" data-rating="1">☆</span> -->
+                                    </span>
+                                </div>
+                                <a href="#" class="smooth-scroll text-white">View all Reviews</a>
+                            </div>
+                            <ul class="list-inline mb-2">
+                                <li class="list-inline-item text-white">
+                                    <span class="fa fa-phone"></span>
+                                    {{listingData.phone}}
+                                </li>
+                                <li class="list-inline-item">
+                                    <a class="text-white" target="_blank" href="#">
+                                        <span class="fa fa-globe"></span>
+                                        {{listingData.website}}
+                                    </a> </li>
+                            </ul>
+                            <nav class="nav justify-content-center mb-3">
+                                <a class="nav-link p-2 text-white" target="_blank" [href]="listingData.fLink">
+                                    <span class="fa fa-facebook"></span>
+                                </a> <a class="nav-link p-2 text-white" target="_blank" [href]="listingData.fLink">
+                                    <span class="fa fa-twitter"></span>
+                                </a> <a class="nav-link p-2 text-white" target="_blank" [href]="listingData.fLink">
+                                    <span class="fa fa-instagram"></span>
+                                </a> <a class="nav-link p-2 text-white" target="_blank" [href]="listingData.fLink">
+                                    <span class="fa fa-pinterest"></span>
+                                </a> </nav>
+                            <div class="btn-group">
+                                <!-- <button type="button" data-remodal-target="contact" class="btn btn-secondary p-2">Contact
+                                    Us</button>
+                                <button type="button" data-remodal-target="review" class="btn btn-primary">Leave a Review</button> -->
+                                <button class="matbtn" mat-raised-button>Contact
+                                    Us</button>
+                                <button mat-raised-button color="primary" class="text-white">Leave a Review</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Galler Section -->
+
+<section class="container-gallery">
+    <!-- <header class="text-center my-4">
+      <h1>Owl Carousel - PresentModule</h1>
+      <p>"autoplay=<span class="text-success">true</span>", "loop=<span class="text-success">true</span>"</p>
+    </header> -->
+    <div class="container-fluid slider-container" *ngIf="galleryData">
+        <div class="row">
+            <div class="col-12 ">
+
+                <owl-carousel-o [options]="customOptions" (translated)="getPassedData($event)">
+
+                    <ng-container *ngFor="let gallery of galleryData">
+                        <!-- <ng-template carouselSlide [width]="item.width"> -->
+                        <ng-template carouselSlide>
+                            <div class="slider p-3 ">
+                                <!-- <p>{{item.text}}</p> -->
+                                <img id="#myImg" [src]="gallery.image" alt="{{gallery.description}}"
+                                    class="img-fluid  z-depth-1" (click)="openDialog(gallery.image)">
+                            </div><!-- /.carousel-item team-member -->
+                        </ng-template>
+                    </ng-container>
+
+                </owl-carousel-o>
+
+            </div> <!-- /.col-sm-10 col-sm-offset-1 -->
+
+        </div> <!-- row -->
+
+    </div> <!-- /.container -->
+</section>
+
+<div class="container">
+
+    <!-- <iframe width="100%" height="400" [src]="controllerSrc" frameborder="no"></iframe> -->
+</div>
+
+<!-- image model -->
