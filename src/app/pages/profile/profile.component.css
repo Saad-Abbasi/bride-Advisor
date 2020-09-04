@@ -126,3 +126,43 @@ mat-grid-tile{
   cursor: pointer;
 }
 
+.review-card{
+  position: relative;
+  max-width: 400px;
+  margin-bottom: 10px !important;
+  
+  
+}
+
+.example-header-image {
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
+}
+.rating-header {
+  display: flex;
+  justify-content: space-between; 
+  /* padding-bottom: 3px; */
+}
+.rating-sub-header{
+  position: relative;
+  top:-1rem;
+}
+/* rating Css */
+.rating-list li {
+  float: right;
+  color: #ddd;
+  padding: 0px 2px;
+  font-size: 15px;
+
+}
+
+.rating-list li:hover,
+.rating-list li:hover ~ li, .rating-list li.selected {
+  color: #00BCD4;
+}
+
+.rating-list {
+  display: inline-block;
+  list-style: none;
+}
+

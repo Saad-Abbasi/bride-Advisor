@@ -27,6 +27,8 @@ import { ProfileViewComponent } from './pages/profile-view/profile-view.componen
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { ImageDialogeComponent } from './pages/dialogs/image-dialoge/image-dialoge.component';
 import { SearchViewComponent } from './pages/search-view/search-view.component';
+import { RatingDialogComponent } from './pages/dialogs/rating-dialog/rating-dialog.component';
+import { StripPaymentComponent } from './pages/dialogs/strip-payment/strip-payment.component';
 
 
 
@@ -49,12 +51,15 @@ import { SearchViewComponent } from './pages/search-view/search-view.component';
     ProfileViewComponent,
     ImageDialogeComponent,
     SearchViewComponent,
+    RatingDialogComponent,
+    StripPaymentComponent,
    
   ],
   entryComponents:[
     ProfileImgComponent,
     GalleryComponent,
-    ImageDialogeComponent
+    ImageDialogeComponent,
+    StripPaymentComponent
   ],
   imports: [
     BrowserModule,

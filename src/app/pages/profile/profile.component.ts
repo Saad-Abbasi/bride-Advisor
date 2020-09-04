@@ -8,8 +8,8 @@ import {Listing} from '../../models/listing/listing'
 import { MatDialog } from '@angular/material/dialog';
 import { ProfileImgComponent } from '../dialogs/profile-img/profile-img.component';
 import { GalleryComponent } from '../dialogs/gallery/gallery.component';
-//interface for select option
-
+import {ReviewsService} from '../../shared/reviews/reviews.service'
+import { Review } from 'src/app/models/reviews/review';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -28,6 +28,9 @@ export class ProfileComponent implements OnInit {
   galleryData:Object;
   profileImage='';
   listingTitle:String;
+  stars: number[] = [1, 2, 3, 4, 5];
+  selectedStarValue: number;
+  reviews:any;
 
   //Data for Material Option
 
@@ -39,6 +42,7 @@ export class ProfileComponent implements OnInit {
 
   constructor(private _loginService :LoginService,
               private _listingService:ListingService,
+              private _reviewService:ReviewsService,
               private _dialog: MatDialog
               ) { }
                   
@@ -74,6 +78,7 @@ export class ProfileComponent implements OnInit {
     // this.getProfile()
     //getting profile detailse
     this.getUser();
+    this.loadStripe();
   }
   //methods
   getUser(){
@@ -88,6 +93,7 @@ export class ProfileComponent implements OnInit {
        
       })
   }
+ 
   //getting listing information
 
   //check listing is available ?
@@ -100,6 +106,7 @@ export class ProfileComponent implements OnInit {
     else{
       this.listingTitle = "Update Listing"
       this.getProfileAndEdit(this.listingId);
+      this.getReviews(this.listingId);
       return true;
     }
   }
@@ -121,7 +128,15 @@ export class ProfileComponent implements OnInit {
      this.getGalleryImages(this.listingId)
     })
   } 
-  
+   //getting reviews
+   getReviews(listingId:String){
+    this._reviewService.getReviews(listingId)
+      .subscribe(result=>{
+        console.log('reviews are ',result)
+        this.reviews = result;
+         console.log(this.reviews[0].name)
+      })
+  }
   //Edit profile 
 
   editProfile(listingData:Listing){
@@ -179,6 +194,7 @@ export class ProfileComponent implements OnInit {
       this._listingService.addListing(this.businessDetails.value,this.userId).
       subscribe((result)=>{
         console.log(result)
+        location.reload();
       },(err)=>{
         console.log(err)
       })
@@ -190,6 +206,7 @@ export class ProfileComponent implements OnInit {
       this._listingService.updateListing(this.businessDetails.value,this.listingId).
       subscribe((result)=>{
         console.log(result)
+        location.reload();
       },(err)=>{
         console.log(err)
       })
@@ -317,5 +334,42 @@ toggleDisable(id:Number){
   }
     
 }
+//Methods for rating and reviews
+countStar(star) {
+  this.selectedStarValue = 5;
+  console.log('Value of star', star);
+}
+//Checkout Stripe 
 
+
+loadStripe() {
+     
+  if(!window.document.getElementById('stripe-script')) {
+    var s = window.document.createElement("script");
+    s.id = "stripe-script";
+    s.type = "text/javascript";
+    s.src = "https://checkout.stripe.com/checkout.js";
+    window.document.body.appendChild(s);
+  }
+}
+pay(amount) {    
+ 
+  var handler = (<any>window).StripeCheckout.configure({
+    key: 'pk_test_aeUUjYYcx4XNfKVW60pmHTtI',
+    locale: 'auto',
+    token: function (token: any) {
+      // You can access the token ID with `token.id`.
+      // Get the token ID to your server-side code for use.
+      console.log(token)
+      alert('Token Created!!');
+    }
+  });
+
+  handler.open({
+    name: 'Bride Advisor',
+    description: '',
+    amount: amount * 100
+  });
+
+}
 }

@@ -160,7 +160,7 @@ exports.findData = (req,res)=>{
     const address = req.query.address;
     
     console.log(category)
-    Listing.findOne({ address:address,category:category})
+    Listing.find({ address:address,category:category}).populate('logo')
     .then(listing => {
         if(!listing) {
             return res.status(404).send({
@@ -176,6 +176,40 @@ exports.findData = (req,res)=>{
         }
         return res.status(500).send({
             message: "Error retrieving listing with id " 
+        });
+    });
+
+};
+
+//find listing with email for reviews 
+
+exports.findListing = (req,res)=>{
+    const email = req.query.email;
+    if(!email){
+        res.send({
+            message:"we could not search without email"
+            
+        })
+        return;
+    }
+    console.log('recived email is',email)
+    
+    Listing.findOne({ email:email})
+    .then(listing => {
+        if(!listing) {
+            return res.status(404).send({
+                message: "listing not found with email " +email
+            });            
+        }
+        res.send(listing);
+    }).catch(err => {
+        if(err.kind === 'ObjectId') {
+            return res.status(404).send({
+                message:"listing not found with email " +email
+            });                
+        }
+        return res.status(500).send({
+            message: "Error retrieving listing with email" +email
         });
     });
 

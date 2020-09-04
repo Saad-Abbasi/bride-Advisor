@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormGroup,FormControl} from '@angular/forms';
+import {FormGroup,FormControl, Validators} from '@angular/forms';
 import {Router} from '@angular/router'
 import {RegisterService} from '../../shared/register/register.service'
 import {User} from '../../models/user/user'
@@ -17,12 +17,17 @@ export class SignUpComponent implements OnInit {
   ngOnInit(): void {
     this.regForm = new FormGroup({
       acType : new FormControl(),
-      firstName :new FormControl(),
+      firstName :new FormControl('',[Validators.required, Validators.minLength(2),Validators.maxLength(10)]),
       lastName: new FormControl(),
-      email : new FormControl() ,
+      email : new FormControl('' ,[Validators.required, Validators.email]) ,
       password : new FormControl(),
 
     })
+    this.regForm.get('firstName').valueChanges.subscribe(
+      result=>{
+        console.log(result)
+      }
+    )
   }
 regUser(){
   console.log(this.regForm.value)

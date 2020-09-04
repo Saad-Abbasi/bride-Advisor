@@ -1,5 +1,5 @@
 <head>
-
+  
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
  
@@ -35,7 +35,49 @@
 </div>
 <div class="container">
   <mat-card fxLayout  fxLayoutAlign="space-between" fxLayoutGap="5px" class="custom">
-    <mat-card fxFlex class="child-1">Space for review embed</mat-card>
+    
+    <mat-card fxFlex class="custom mat-elevation-z0">
+      <mat-card-title fxLayoutAlign="center center" class="m-3">Reviews</mat-card-title>
+      <hr>
+      <mat-card *ngFor="let review of reviews" class="review-card">
+        <div class="rating-header">
+          <mat-card-header>
+            <mat-card-title class="">
+              {{review.name}}
+            </mat-card-title>
+          </mat-card-header>
+          <mat-card-header>
+            <mat-card-title >
+              <ul class="list-inline rating-list" *ngFor="let star of stars"
+                    style="display: inline-block">
+                    <li (click)="countStar(star)"
+                        [ngClass]="{'selected': (star <= review.rating)}">
+                        <i class="fa fa-star"></i>
+                    </li> 
+                </ul>
+            </mat-card-title>
+          </mat-card-header>
+        </div>
+        <div class="rating-header rating-sub-header">
+          <mat-card-header>
+            <mat-card-subtitle class="">Member</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-header>
+            <mat-card-subtitle class="fill">
+              {{review.date|date}}
+            </mat-card-subtitle>
+          </mat-card-header>
+        </div>
+         
+        
+        <mat-card-content>
+          <p>
+            {{review.description}}
+          </p>
+        </mat-card-content>
+      </mat-card>
+     
+    </mat-card>
 
                                                <!-- Update Listing -->
 
@@ -279,12 +321,12 @@
               <div class="form-group row"  >
                 <label class="col-4 col-form-label" for="listing_option_facebook">facebook.com/</label>
                 <div class="col-7 pr-0">
-                  <input formControlName="fLink" value="" class="form-control" type="text" name="" id="listing_option_facebook">
+                  <input formControlName="fLink" value=""  (focusout)="toggleDisable(1)" class="form-control" type="text" name="" id="listing_option_facebook">
                 </div>
                 <div class="col-1 pl-0 d-flex align-items-stretch justify-content-stretch">
                   <button type="button" data-toggle="form-control" data-target="#listing_option_facebook"
                     class="edit-btn text-white btn-reset" style="width:100%" data-original-title="" title=""
-                    (click)="toggleEnable(1)" (focusout)="toggleDisable(1)">
+                    (click)="toggleEnable(1)">
                     <span class="fa fa-pencil"></span>
                   </button>
                 </div>
@@ -293,11 +335,11 @@
                 <label class="col-4 col-form-label" for="listing_option_twitter">twitter.com/</label>
                 <div class="col-7 pr-0">
                   <input formControlName="tLink" value="" class="form-control" 
-                    type="text" name="" id="listing_option_twitter">
+                    type="text" name="" id="listing_option_twitter" (focusout)="toggleDisable(2)">
                 </div>
                 <div class="col-1 pl-0 d-flex align-items-stretch justify-content-stretch">
                   <button type="button" data-toggle="form-control" data-target="#listing_option_twitter"
-                    class="edit-btn text-white btn-reset" style="width:100%" data-original-title="" title="" (click)="toggleEnable(2)" (focusout)="toggleDisable(2)">
+                    class="edit-btn text-white btn-reset" style="width:100%" data-original-title="" title="" (click)="toggleEnable(2)" >
                     <span class="fa fa-pencil"></span>
                   </button>
                 </div>
@@ -306,11 +348,11 @@
                 <label class="col-4 col-form-label" for="listing_option_google">plus.google.com/</label>
                 <div class="col-7 pr-0">
                   <input formControlName="gLink" value="" class="form-control"  type="text" name="listing_option[google]"
-                    id="listing_option_google">
+                    id="listing_option_google" (focusout)="toggleDisable(3)">
                 </div>
                 <div class="col-1 pl-0 d-flex align-items-stretch justify-content-stretch">
                   <button type="button" data-toggle="form-control" data-target="#listing_option_google"
-                    class="edit-btn text-white btn-reset" style="width:100%" data-original-title="" title="" (click)="toggleEnable(3)" (focusout)="toggleDisable(3)">
+                    class="edit-btn text-white btn-reset" style="width:100%" data-original-title="" title="" (click)="toggleEnable(3)" >
                     <span class="fa fa-pencil"></span>
                   </button>
                 </div>
@@ -319,11 +361,11 @@
                 <label class="col-4 col-form-label" for="listing_option_instagram">instagram.com/</label>
                 <div class="col-7 pr-0">
                   <input formControlName="iLink" value="" class="form-control" 
-                    type="text" name="" id="listing_option_instagram">
+                    type="text" name="" id="listing_option_instagram" (focusout)="toggleDisable(4)">
                 </div>
                 <div class="col-1 pl-0 d-flex align-items-stretch justify-content-stretch">
                   <button type="button" data-toggle="form-control" data-target="#listing_option_instagram"
-                    class="edit-btn text-white btn-reset" style="width:100%" data-original-title="" title="" (click)="toggleEnable(4)" (focusout)="toggleDisable(4)">
+                    class="edit-btn text-white btn-reset" style="width:100%" data-original-title="" title="" (click)="toggleEnable(4)" >
                     <span class="fa fa-pencil"></span>
                   </button>
                 </div>
@@ -332,11 +374,11 @@
                 <label class="col-4 col-form-label" for="listing_option_pinterest">pinterest.com/</label>
                 <div class="col-7 pr-0">
                   <input formControlName="pLink" value="" class="form-control" 
-                    type="text" name="" id="listing_option_pinterest">
+                    type="text" name="" id="listing_option_pinterest" (focusout)="toggleDisable(5)">
                 </div>
                 <div class="col-1 pl-0 d-flex align-items-stretch justify-content-stretch">
                   <button type="button" data-toggle="form-control" data-target="#listing_option_pinterest"
-                    class="edit-btn text-white btn-reset" style="width:100%" data-original-title="" title="" (click)="toggleEnable(5)" (focusout)="toggleDisable(5)">
+                    class="edit-btn text-white btn-reset" style="width:100%" data-original-title="" title="" (click)="toggleEnable(5)" >
                     <span class="fa fa-pencil"></span>
                   </button>
                 </div>
@@ -351,11 +393,11 @@
                   for="listing_option_featured_video_youtube">youtube.com/watch?v=</label>
                 <div class="col-5 pr-0">
                   <input formControlName="yVideoLink" value="" class="form-control"  type="text"
-                    name="listing_option[]" id="listing_option_featured_video_youtube">
+                    name="listing_option[]" id="listing_option_featured_video_youtube"  (focusout)="toggleDisable(6)">
                 </div>
                 <div class="col-1 pl-0 d-flex align-items-stretch justify-content-stretch">
                   <button type="button" data-toggle="form-control" data-target="#listing_option_featured_video_youtube"
-                    class="edit-btn text-white btn-reset" style="width:100%" data-original-title="" title="" (click)="toggleEnable(6)" (focusout)="toggleDisable(6)">
+                    class="edit-btn text-white btn-reset" style="width:100%" data-original-title="" title="" (click)="toggleEnable(6)">
                     <span class="fa fa-pencil"></span>
                   </button>
                 </div>
@@ -364,11 +406,11 @@
                 <label class="col-6 col-form-label" for="listing_option_featured_video_vimeo">vimeo.com/</label>
                 <div class="col-5 pr-0">
                   <input formControlName="vVideoLink" value=" " class="form-control"  type="text"
-                    name="listing_option[]" id="listing_option_featured_video_vimeo">
+                    name="listing_option[]" id="listing_option_featured_video_vimeo" (focusout)="toggleDisable(7)">
                 </div>
                 <div class="col-1 pl-0 d-flex align-items-stretch justify-content-stretch">
                   <button type="button" data-toggle="form-control" data-target="#listing_option_featured_video_vimeo"
-                    class="edit-btn text-white btn-reset" style="width:100%" data-original-title="" title="" (click)="toggleEnable(7)" (focusout)="toggleDisable(7)">
+                    class="edit-btn text-white btn-reset" style="width:100%" data-original-title="" title="" (click)="toggleEnable(7)" >
                     <span class="fa fa-pencil"></span>
                   </button>
                 </div>
@@ -382,11 +424,11 @@
                 <label class="col-6 col-form-label" for="listing_option_invoice_vat_number">Invoice VAT Number</label>
                 <div class="col-5 pr-0">
                   <input formControlName="vatNumber" class="form-control"  type="text" name="listing_option[]"
-                    id="listing_option_invoice_vat_number">
+                    id="listing_option_invoice_vat_number" (focusout)="toggleDisable(8)">
                 </div>
                 <div class="col-1 pl-0 d-flex align-items-stretch justify-content-stretch">
                   <button type="button" data-toggle="form-control" data-target="#listing_option_invoice_vat_number"
-                    class="edit-btn text-white btn-reset" style="width:100%" data-original-title="" title="" (click)="toggleEnable(8)" (focusout)="toggleDisable(8)">
+                    class="edit-btn text-white btn-reset" style="width:100%" data-original-title="" title="" (click)="toggleEnable(8)" >
                     <span class="fa fa-pencil"></span>
                   </button>
                 </div>
@@ -450,7 +492,18 @@
           
           <hr>
           <p class="text-muted text-sm">Add and remove credit/debit cards and set your default card.</p>
-          <table class="table table-stripe">
+          <div class="container mt-5">
+            <h2>Upgrade Listing </h2>
+            <div class="row mt-5">
+              
+              <div class="col-md-12 mb-5">
+                <button (click)="pay(30)" class="btn btn-success btn-block">Upgrade Your listing for $30</button>
+              </div>
+              
+            </div>
+            
+          </div>
+          <!-- <table class="table table-stripe">
             <thead>
               <tr>
                 <th class=""></th>
@@ -485,7 +538,7 @@
                   </td>
                 </tr>
             </tbody>
-          </table>
+          </table> -->
           <button type="button" data-remodal-target="add-card" class="btn btn-block btn-primary">Add New Default Card</button>
         </div>
       </mat-card-content>

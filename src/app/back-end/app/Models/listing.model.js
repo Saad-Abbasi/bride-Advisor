@@ -6,7 +6,11 @@ const listingSchema = mongoose.Schema({
     listingType:String,
     business:String,
     tradingName:String,
-    email:String,
+    email:{
+        type:String,
+        required: true,
+        unique: true
+    },
     phone:String,
     website:String,
     address:String,
@@ -30,7 +34,7 @@ const listingSchema = mongoose.Schema({
     category:String,
     reviews:[{
         type:mongoose.Schema.Types.ObjectId,
-        ref:"logo"
+        ref:"review"
         
     }],
     logo:[{

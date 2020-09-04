@@ -13,6 +13,7 @@ import { AuthGuard } from './auth.guard';
 import {ProfileComponent} from './pages/profile/profile.component'
 import { ProfileViewComponent } from './pages/profile-view/profile-view.component';
 import { SearchViewComponent } from './pages/search-view/search-view.component';
+import { RatingDialogComponent } from './pages/dialogs/rating-dialog/rating-dialog.component';
 
 
 
@@ -29,6 +30,7 @@ const routes: Routes = [
   {path : 'profile', component:ProfileComponent,canActivate:[AuthGuard]},
   {path : 'profile-view', component:ProfileViewComponent ,canActivate:[AuthGuard]},
   {path : 'search-view', component : SearchViewComponent},
+  {path : 'review', component : LeaveReviewComponent,canActivate:[AuthGuard]},
   {path : '' , pathMatch : 'full' ,component:FindComponent}
 ];
 

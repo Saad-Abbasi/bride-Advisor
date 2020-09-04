@@ -44,7 +44,7 @@ userSchema.methods.setPassword = function(password){
       firstName: this.firstName,
       lastName:this.lastName,
       exp: parseInt(expiry.getTime() / 1000),
-    }, process.env.SECRET); // need to modify later
+    }, 'MY_SECRET'); // need to modify later
   };
 //   var User = mongoose.model('User',userSchema);
 // module.exports = {User};

@@ -3,7 +3,8 @@ import {Countries} from '../../models/country.model';
 import {Regions} from '../../models/regions.model';
 import {LoginService} from '../../shared/login/login.service';
 import{HttpClient,HttpParams} from '@angular/common/http'
-import {SearchData} from '../../models/search/search-data'
+import {SearchData} from '../../models/search/search-data';
+import {Router} from '@angular/router'
 
 
 @Component({
@@ -29,6 +30,7 @@ data:SearchData = {};
   
   constructor(private _loginService:LoginService, 
               private http:HttpClient,
+              private _router:Router
               ) { }
   
  onChangeCountry(id:number){
@@ -74,13 +76,14 @@ data:SearchData = {};
    
   }
  searchListing(){
-  let params = new HttpParams();
-
-  params = params.append('category',this.data.category);
-  params = params.append('address', this.data.address);
-   this.http.get('http://localhost:8080/listing/find/listing',({params:params})).subscribe(result=>{
-      console.log(result)
-    },
-    err=>console.log(err))
+  this._router.navigate(['/search-view'], { queryParams: { category: this.data.category,address:this.data.address } });
+  // let params = new HttpParams();
+  // params = params.append('category',this.data.category);
+  // params = params.append('address', this.data.address);
+  //  this.http.get('http://localhost:8080/listing/find/listing',({params:params}))
+  //  .subscribe(result=>{
+  //     console.log(result)
+  //   },
+  //   err=>console.log(err))
  }
 }

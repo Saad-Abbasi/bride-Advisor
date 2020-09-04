@@ -17,26 +17,34 @@
   </div>
   <div class="container container-item">
     <mat-grid-list cols="4" rowHeight="1:1" gutterSize="5px">
-        <mat-grid-tile>
+        <mat-grid-tile *ngFor="let result of results">
             
                 <mat-card class="serchCard">
                     <mat-card-header>
-                      <div mat-card-avatar class="logo"></div>
-                      <mat-card-title>*****</mat-card-title>
+                      <div mat-card-avatar class="logo" [style.background-image]="'url(' + logo + ')'"></div>
+                      <mat-card-title>
+                        <ul class="list-inline rating-list" *ngFor="let star of stars"
+                                            style="display: inline-block">
+                                            <li (click)="countStar(star)"
+                                                [ngClass]="{'selected': (star <= selectedValue)}">
+                                                <i class="fa fa-star"></i>
+                                            </li>
+                                        </ul>
+                      </mat-card-title>
                       <!-- <mat-card-subtitle>abc</mat-card-subtitle> -->
                     </mat-card-header>
-                    <!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu" height="100px" width="100px"> -->
+                    
                     <mat-card-content class="content">
                       <h1>
-                        Wedding Celebrant in ITALY
+                        {{result?.business}}
                       </h1>
                     </mat-card-content>
-                    <mat-card-actions align="end">
+                    <!-- <mat-card-actions align="end">
                       <button mat-raised-button color="primary" >
                           View
                       </button>
                       
-                    </mat-card-actions>
+                    </mat-card-actions> -->
                   </mat-card>
                
         </mat-grid-tile>

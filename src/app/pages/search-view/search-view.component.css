@@ -75,9 +75,31 @@ mat-grid-tile{
   .logo {
     position: relative;
     bottom: 4px;
-    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    /* background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg'); */
     background-size: cover;
   }
   .content{
-      padding-top: 40px;
+      padding-top: 30px;
+  }
+  mat-card-actions{
+      position: relative;
+      bottom: 1px;
+  }
+/* rating */
+.rating-list li {
+    float: right;
+    color: #ddd;
+    padding: 5px 2px;
+    font-size: 15px;
+  
+  }
+  
+  .rating-list li:hover,
+  .rating-list li:hover ~ li, .rating-list li.selected {
+    color:#EDE083;
+  }
+  
+  .rating-list {
+    display: inline-block;
+    list-style: none;
   }

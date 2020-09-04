@@ -87,7 +87,7 @@ module.exports.login = function(req, res) {
     if (token ==='null') {
       return res.status(401).send("Unathorized request")
     }
-    let payload = jwt.verify(token,process.env.SECRET)
+    let payload = jwt.verify(token,'MY_SECRET')
     if(!payload){
       return res.status(401).send("Unathorized request")
       req.userId = payload.subject
@@ -96,7 +96,7 @@ module.exports.login = function(req, res) {
   }
 
 var auth = jwt({
-  secret: 'process.env.SECRET',
+  secret: 'MY_SECRET',
   algorithms: ['HS256'],
   userProperty: 'payload'
 });

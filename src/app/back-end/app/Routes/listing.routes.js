@@ -48,7 +48,12 @@ module.exports = (app) => {
     
    //Update listing 
    app.put('/listing/:listingId', listing.update);
-   
+   //Search for listing with region and category
     app.get('/listing/find/:data',listing.findData)
+    
+    // Serach for listing with email to submit review
+
+    app.get('/find/listing/review/:data',listing.findListing)
+
     
 }

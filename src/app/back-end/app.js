@@ -44,6 +44,7 @@ require('./app/Routes/register.routes')(app);
 require('./app/Routes/profile.routes')(app);
 require('./app/Routes/listing.routes')(app);
 require('./app/Routes/gallery.routes')(app);
+require('./app/Routes/review.routes')(app);
 require('./app/Routes/listingLogo.routes')(app);
 //error handling
 
