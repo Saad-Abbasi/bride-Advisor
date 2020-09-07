@@ -7,6 +7,7 @@ const passport = require('passport');
 const port = process.env.PORT||8080;
 const dotenv = require('dotenv')
 dotenv.config();
+const stripe = require('stripe')('sk_test_51HMz6DEHyKoO1QQOxXWohPATmy4xVaWUwnbCoCGTXqBU6NhW2TK8cDcoOf4ENaXHbQUK7C9LBo70rvjcpR46LAWH00j8xY1MIJ');
 
 const app = express();
 //Cors for cross origin policy

@@ -13,18 +13,12 @@ module.exports = (app) => {
     // Create a new user
     app.post('/register', register.create);
     
-    // // Retrieve all users
-    // app.post('/login', auth, (req,res)=>{
-    //     res.send("succesfully accessed");
-    // });
+    //login user
     app.post('/login',  register.login);
+
+    //email verification 
+    app.post('/verify/:token', register.verify);
+    // app.post('/resend', register.resendTokenPost);
  
-    // // Retrieve a single Note with noteId
-    // app.get('/users/:userId', users.findOne);
-
-    // // Update a user with userId
-    // app.put('/users/:userId', users.update);
-
-    // // Delete a user with userId
-    // app.delete('/user/:userId', users.delete);
+    
 }

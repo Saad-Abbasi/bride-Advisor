@@ -16,10 +16,17 @@ passport.use(new LocalStrategy({
           message: 'User not found'
         });
       }
+      
       // Return if password is wrong
       if (!user.validPassword(password)) {
         return done(null, false, {
           message: 'Password is wrong'
+        });
+      }
+      //if user is not verified
+      if (!user.isVerified) {
+        return done(null, false, {
+          message: 'User is not verified'
         });
       }
       // If credentials are correct, return the user object

@@ -60,7 +60,7 @@ export class RegisterService {
 
  
 register(user:User): Observable <User> {
-  console.log(user)
+  
 
   return this.http.post<User>(this.apiUrl+'/register',JSON.stringify(user),this.httpOptions,)
    .pipe(

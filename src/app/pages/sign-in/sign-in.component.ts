@@ -14,12 +14,14 @@ import {User} from '../../models/user/user';
 export class SignInComponent implements OnInit {
   loginForm : FormGroup;
   information:User;
+  isVerified:Boolean;
   
   constructor(private _loginService:LoginService,
               private _router :Router) { }
 
   ngOnInit(): void {
     
+    this.isVerified = true;
     
     this.loginForm = new FormGroup({
       email: new FormControl,
@@ -30,13 +32,14 @@ export class SignInComponent implements OnInit {
      
      this._loginService.login(this.loginForm.value)
       .subscribe((res)=>{
-      
+        this.isVerified =true;
         localStorage.setItem('token',res.token);
         // this.information = res;
         // console.log('infromation of user'+this.information.listing)
         this._router.navigate(['/profile'])
       },
       (err)=>{
+        this.isVerified = false;
         console.log(err)
       })
      

@@ -8,8 +8,10 @@ const userSchema = mongoose.Schema({
     firstName:{type:String},
     lastName:{type:String},
     email:{type:String,unique:true,required:true},
+    isVerified: { type: Boolean, default: false },
     hash: String,
     salt: String,
+    secretToken:String,
     listing:[{
       type:mongoose.Schema.Types.ObjectId,
       ref:"listing"
