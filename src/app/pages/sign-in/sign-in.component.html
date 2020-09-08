@@ -12,7 +12,6 @@
               <p class="card-text">New user? <a routerLink="/signup">Sign up now!</a></p>
               <h3 class="alert alert-danger" *ngIf="!isVerified">If you are already registered please  verify your  email </h3>
             </div>
-            
             <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
               <div class="form-group">
                 <input value="" formControlName="email" class="form-control form-control-lg" placeholder="Email" type="email" />

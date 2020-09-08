@@ -10,6 +10,7 @@ import { ProfileImgComponent } from '../dialogs/profile-img/profile-img.componen
 import { GalleryComponent } from '../dialogs/gallery/gallery.component';
 import {ReviewsService} from '../../shared/reviews/reviews.service'
 import { Review } from 'src/app/models/reviews/review';
+import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -31,7 +32,7 @@ export class ProfileComponent implements OnInit {
   stars: number[] = [1, 2, 3, 4, 5];
   selectedStarValue: number;
   reviews:any;
-
+  token:string;//for stripe
   //Data for Material Option
 
   selectedValue: string;
@@ -43,7 +44,8 @@ export class ProfileComponent implements OnInit {
   constructor(private _loginService :LoginService,
               private _listingService:ListingService,
               private _reviewService:ReviewsService,
-              private _dialog: MatDialog
+              private _dialog: MatDialog,
+              private _http: HttpClient
               ) { }
                   
   ngOnInit(){
@@ -353,18 +355,22 @@ loadStripe() {
   }
 }
 pay(amount) {    
- 
   var handler = (<any>window).StripeCheckout.configure({
-    key: 'pk_test_aeUUjYYcx4XNfKVW60pmHTtI',
+    key: 'pk_test_51HMz6DEHyKoO1QQOvvaLzP2tLumYlQkCHgFHo2v9BAD1V2CKIa8P2aC0tIHhoKImLCbioT0RraGQW0PhG0D1Rz6H00icUQO4Hh',
     locale: 'auto',
-    token: function (token: any) {
+    token: (token: any) => {
       // You can access the token ID with `token.id`.
-      // Get the token ID to your server-side code for use.
-      console.log(token)
+      console.log('token id is =>',token.id)
+      this._http.post("http://localhost:8080/payment",{token:token.id})
+        .subscribe((result)=>{
+          console.log(result)
+        },(err)=>{
+          console.log(err)
+        })
       alert('Token Created!!');
     }
   });
-
+ 
   handler.open({
     name: 'Bride Advisor',
     description: '',
