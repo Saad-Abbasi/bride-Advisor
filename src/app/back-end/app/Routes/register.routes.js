@@ -14,7 +14,7 @@ module.exports = (app) => {
     app.post('/register', register.create);
     
     //login user
-    app.post('/login',  register.login);
+    app.post('/login',  register.login); 
 
     //email verification 
     app.post('/verify/:token', register.verify);

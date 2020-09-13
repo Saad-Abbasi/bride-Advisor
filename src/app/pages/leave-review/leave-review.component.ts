@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {FormControl,FormGroup} from '@angular/forms';
 import {LoginService} from '../../shared/login/login.service';
 import {HttpClient,HttpParams} from '@angular/common/http';
-import{ReviewsService} from '../../shared/reviews/reviews.service'
+import{ReviewsService} from '../../shared/reviews/reviews.service';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-leave-review',
@@ -46,7 +47,7 @@ export class LeaveReviewComponent implements OnInit {
     console.log(email)
     let params = new HttpParams();
     params = params.append('email', email);
-    this.http.get('http://localhost:8080/find/listing/review/data', ({ params: params }))
+    this.http.get(`${environment.api_url}/find/listing/review/data`, ({ params: params }))
       .subscribe((data:any) => {
         this.isListing = true;
         this.businessName = data.business;

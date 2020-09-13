@@ -48,16 +48,17 @@ export class ProfileImgComponent implements OnInit {
       //   this.getProfile(this.listingId);
       })
   }
-  saveProfile(){
+  saveProfile(){//where is the api call 
     
       var formData: any = new FormData();
       formData.append("title", this.profileImageForm.get('title').value);
       formData.append("profileImage", this.profileImageForm.get('logo').value);
       formData.append("description", this.profileImageForm.get('description').value);
       
-      this._imageService.uploadProfileImage(formData,this.listingId).
+      this._imageService.uploadProfileImage(formData,this.listingId). // here is service call and
         subscribe((result)=>{
           console.log(result)
+          location.reload()
         },(err)=>{
           console.log(err)
         })

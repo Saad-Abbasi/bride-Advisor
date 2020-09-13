@@ -50,14 +50,7 @@ data:SearchData = {};
     // tLink="abctwfupdated"
     // website="www.mcqser.com"
     this.isCountrySelected = true;
-    // this._loginService.getTest();
-    // let data = {
-    //             website:"www.mcqser.com",
-    //             tLink:"abctwfupdated"
-    //           }
-    // this.http.get('http://localhost:8080/listing/find/listing',({params:data})).subscribe(result=>{
-    //   console.log(result)
-    // })
+    
 
   }
   selectCategory(catValue:any){
@@ -77,13 +70,6 @@ data:SearchData = {};
   }
  searchListing(){
   this._router.navigate(['/search-view'], { queryParams: { category: this.data.category,address:this.data.address } });
-  // let params = new HttpParams();
-  // params = params.append('category',this.data.category);
-  // params = params.append('address', this.data.address);
-  //  this.http.get('http://localhost:8080/listing/find/listing',({params:params}))
-  //  .subscribe(result=>{
-  //     console.log(result)
-  //   },
-  //   err=>console.log(err))
+
  }
 }

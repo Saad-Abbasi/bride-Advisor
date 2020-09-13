@@ -3,11 +3,13 @@ import {HttpClient,HttpHeaders,HttpParams} from '@angular/common/http';
 import {Observable,throwError} from 'rxjs';
 import {retry,catchError} from'rxjs/operators';
 import { Params } from '@angular/router';
+import { environment } from '../../../environments/environment';
 @Injectable({
   providedIn: 'root'
 })
 export class SearchService {
-  apiUrl = 'http://localhost:8080/listing';
+  apiUrl = environment.api_url;
+  // apiUrl = 'http://localhost:8080/listing';
   
   constructor(private http: HttpClient) { }
   httpOptions={ 

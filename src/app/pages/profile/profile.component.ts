@@ -11,6 +11,7 @@ import { GalleryComponent } from '../dialogs/gallery/gallery.component';
 import {ReviewsService} from '../../shared/reviews/reviews.service'
 import { Review } from 'src/app/models/reviews/review';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../../environments/environment';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -136,7 +137,7 @@ export class ProfileComponent implements OnInit {
       .subscribe(result=>{
         console.log('reviews are ',result)
         this.reviews = result;
-         console.log(this.reviews[0].name)
+        //  console.log(this.reviews[0].name)
       })
   }
   //Edit profile 
@@ -223,8 +224,8 @@ export class ProfileComponent implements OnInit {
   });
   dialogRef.afterClosed()
     .subscribe(result=>{
-      location.reload();
-      console.log(`Dialoge Result: ${result}`)
+      // location.reload();//fro reload are you not using service to send and get data from server? yes using from dialog component here is i am showing
+      console.log(`Dialoge Result is for logo: ${result}`)
     })
 
 }
@@ -361,7 +362,7 @@ pay(amount) {
     token: (token: any) => {
       // You can access the token ID with `token.id`.
       console.log('token id is =>',token.id)
-      this._http.post("http://localhost:8080/payment",{token:token.id})
+      this._http.post(`${environment.api_url}/payment`,{token:token.id})
         .subscribe((result)=>{
           console.log(result)
         },(err)=>{

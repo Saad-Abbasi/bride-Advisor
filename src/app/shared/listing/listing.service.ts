@@ -4,11 +4,13 @@ import {Observable,throwError} from 'rxjs';
 import {retry,catchError} from'rxjs/operators';
 import {Listing} from '../../models/listing/listing';
 import {Gallery} from '../../models/gallery/gallery';
+import { environment } from '../../../environments/environment';
 @Injectable({
   providedIn: 'root'
 })
 export class ListingService {
-  apiUrl = 'http://localhost:8080';
+  apiUrl = environment.api_url; 
+  
   constructor(private http:HttpClient) { }
   // http Header Options
   httpOptions={ 

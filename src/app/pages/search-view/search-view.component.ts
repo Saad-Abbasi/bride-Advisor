@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {HttpClient,HttpParams} from '@angular/common/http'
+import {HttpClient,HttpParams} from '@angular/common/http';
+import { environment } from '../../../environments/environment';
 
 
 @Component({
@@ -36,7 +37,7 @@ searchData(category,address){
 let params = new HttpParams();
   params = params.append('category',category);
   params = params.append('address', address);
-   this.http.get('http://localhost:8080/listing/find/listing',({params:params}))
+   this.http.get(`${environment.api_url}/listing/find/listing`,({params:params}))
    .subscribe(data=>{
     this.results = data;
     console.log(this.results)

@@ -6,13 +6,15 @@ import {User} from '../../models/user/user'
 import {TokenPayload} from '../../models/token/token-payload';
 import {TokenResponse} from '../../models/token/token-response';
 import {Router} from '@angular/router'
-import {map} from 'rxjs/operators'
+import { environment } from '../../../environments/environment';
 @Injectable({
   providedIn: 'root'
 })
 export class RegisterService {
   private token : string
-   apiUrl = 'http://localhost:8080';
+
+  apiUrl = environment.api_url;
+  //  apiUrl = 'http://localhost:8080';
 
   constructor(private http:HttpClient,private router:Router) { }
   //http Header Options
@@ -25,38 +27,6 @@ export class RegisterService {
 //methods
 
 
-// private saveToken(token: string): void {
-//   localStorage.setItem('mean-token', token);
-//   this.token = token;
-// }
-
-// private getToken(): string {
-//   if (!this.token) {
-//     this.token = localStorage.getItem('mean-token');
-//   }
-//   return this.token;
-// }
-
-// public getUserDetails(): User {
-//   const token = this.getToken();
-//   let payload;
-//   if (token) {
-//     payload = token.split('.')[1];
-//     payload = window.atob(payload);
-//     return JSON.parse(payload);
-//   } else {
-//     return null;
-//   }
-// }
-
-// public isLoggedIn(): boolean {
-//   const user = this.getUserDetails();
-//   if (user) {
-//     return user.exp > Date.now() / 1000;
-//   } else {
-//     return false;
-//   }
-// }
 
  
 register(user:User): Observable <User> {
@@ -64,7 +34,7 @@ register(user:User): Observable <User> {
 
   return this.http.post<User>(this.apiUrl+'/register',JSON.stringify(user),this.httpOptions,)
    .pipe(
-     retry(2),
+    //  retry(),
      catchError(this.handleError)
    ) 
  };

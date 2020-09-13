@@ -15,11 +15,13 @@ export class NavHeaderComponent implements OnInit {
   constructor(private _loginService:LoginService) { }
 
   ngOnInit(): void {
-    this._loginService.getUser()
+    if(this._loginService.loggedIn()){
+      this._loginService.getUser()
     .subscribe((data)=>{
-      this.user = data;
-      
+      this.user = data; 
     })
+    }
+    
   }
   public onToggleSidenav = () => { 
     this.sidenavToggle.emit();

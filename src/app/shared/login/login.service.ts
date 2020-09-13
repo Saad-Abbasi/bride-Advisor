@@ -6,14 +6,16 @@ import {User} from '../../models/user/user'
 import { Router } from '@angular/router';
 import {TokenPayload} from '../../models/token/token-payload';
 import {TokenResponse} from '../../models/token/token-response';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
   private token: string;
-
-  apiUrl = 'http://localhost:8080';
+  
+  apiUrl = environment.api_url;
+  // apiUrl = 'http://localhost:8080'; 
 
   constructor(private http:HttpClient,private router:Router) { }
   //http Header Options
@@ -60,7 +62,7 @@ export class LoginService {
 
   login(logindata:any): Observable <User> {
     console.log(logindata)
-
+    // what is in logindata email and password
     return this.http.post<User>(this.apiUrl+'/login',JSON.stringify(logindata),this.httpOptions,)
      .pipe(
        retry(2),
@@ -91,68 +93,7 @@ export class LoginService {
       localStorage.removeItem('token');
       this.router.navigate(['/find'])
    }
-  //  getTest(){
-  //    this.http.get('https://jsonplaceholder.typicode.com/todos/1')
-  //     .subscribe((res)=>{
-  //       console.log(res)
-  //     })
-  //  }
-  //  loginAdmin(logindata:any) {
-   
-  //    return this.http.post<any>('admin/login',JSON.stringify(logindata),this.httpOptions,)
-  //     .pipe(
-  //       retry(2),
-  //       catchError(this.handleError)
-  //     ) 
-  //   };
-  //    //for specific id 
-  //    loginId(id): Observable <Login>{
-  //      return this.http.get<Login>( 'login'+ id)
-  //      .pipe(
-  //        retry(1),
-  //        catchError(this.handleError)
-  //      )};
-  //    register(login:any): Observable <Login> {
-  //      return this.http.post<Login>('register',JSON.stringify(login),this.httpOptions)
-  //      .pipe(
-  //        retry(1),
-  //        catchError(this.handleError)
-  //      )};
-  //      updateuser(id:any , Login:any): Observable<Login> {
-  //        return this.http.put<Login>('update/'+id,JSON.stringify(Login),this.httpOptions)
-  //        .pipe(
-  //          retry(1),
-  //          catchError(this.handleError)
-  //        )};
-  //      deleteuser(id): Observable <Login>{
-  //        return this.http.delete<Login>(this.apiUrl + '/deleteuser/'+id, this.httpOptions)
-  //        .pipe(
-  //          retry(1),
-  //          catchError(this.handleError)
-  //        )}
-  //      isLoggedIn(){
-  //        return !!localStorage.getItem('token')
-  //      }
-  
-  //methods to save tokens
 
-  // public register(user: TokenPayload): Observable<any> {
-  //   return this.request('post', 'register', user);
-  // }
-
-  // public login(user: TokenPayload): Observable<any> {
-  //   return this.request('post', 'login', user);
-  // }
-
-  // public profile(): Observable<any> {
-  //   return this.request('get', 'profile');
-  // }
-
-  // public logout(): void {
-  //   this.token = '';
-  //   window.localStorage.removeItem('mean-token');
-  //   this.router.navigateByUrl('/');
-  // }
 
          handleError(error) {
            let errorMessage = '';
@@ -161,9 +102,9 @@ export class LoginService {
              errorMessage = error.error.message;
            } else {
              // Get server-side error
-             errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}\n Email or Password Incorrect`;
+             errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
            }
-           alert(errorMessage);
+          //  alert(errorMessage);
            return throwError(errorMessage);
         }
    

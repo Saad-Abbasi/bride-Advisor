@@ -2,14 +2,16 @@ import { Injectable } from '@angular/core';
 import{HttpClient,HttpHeaders} from '@angular/common/http';
 import {Observable,throwError, from} from 'rxjs';
 import {catchError,retry} from 'rxjs/operators';
-import {Image} from '../../models/image/image'
+import {Image} from '../../models/image/image';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ImageService {
 
-  apiUrl = 'http://localhost:8080/listing';
+  apiUrl = environment.api_url + '/listing'; //okay got it thank you 
+  // apiUrl = 'http://localhost:8080/listing';
   constructor(private http:HttpClient) { }
   // http Header Options
   httpOptions={ 
@@ -41,10 +43,10 @@ uploadGalleryImage(formData:any,id:String) {
    //Delete Gallery image
   
  //uploading profile image
- uploadProfileImage(formData:any,id:String) {
-  console.log('Service log' + formData)
+ uploadProfileImage(formData:any,id:String) { // please go to imageservice
+  console.log('Service logo is' + formData)
 
-  return this.http.post(`${this.apiUrl}/logo/${id}`,formData )
+  return this.http.post(`${this.apiUrl}/logo/${id}`,formData ) //yes 
    .pipe(
      retry(3),
      catchError(this.handleError)
@@ -61,10 +63,12 @@ uploadGalleryImage(formData:any,id:String) {
   
   //handling Errors
      handleError(error) {
+       console.log(error);
+       
       let errorMessage = '';
       if(error.error instanceof ErrorEvent) {
         // Get client-side error
-        errorMessage = error.error.message;
+        errorMessage = error.error.message;// can you logout and login agian yes 
       } else {
         // Get server-side error
         errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}\n Email or Password Incorrect`;
