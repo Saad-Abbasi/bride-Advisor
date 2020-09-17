@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl,FormGroup}from '@angular/forms'
+import {FormControl,FormGroup,Validators}from '@angular/forms'
 import {LoginService} from '../../shared/login/login.service';
 import {ListingService} from '../../shared/listing/listing.service'
 import {User} from '../../models/user/user';
@@ -36,6 +36,8 @@ export class ProfileComponent implements OnInit {
   token:string;//for stripe
   //Data for Material Option
 
+  isLogoEnable:boolean = false;
+
   selectedValue: string;
   selectedCar: string;
 
@@ -54,7 +56,8 @@ export class ProfileComponent implements OnInit {
       listingType: new FormControl({ value: '', disabled: this.isDisabled}),
       business: new FormControl,
       tradingName: new FormControl,
-      email: new FormControl,
+      email: new FormControl("", [Validators.required, Validators.email]),
+      // email: new FormControl,
       phone:new FormControl,
       website:new FormControl,
       category:new FormControl,
@@ -107,7 +110,8 @@ export class ProfileComponent implements OnInit {
       return false;
     }
     else{
-      this.listingTitle = "Update Listing"
+      this.listingTitle = "Update Listing";
+      this.isLogoEnable = true;
       this.getProfileAndEdit(this.listingId);
       this.getReviews(this.listingId);
       return true;
@@ -127,7 +131,10 @@ export class ProfileComponent implements OnInit {
     //  console.log(this.profileImage)
      this.logoId = this.listingData.logo[0];
      console.log(this.logoId);
-     this.getLogo(this.logoId);
+     if(this.logoId){
+      this.getLogo(this.logoId);
+     }
+     
      this.getGalleryImages(this.listingId)
     })
   } 
@@ -190,6 +197,10 @@ export class ProfileComponent implements OnInit {
       })
    }
   saveBusiness(){
+    if (this.businessDetails.invalid) {
+      alert('Email is required')
+      return;
+    }
     if(!this.isListing()){
       console.log('Excute Post method')
       // Add Listing 

@@ -79,10 +79,10 @@ h1{
   
   }
   
-  .rating-list li:hover,
+  /* .rating-list li:hover,
   .rating-list li:hover ~ li, .rating-list li.selected {
     color: #00BCD4;
-  }
+  } */
   
   .rating-list {
     display: inline-block;

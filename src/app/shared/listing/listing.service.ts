@@ -83,7 +83,7 @@ export class ListingService {
         errorMessage = error.error.message;
       } else {
         // Get server-side error
-        errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}\n Email or Password Incorrect`;
+        errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
       }
       alert(errorMessage);
       return throwError(errorMessage);

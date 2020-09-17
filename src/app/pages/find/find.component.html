@@ -21,113 +21,113 @@
   <mat-tab-group animationDuration="2000ms" mat-align-tabs="center">
     <mat-tab label="Select Category">
       <mat-toolbar class="category">
-        <a matTooltip="Food And Drink" matTooltipPosition="above" class="category-icon"
+        <a (click)="selectCategory(1,$event)" matTooltip="Food And Drink" matTooltipPosition="above" class="category-icon"
           aria-label="Bride Advisor catergory search button">
-          <mat-icon (click)="selectCategory(1)">
-            <img src="../../../assets/food.png" alt="food & drink" width="25px" height="25px">
+          <mat-icon >
+            <img src="../../../assets/food.png" alt="Food & Drink" width="25px" height="25px">
           </mat-icon>
         </a>
         <a matTooltip="Celebrants and Officiants" matTooltipPosition="above" class="category-icon"
           aria-label="Bride Advisor catergory search button">
-          <mat-icon (click)="selectCategory(2)">
+          <mat-icon (click)="selectCategory(2,$event)">
             <img src="../../../assets/online-security.png" alt="Celebrants and Officiants" width="25px" height="25px">
           </mat-icon>
         </a>
         <a matTooltip="Dresses, Suits and Accessories" matTooltipPosition="above" class="category-icon"
           aria-label="Bride Advisor catergory search button">
-          <mat-icon (click)="selectCategory(3)">
+          <mat-icon (click)="selectCategory(3,$event)">
             <img src="../../../assets/dress.png" alt="Dresses Suits and Accessories" width="25px" height="25px">
           </mat-icon>
         </a>
         <a matTooltip="Entertainment" matTooltipPosition="above" class="category-icon"
           aria-label="Bride Advisor catergory search button">
-          <mat-icon (click)="selectCategory(4)">
+          <mat-icon (click)="selectCategory(4,$event)">
             <img src="../../../assets/etertainment.png" alt="Entertainment" width="25px" height="25px">
           </mat-icon>
         </a>
         <a matTooltip="Flowers" matTooltipPosition="above" class="category-icon"
           aria-label="Bride Advisor catergory search button">
-          <mat-icon (click)="selectCategory(5)">
-            <img src="../../../assets/flower.png" alt="Hair makeup Beauty" width="25px" height="25px">
+          <mat-icon (click)="selectCategory(5,$event)">
+            <img src="../../../assets/flower.png" alt="Flowers" width="25px" height="25px">
           </mat-icon>
         </a>
         <a matTooltip="Hair, Make-Up and Beauty" matTooltipPosition="above" class="category-icon"
           aria-label="Bride Advisor catergory search button">
-          <mat-icon (click)="selectCategory(6)">
-            <img src="../../../assets/makeup.png" alt="invitation and Stationery" width="25px" height="25px">
+          <mat-icon (click)="selectCategory(6,$event)">
+            <img src="../../../assets/makeup.png" alt="Hair, Make-Up and Beauty" width="25px" height="25px">
           </mat-icon>
         </a>
         <a matTooltip="Invitations and Stationery" matTooltipPosition="above" class="category-icon"
           aria-label="Bride Advisor catergory search button">
-          <mat-icon (click)="selectCategory(7)">
-            <img src="../../../assets/invitation.png" alt="jewelery" width="25px" height="25px">
+          <mat-icon (click)="selectCategory(7,$event)">
+            <img src="../../../assets/invitation.png" alt="Invitations and Stationery" width="25px" height="25px">
           </mat-icon>
         </a>
 
         <a matTooltip="Jewellery" matTooltipPosition="above" class="category-icon"
           aria-label="Bride Advisor catergory search button">
-          <mat-icon (click)="selectCategory(8)">
-            <img src="../../../assets/jewelery.png" alt="transport" width="25px" height="25px">
+          <mat-icon (click)="selectCategory(8,$event)">
+            <img src="../../../assets/jewelery.png" alt="Jewellery" width="25px" height="25px">
           </mat-icon>
         </a>
         <a matTooltip="Music" matTooltipPosition="above" class="category-icon"
           aria-label="Bride Advisor catergory search button">
-          <mat-icon (click)="selectCategory(9)">
-            <img src="../../../assets/music.png" alt="Venues" width="25px" height="25px">
+          <mat-icon (click)="selectCategory(9,$event)">
+            <img src="../../../assets/music.png" alt="Music" width="25px" height="25px">
           </mat-icon>
         </a>
-        <a matTooltip="photography" matTooltipPosition="above" class="category-icon"
+        <a matTooltip="Photography" matTooltipPosition="above" class="category-icon"
           aria-label="Bride Advisor catergory search button">
-          <mat-icon (click)="selectCategory(10)">
-            <img src="../../../assets/photography.png" alt="wedding Planners" width="25px" height="25px">
+          <mat-icon (click)="selectCategory(10,$event)">
+            <img src="../../../assets/photography.png" alt="Photography" width="25px" height="25px">
           </mat-icon>
         </a>
         <a matTooltip="Cake Makers" matTooltipPosition="above" class="category-icon"
           aria-label="Bride Advisor catergory search button">
-          <mat-icon (click)="selectCategory(11)">
-            <img src="../../../assets/cake.png" alt="cake makers " width="25px" height="25px">
+          <mat-icon (click)="selectCategory(11,$event)">
+            <img src="../../../assets/cake.png" alt="Cake Makers " width="25px" height="25px">
           </mat-icon>
         </a>
         <a matTooltip="Transport" matTooltipPosition="above" class="category-icon"
           aria-label="Bride Advisor catergory search button">
-          <mat-icon (click)="selectCategory(12)">
-            <img src="../../../assets/transport.png" alt="Flowers" width="25px" height="25px">
+          <mat-icon (click)="selectCategory(12,$event)">
+            <img src="../../../assets/transport.png" alt="Transport" width="25px" height="25px">
           </mat-icon>
         </a>
         <a matTooltip="Venues" matTooltipPosition="above" class="category-icon"
           aria-label="Bride Advisor catergory search button">
-          <mat-icon (click)="selectCategory(13)">
-            <img src="../../../assets/venue.png" alt="Decorations and Hire" width="25px" height="25px">
+          <mat-icon (click)="selectCategory(13,$event)">
+            <img src="../../../assets/venue.png" alt="Venues" width="25px" height="25px">
           </mat-icon>
         </a>
         <a matTooltip="Wedding Planners" matTooltipPosition="above" class="category-icon"
           aria-label="Bride Advisor catergory search button">
-          <mat-icon (click)="selectCategory(14)">
-            <img src="../../../assets/planner.png" alt="Accommodation" width="25px" height="25px">
+          <mat-icon (click)="selectCategory(14,$event)">
+            <img src="../../../assets/planner.png" alt="Wedding Planners" width="25px" height="25px">
           </mat-icon>
         </a>
         <a matTooltip="Decorations and Hire" matTooltipPosition="above" class="category-icon"
           aria-label="Bride Advisor catergory search button">
-          <mat-icon (click)="selectCategory(15)">
-            <img src="../../../assets/decoration.png" alt="photography" width="25px" height="25px">
+          <mat-icon (click)="selectCategory(15,$event)">
+            <img src="../../../assets/decoration.png" alt="Decorations and Hire" width="25px" height="25px">
           </mat-icon>
         </a>
         <a matTooltip="Accommodation" matTooltipPosition="above" class="category-icon"
           aria-label="Bride Advisor catergory search button">
-          <mat-icon (click)="selectCategory(16)">
-            <img src="../../../assets/accomodation.png" alt="videography" width="25px" height="25px">
+          <mat-icon (click)="selectCategory(16,$event)">
+            <img src="../../../assets/accomodation.png" alt="Accommodation" width="25px" height="25px">
           </mat-icon>
         </a>
         <a matTooltip="Videography" matTooltipPosition="above" class="category-icon"
           aria-label="Bride Advisor catergory search button">
-          <mat-icon (click)="selectCategory(17)">
-            <img src="../../../assets/videography.png" alt="gift and favours" width="25px" height="25px">
+          <mat-icon (click)="selectCategory(17,$event)">
+            <img src="../../../assets/videography.png" alt="Videography" width="25px" height="25px">
           </mat-icon>
         </a>
         <a matTooltip="Gifts and Favors" matTooltipPosition="above" class="category-icon"
           aria-label="Bride Advisor catergory search button">
-          <mat-icon (click)="selectCategory(18)">
-            <img src="../../../assets/gift.png" alt="music" width="25px" height="25px">
+          <mat-icon (click)="selectCategory(18,$event)">
+            <img src="../../../assets/gift.png" alt="Gifts and Favors" width="25px" height="25px">
           </mat-icon>
         </a>
       </mat-toolbar>
@@ -139,7 +139,7 @@
           <h1 class="region"> Asia</h1>
         </mat-grid-tile>
       </mat-grid-list>
-      <mat-grid-list cols="4" rowHeight="80px" gutterSize="0px">
+      <mat-grid-list  rowHeight="80px" gutterSize="0px" [cols]="breakPoint"  (window:resize)="onResize($event)">
 
         <mat-grid-tile>
           <mat-list>
@@ -158,12 +158,12 @@
         <mat-grid-tile>
           <mat-list>
             <mat-list-item (click)="findRegion('TH')">Thailand </mat-list-item>
-            <mat-list-item (click)="findRegion('VN')"> Vetnam </mat-list-item>
+            <mat-list-item (click)="findRegion('')"> </mat-list-item>
           </mat-list>
         </mat-grid-tile>
         <mat-grid-tile>
           <mat-list>
-            <mat-list-item (click)="findRegion('')"> </mat-list-item>
+            <mat-list-item (click)="findRegion('VN')"> Vetnam </mat-list-item>
             <mat-list-item (click)="findRegion('')"> </mat-list-item>
           </mat-list>
         </mat-grid-tile>
@@ -177,7 +177,7 @@
 
         </mat-grid-tile>
       </mat-grid-list>
-      <mat-grid-list cols="4" rowHeight="520px" gutterSize="0px">
+      <mat-grid-list  rowHeight="520px" gutterSize="0px" [cols]="breakPoint"  (window:resize)="onResize($event)">
 
         <mat-grid-tile>
           <mat-list>
@@ -258,7 +258,7 @@
           <h1 class="region">Canada</h1>
         </mat-grid-tile>
       </mat-grid-list>
-      <mat-grid-list cols="4" rowHeight="80px" gutterSize="0px">
+      <mat-grid-list  rowHeight="80px" gutterSize="0px" [cols]="breakPoint"  (window:resize)="onResize($event)">
 
         <mat-grid-tile>
           <mat-list>
@@ -293,7 +293,7 @@
           <h1 class="region">Euorope</h1>
         </mat-grid-tile>
       </mat-grid-list>
-      <mat-grid-list cols="4" rowHeight="300px" gutterSize="0px">
+      <mat-grid-list  rowHeight="300px" gutterSize="0px" [cols]="breakPoint"  (window:resize)="onResize($event)">
 
         <mat-grid-tile>
           <mat-list>
@@ -343,7 +343,7 @@
           <h1 class="region">Australia and South Pacific</h1>
         </mat-grid-tile>
       </mat-grid-list>
-      <mat-grid-list cols="4" rowHeight="80px" gutterSize="0px">
+      <mat-grid-list rowHeight="80px" gutterSize="0px" [cols]="breakPoint"  (window:resize)="onResize($event)">
 
         <mat-grid-tile>
           <mat-list>
@@ -378,7 +378,7 @@
           <h1 class="region">Africa</h1>
         </mat-grid-tile>
       </mat-grid-list>
-      <mat-grid-list cols="4" rowHeight="80px" gutterSize="0px">
+      <mat-grid-list  rowHeight="80px" gutterSize="0px" [cols]="breakPoint"  (window:resize)="onResize($event)">
 
         <mat-grid-tile>
           <mat-list>
@@ -413,7 +413,7 @@
           <h1 class="region">Americas</h1>
         </mat-grid-tile>
       </mat-grid-list>
-      <mat-grid-list cols="4" rowHeight="80px" gutterSize="0px">
+      <mat-grid-list  rowHeight="80px" gutterSize="0px" [cols]="breakPoint"  (window:resize)="onResize($event)">
 
         <mat-grid-tile>
           <mat-list>

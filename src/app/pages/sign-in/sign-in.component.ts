@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import{FormGroup,FormControl} from '@angular/forms'
+import{FormGroup,FormControl,Validators} from '@angular/forms'
 import {Router} from '@angular/router'
 import {LoginService}from '../../shared/login/login.service'
 import {User} from '../../models/user/user';
@@ -15,32 +15,39 @@ export class SignInComponent implements OnInit {
   loginForm : FormGroup;
   information:User;
   isVerified:Boolean;
+  errorMessage:string;
+  showSpinner = false;
   
   constructor(private _loginService:LoginService,
               private _router :Router) { }
 
   ngOnInit(): void {
-    
+   
     this.isVerified = true;
     
     this.loginForm = new FormGroup({
-      email: new FormControl,
-      password : new FormControl
+        email: new FormControl("", [Validators.required, Validators.email]),
+        password: new FormControl('', [Validators.required, Validators.minLength(6)])
     })
   }
    onSubmit():any{
-     
+    if (this.loginForm.invalid) {
+      alert('invalid form')
+      return;
+    }
+    this.showSpinner = true;
      this._loginService.login(this.loginForm.value)
       .subscribe((res)=>{
         this.isVerified =true;
         localStorage.setItem('token',res.token);
-        // this.information = res;
-        // console.log('infromation of user'+this.information.listing)
+        this.showSpinner = false;
         this._router.navigate(['/profile'])
       },
       (err)=>{
         this.isVerified = false;
-        console.log(err)
+        this.showSpinner = false;
+        this.errorMessage = err;
+        
       })
      
    }

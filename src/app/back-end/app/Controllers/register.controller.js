@@ -31,31 +31,21 @@ exports.create =  (req, res) => {
     user.lastName = req.body.lastName;
     user.email = req.body.email;
     user.setPassword(req.body.password);
-    user.secretToken = secretToken;
- 
+    user.secretToken = secretToken;//for verification
+    await user.save();
 
-    // Save user in the database
+   //Sending Email Template 
+   
+    host=req.get('host');
+    link=`http://brideadviser-env.eba-qm32eea7.us-east-2.elasticbeanstalk.com/profile/verify/${secretToken}`;
 
-    // user.save(function(err) {
-    //   var token;
-    //   token = user.generateJwt();
-    //   res.status(200);
-    //   res.json({
-    //     "token" : token
-    //   });
-    // });
-
-    const html = `Hi There,
-                  <br>
-                  Thank you for registering 
-                  <br><br>
-                  please click on the following link to verify the email 
-                  <a href="http://localhost:8080/verify/${secretToken}>http://localhost:8080/verify/${secretToken}</a>
-                  <br><br>
-                  Have A Blessed Day`;
+    const html = "Hello,<br> Please Click on the link to verify your email.<br><a href="+link+">Click here to verify</a>"
     
-    await mailer.sendMail('brideAdvisor.com',req.body.email,'please verify your Eamil',html)
+    await mailer.sendMail('support@bride-advisor.com',req.body.email,'please verify your Eamil',html)
 
+    return res.status(200).send({
+      message:"user created and verification email sent to user "
+    })
  })
     
 }
@@ -87,8 +77,10 @@ module.exports.login = function(req, res) {
     })(req, res);
   
   };
-
-  module.exports.verify = async function(req, res) {
+  //Email Verification
+ module.exports.verify = async function(req, res) {
+    
+   
 try{
     const secretToken = req.params.token;
     if (!secretToken) {
@@ -102,15 +94,84 @@ try{
     }
     user.isVerified = true;
     user.secretToken = "";
+
     await user.save();
-    res.send("Success! Thank you for verification you may login");
+    res.send(`Success! Thank you for verification you may login <br><br><a href="http://bride-advisors.s3-website.us-east-2.amazonaws.com/signin">Click here to Login</a> `);
+    
 } catch(error){
   next(error)
 }
   
+};
+
+//password reset
+
+module.exports.reset = async function(req, res) {
+    
    
+  try{
+      const email = req.body.email;
+      if (!email) {
+        console.log('Email not found');
+        return res.status(404).send({ message: "Email not found" })
+      }
+      const user = await User.findOne({ 'email': email })
+      if (!user) {
+        res.status(404).send({ message: "User not found" });
+        return;
+      }
+
+      const  resetToken = randomstring.generate();
+      // saving password
+      user.setPassword(resetToken);
+      await user.save();
+      link=`http://brideadviser-env.eba-qm32eea7.us-east-2.elasticbeanstalk.com/reset/${resetToken}`;
+
+      const html = `Hello,<br> Your password is succfully reset.<br><br> New password is ${resetToken} <br><br> You can change password from your dashboard <br><br>Thanks `
+      
+      await mailer.sendMail('support@bride-advisor.com',req.body.email,'Password reset sucessfully',html)
+      return res.send("Reset password sent");
+      
+  } catch(error){
+    next(error)
+  }
+    
+     
+    };
+//updating Password
+
+module.exports.passUpdate = async function(req, res) {
+    
+   
+  try{
+      const email = req.body.email;
+      if (!email) {
+        console.log('Email not found');
+        return res.status(404).send({ message: "User Email not found" })
+      }
+      const user = await User.findOne({ 'email': email })
+      if (!user) {
+        res.status(404).send({ message: "User not found" });
+        return;
+      }
+
+      
+      // saving password
+      user.setPassword(req.body.password);
+      await user.save();
+      
+
+      const html = "Your password is successfully changed"
+      
+      await mailer.sendMail('support@bride-advisor.com',req.body.email,'Password changed',html)
+      return res.send(" password changed");
+      
+  } catch(error){
+    next(error)
+  }
+    
+     
   };
- 
 
 
 

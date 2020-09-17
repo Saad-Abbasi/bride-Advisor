@@ -38,3 +38,8 @@ button:focus {
 emp{
     font-style:italic !important ;
 }
+img:focus{
+    cursor: pointer;
+    outline: none !important;
+
+}

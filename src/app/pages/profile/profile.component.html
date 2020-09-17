@@ -13,11 +13,12 @@
 
     <mat-toolbar>
 
-      <div fxFlex="60" fxLayoutAlign="end space-between" class="pr-2" >
+      <div fxFlex="60" fxLayoutAlign="end space-between" class="pr-2 " [matTooltip]="!isLogoEnable ? 'Please save your listing details before' : null" 
+      matTooltipPosition='after' [matTooltipHideDelay]="1000" >
         <!-- <button mat-button >Open dialog</button> -->
         <!-- <div matTooltip="You cannot delete that" [matTooltipDisabled]="false"> -->
-          <label  class="hoverable text-center"   (click)="profileImageDialog()">
-            <img class="logoimg" [src]="profileImage" >
+          <label  class="hoverable text-center"  [ngClass]="{'disableDiv': !isLogoEnable}"   (click)="profileImageDialog()">
+            <img *ngIf="profileImage" class="logoimg" [src]="profileImage" >
             <!-- <img class="logoimg" src="../../../assets//logo.png" > -->
             <div class="hover-text">
               <mat-icon class="hover-text">edit</mat-icon>
@@ -29,7 +30,7 @@
       <button mat-icon-button class="changePswd btn1" aria-label="" fxFlex="20" fxHide.lt-md  [routerLink]="['/profile-view']">
         <mat-icon>visibility</mat-icon>Preview your listing
       </button>
-      <button mat-icon-button class="changePswd btn3" fxFlex="20" fxFlex.lt-md="40%">
+      <button mat-icon-button class="changePswd btn3" fxFlex="20" fxFlex.lt-md="40%" routerLink="/update-password">
         <mat-icon>edit</mat-icon> Change Pasword
       </button>
     </mat-toolbar>
@@ -128,11 +129,17 @@
                   </div>
                 </div>
               </div>
+            
               <div class="form-group">
                 <label for="listing_email">Email Address</label>
                 <div class="d-flex">
-                  <input formControlName="email" class="form-control" placeholder="Email Address" type="email"
-                    value="" name="" id="">
+                  <input formControlName="email" class="form-control" placeholder="Email Address" type="email" required
+                    value="" name="" id="" 
+                    [ngClass]="{ 'is-invalid': businessDetails.get('email').errors &&
+                    businessDetails.get('email').touched }">
+                                   <div class="invalid-feedback">
+                                    Valid Email is required
+                                  </div>
                   <div class="edit-btn text-white p-2">
                     <span class="fa fa-pencil"></span>
                   </div>

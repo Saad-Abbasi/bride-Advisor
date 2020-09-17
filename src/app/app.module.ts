@@ -29,6 +29,10 @@ import { ImageDialogeComponent } from './pages/dialogs/image-dialoge/image-dialo
 import { SearchViewComponent } from './pages/search-view/search-view.component';
 import { RatingDialogComponent } from './pages/dialogs/rating-dialog/rating-dialog.component';
 import { StripPaymentComponent } from './pages/dialogs/strip-payment/strip-payment.component';
+import { TermsConditionComponent } from './pages/terms-condition/terms-condition.component';
+import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
+import { UpdatePasswordComponent } from './pages/update-password/update-password.component';
+
 
 
 
@@ -53,6 +57,10 @@ import { StripPaymentComponent } from './pages/dialogs/strip-payment/strip-payme
     SearchViewComponent,
     RatingDialogComponent,
     StripPaymentComponent,
+    TermsConditionComponent,
+    ForgotPasswordComponent,
+    UpdatePasswordComponent
+    
    
   ],
   entryComponents:[

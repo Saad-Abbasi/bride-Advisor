@@ -2,14 +2,17 @@
     <div class="bg">
         <!--Image-->
     </div>
+    
     <div class="container" style="position:relative;bottom:5rem">
         <div class="row">
           <div class="col-12">
             <div class="card mx-auto" style="max-width:450px">
+              
               <div class="card-body">
                 <div class="text-center mb-3">
+                  <mat-spinner *ngIf="showSpinner" strokeWidth="10" diameter="30"></mat-spinner>
                   <h1 class="card-title h3">Register Your Account</h1>
-                  <p class="card-text">Already have an account? <a href="#">Log In</a>.</p>
+                  <p class="card-text">Already have an account? <a routerLink="/signin">Log In</a>.</p>
                 </div>
                 <form [formGroup]="regForm" (ngSubmit)="regUser()" >
                   <div class="response"></div>
@@ -54,16 +57,21 @@
                       <div *ngIf="f.confirmPassword.errors.confirmedValidator">Password and Confirm Password must be match.</div>
                   </div>
                   </div>
-                  <div class="form-check">
+                  <div class="form-group form-check">
+                    <input type="checkbox" formControlName="acceptTerms" id="acceptTerms" class="form-check-input" [ngClass]="{ 'is-invalid': submitted && f.acceptTerms.errors }" />
+                    <label for="acceptTerms" class="form-check-label"><a target="_blank" routerLink="/terms-and-conditions">Accept Terms & Conditions</a></label>
+                    <div *ngIf="submitted && f.acceptTerms.errors" class="invalid-feedback">Accept Ts & Cs is required</div>
+                </div>
+                  <!-- <div class="form-check">
                     <label class="form-check-label">
-                      <input id="terms-and-conditions" class="subcategory form-check-input" type="checkbox" name="terms_and_conditions">
+                      <input id="terms-and-conditions" class="subcategory form-check-input" type="checkbox" name="terms_and_conditions" required>
                       <span class="form-check-indicator"></span>
-                      <span class="">I agree to the <a target="_blank" href="">terms and conditions</a>.</span>
+                      <span class="">I agree to the <a target="_blank" routerLink="/terms-and-conditions">terms and conditions</a>.</span>
                     </label>
-                  </div>
-                  <div class="text-center">
+                  </div> -->
+                  <div class="text-center pt-2">
                     <input type="submit"  value="Sign Up" class="submit btn btn-lg btn-block btn-primary"
-                      data-disable-with="Sign Up" />
+                      data-disable-with="Sign Up"/>
                   </div>
                 </form>
               </div>

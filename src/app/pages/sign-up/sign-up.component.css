@@ -4,3 +4,8 @@
     background-size: cover;
     height: 300px;
 }
+mat-spinner{
+    position: relative;
+    justify-content: center;
+    left: 45%;
+}

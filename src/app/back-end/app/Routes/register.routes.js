@@ -17,8 +17,12 @@ module.exports = (app) => {
     app.post('/login',  register.login); 
 
     //email verification 
-    app.post('/verify/:token', register.verify);
-    // app.post('/resend', register.resendTokenPost);
+    app.get('/verify/:token', register.verify);
+   
+    //Forgot password
+    app.post('/pass/forgot', register.reset);
+    //update new password 
+    app.post('/pass/update', register.passUpdate);
  
     
 }

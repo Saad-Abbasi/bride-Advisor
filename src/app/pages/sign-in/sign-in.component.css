@@ -73,3 +73,8 @@ body { padding: 2em; }
 .loginBtn--google:focus {
   background: #E74B37;
 }
+.spinner-wraper{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

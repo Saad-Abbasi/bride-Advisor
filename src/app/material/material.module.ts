@@ -13,6 +13,8 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatDividerModule} from '@angular/material/divider';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 // import {MatSnackBar} from '@angular/material/snack-bar'
 
 
@@ -31,7 +33,9 @@ const materialCompon = [
   MatGridListModule,
   MatTooltipModule,
   MatTabsModule,
-  MatDividerModule
+  MatDividerModule,
+  MatProgressSpinnerModule,
+  MatSnackBarModule
   // MatSnackBar
 
 

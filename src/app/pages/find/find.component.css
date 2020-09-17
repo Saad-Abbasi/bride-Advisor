@@ -84,7 +84,8 @@ button:focus{
  }
  mat-grid-tile {
     background:  #fff;
-    
+    padding: 2px;
+    padding-bottom: 0px;
   }
  
   .container-find{

@@ -8,32 +8,47 @@
         <div class="card mx-auto" style="max-width:500px">
           <div class="card-body">
             <div class="text-center mb-3">
-              <h1 class="card-title h3">Log In</h1>
+              <h1 class="card-title h3">Log In
+                <div class="spinner-wraper">
+                  <span><mat-spinner *ngIf="showSpinner" strokeWidth="10" diameter="30"></mat-spinner></span>
+                </div>
+                
+              </h1>
               <p class="card-text">New user? <a routerLink="/signup">Sign up now!</a></p>
-              <h3 class="alert alert-danger" *ngIf="!isVerified">If you are already registered please  verify your  email </h3>
+              <h3 class="alert alert-danger" *ngIf="!isVerified">{{errorMessage}} </h3>
             </div>
             <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
               <div class="form-group">
-                <input value="" formControlName="email" class="form-control form-control-lg" placeholder="Email" type="email" />
+                <input formControlName="email" class="form-control form-control-lg" placeholder="Email" type="email" required
+                  [ngClass]="{ 'is-invalid': loginForm.get('email').errors &&
+                                   loginForm.get('email').touched }" />
+                  
+                <div class="invalid-feedback">
+                  Valid Email is required
+                </div>
               </div>
+              <!-- <div class="form-group">
+                <input value="" formControlName="email" class="form-control form-control-lg" placeholder="Email" type="email" />
+              </div> -->
               <div class="form-group">
                 <input value="" formControlName="password"  class="form-control form-control-lg" placeholder="Password" type="password" />
               </div>
+              <!-- Comment Facebook and google login -->
               <div class="text-center">
                 <input type="submit" value="Log in" class="btn btn-lg btn-block btn-primary" data-disable-with="Log in" />
-                <h3 class="pt-2 mb-2">OR</h3>
-                <button class="loginBtn loginBtn--facebook">
+                <!-- <h3 class="pt-2 mb-2">OR</h3> -->
+                <!-- <button class="loginBtn loginBtn--facebook">
                   Login with Facebook
                 </button>
                 
                 <button class="loginBtn loginBtn--google">
                   Login with Google
                 </button>
-                <!-- <button class="btn btn-lg btn-block btn-facebook fa  fa-facebook-square pl-3 " style="font-size:24px">Log in with Facebook</button> -->
+                 <button class="btn btn-lg btn-block btn-facebook fa  fa-facebook-square pl-3 " style="font-size:24px">Log in with Facebook</button>  -->
               </div>
             </form>
             <div class="text-center pt-2">
-              <a href="#">Forgot Your Password?</a>
+              <a routerLink="/forgot-password">Forgot Your Password?</a>
             </div>
           </div>
         </div>

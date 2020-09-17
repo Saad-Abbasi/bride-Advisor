@@ -162,3 +162,7 @@ mat-grid-tile{
   list-style: none;
 }
 
+.disableDiv{
+  pointer-events:none;
+  
+}

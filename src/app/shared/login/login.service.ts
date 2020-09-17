@@ -94,19 +94,26 @@ export class LoginService {
       this.router.navigate(['/find'])
    }
 
-
-         handleError(error) {
-           let errorMessage = '';
-           if(error.error instanceof ErrorEvent) {
-             // Get client-side error
-             errorMessage = error.error.message;
-           } else {
-             // Get server-side error
-             errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
-           }
-          //  alert(errorMessage);
-           return throwError(errorMessage);
-        }
+   handleError(error) {
+    let errorMessage = '';
+    if(error.error instanceof ErrorEvent) {
+      // Get client-side error
+      errorMessage = error.error.message;
+    }
+    else if(error.status == 401 || error.message =="Unathorized"){
+      errorMessage = "If you are already registered please verify your email";
+    }
+    else if(error.status == 0){
+      errorMessage = `Server is not responding \n please try again later`;
+    }
+    else {
+      // Get server-side error
+      // errorMessage = `If you are already registered \n Please Verify your email`
+      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+    }
+    // alert(errorMessage);
+    return throwError(errorMessage);
+ }
    
    }
 

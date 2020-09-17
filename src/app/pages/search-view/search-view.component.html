@@ -3,11 +3,11 @@
       <div class="container-fluid  test" style="height: 100%;">
         <div class="row text-center mb-3">
           <div class="col-12">
-            <h1 class="head">Showing Result For Photography in Italy</h1>
+            <h1 class="head">Search Results</h1>
             <!-- <p class="mx-auto mb-0" style="max-width:400px"><em>The</em> place to find wedding suppliers and vendors tried
               and tested by real brides</p> -->
             <span class="btnSearch">
-              <button mat-raised-button color="primary" type="submit" >Change Search
+              <button mat-raised-button color="primary" type="submit" routerLink="/find">Change Search
                 </button>
             </span>
           </div>
@@ -16,6 +16,10 @@
     </div>
   </div>
   <div class="container container-item">
+    <div *ngIf="!results" class="text-center pt-3">
+      <h1>Sorry, we couldn't find any matches.</h1>
+      <a routerLink="/find">Click here to search for other listing</a>
+    </div>
     <mat-grid-list cols="4" rowHeight="1:1" gutterSize="5px">
         <mat-grid-tile *ngFor="let result of results">
             
@@ -39,17 +43,10 @@
                         {{result?.business}}
                       </h1>
                     </mat-card-content>
-                    <!-- <mat-card-actions align="end">
-                      <button mat-raised-button color="primary" >
-                          View
-                      </button>
-                      
-                    </mat-card-actions> -->
+                    
                   </mat-card>
                
         </mat-grid-tile>
-        <mat-grid-tile>2</mat-grid-tile>
-        <mat-grid-tile>3</mat-grid-tile>
-        <mat-grid-tile>4</mat-grid-tile>
+        
       </mat-grid-list>
   </div>

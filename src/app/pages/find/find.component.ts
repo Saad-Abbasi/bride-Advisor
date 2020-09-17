@@ -14,6 +14,7 @@ import {Router} from '@angular/router'
 })
 export class FindComponent implements OnInit {
 data:SearchData = {};
+breakPoint:any;
 // category:String
 //  address:String;
  public selectedCategory ="";
@@ -50,18 +51,13 @@ data:SearchData = {};
     // tLink="abctwfupdated"
     // website="www.mcqser.com"
     this.isCountrySelected = true;
-    
+    this.breakPoint = (window.innerWidth <= 400) ? 2 : 4;
 
   }
-  selectCategory(catValue:any){
-    if(catValue==1){
-      // this.selectedCategory="Food And Drinks"
-      this.data.category = catValue;
-      this.selectedCategory=this.data.category;
-      console.log('Cat value is  ' + catValue)
-      // this.data.category = catValue;
-      // console.log(this.data.category)
-    }
+  selectCategory(catValue:any,event){
+    
+    this.selectedCategory = event.srcElement.alt; //update button with current event
+    this.data.category = catValue; //send value for search
   }
   findRegion = (region:any)=>{
     this.data.address = region;
@@ -69,7 +65,15 @@ data:SearchData = {};
    
   }
  searchListing(){
-  this._router.navigate(['/search-view'], { queryParams: { category: this.data.category,address:this.data.address } });
+  this._router.navigate(['/search-view'], 
+
+  { queryParams: { category: this.data.category,address:this.data.address } 
+
+  });
 
  }
+ //responsive 
+ onResize(event) {
+  this.breakPoint = (event.target.innerWidth <= 400) ? 2 : 4;
+}
 }

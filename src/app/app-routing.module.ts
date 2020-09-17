@@ -14,6 +14,9 @@ import {ProfileComponent} from './pages/profile/profile.component'
 import { ProfileViewComponent } from './pages/profile-view/profile-view.component';
 import { SearchViewComponent } from './pages/search-view/search-view.component';
 import { RatingDialogComponent } from './pages/dialogs/rating-dialog/rating-dialog.component';
+import { TermsConditionComponent } from './pages/terms-condition/terms-condition.component';
+import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
+import { UpdatePasswordComponent } from './pages/update-password/update-password.component';
 
 
 
@@ -31,6 +34,9 @@ const routes: Routes = [
   {path : 'profile-view', component:ProfileViewComponent ,canActivate:[AuthGuard]},
   {path : 'search-view', component : SearchViewComponent},
   {path : 'review', component : LeaveReviewComponent,canActivate:[AuthGuard]},
+  {path : 'terms-and-conditions', component : TermsConditionComponent},
+  {path : 'forgot-password', component : ForgotPasswordComponent},
+  {path : 'update-password', component : UpdatePasswordComponent,canActivate:[AuthGuard]},
   {path : '' , pathMatch : 'full' ,component:FindComponent}
 ];
 
