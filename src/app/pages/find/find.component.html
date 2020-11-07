@@ -1,12 +1,12 @@
 <div class="bg absolute flex container-fluid">
   <div>
-    <div class="container-fluid  test" style="height: 100%;">
+    <div class="container-fluid  container-heading" style="height: 100%;">
       <div class="row text-center mb-3">
         <div class="col-12">
           <h1 class="head">Plan Your Perfect Wedding</h1>
           <p class="mx-auto mb-0" style="max-width:400px"><em>The</em> place to find wedding suppliers and vendors tried
             and tested by real brides</p>
-          <span class="btnSearch">
+          <span class="btnSearch" *ngIf ="selectedCategory">
             <button mat-raised-button color="primary" type="submit" (click)="searchListing()">Find
               {{selectedCategory}}</button>
           </span>
@@ -15,15 +15,16 @@
     </div>
   </div>
 </div>
+<!-- Spacer -->
+<div *ngIf ="selectedCategory" style="height: 40px;"></div> 
+<!-- spacer End -->
 <div class="container-fluid  container-find">
-
-
-  <mat-tab-group animationDuration="2000ms" mat-align-tabs="center">
-    <mat-tab label="Select Category">
+  <mat-tab-group animationDuration="2000ms" mat-align-tabs="center" [selectedIndex] ="indexTab">
+    <mat-tab label="Select Category"  >
       <mat-toolbar class="category">
         <a (click)="selectCategory(1,$event)" matTooltip="Food And Drink" matTooltipPosition="above" class="category-icon"
           aria-label="Bride Advisor catergory search button">
-          <mat-icon >
+          <mat-icon (click)="selectCategory(1,$event)">
             <img src="../../../assets/food.png" alt="Food & Drink" width="25px" height="25px">
           </mat-icon>
         </a>
@@ -36,7 +37,7 @@
         <a matTooltip="Dresses, Suits and Accessories" matTooltipPosition="above" class="category-icon"
           aria-label="Bride Advisor catergory search button">
           <mat-icon (click)="selectCategory(3,$event)">
-            <img src="../../../assets/dress.png" alt="Dresses Suits and Accessories" width="25px" height="25px">
+            <img src="../../../assets/icon-4.png" alt="Dresses Suits and Accessories" width="25px" height="25px">
           </mat-icon>
         </a>
         <a matTooltip="Entertainment" matTooltipPosition="above" class="category-icon"
@@ -139,7 +140,7 @@
           <h1 class="region"> Asia</h1>
         </mat-grid-tile>
       </mat-grid-list>
-      <mat-grid-list  rowHeight="80px" gutterSize="0px" [cols]="breakPoint"  (window:resize)="onResize($event)">
+      <mat-grid-list  rowHeight="100px" gutterSize="0px" [cols]="breakPoint"  (window:resize)="onResize($event)">
 
         <mat-grid-tile>
           <mat-list>
@@ -168,7 +169,7 @@
           </mat-list>
         </mat-grid-tile>
       </mat-grid-list>
-      <mat-divider></mat-divider>
+      <mat-divider class="mat-divider-top"></mat-divider>
       <mat-grid-list cols="1" rowHeight="40px">
         <mat-grid-tile>
 

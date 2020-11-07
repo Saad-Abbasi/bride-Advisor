@@ -6,8 +6,22 @@ select {
     margin-top: -100px;
     background-image: url("../../../assets/banner-o.jpg");
     background-size: cover;
-    min-height: 450px;
+    background-position: center ;
+    min-height: 750px
+
+  
+    
 }
+/* .bg:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(206, 185, 185, 0.363); 
+    opacity: 0.8;
+} */
 .flex{
     display: flex;
     align-items: center;
@@ -18,9 +32,8 @@ select {
     text-shadow: 0.1em 0.1em rgba(0,0,0,0.2) !important;
     font-size: 37.5px !important;
     font-weight: 500px !important;
-    line-height: 1.1;
     color:#fff;
-    font-size: 2.5rem;
+    
     
 }
 
@@ -31,6 +44,11 @@ select {
     text-shadow: 0.1em 0.1em rgba(0,0,0,0.2) !important;
     line-height: 1.1rem;
     filter: brightness(80%);
+}
+.container-heading{
+    position: relative;
+    margin-top: -5rem;
+    
 }
 button{
     font-size: 1rem;
@@ -44,6 +62,7 @@ button{
 .btnSearch{
     position: relative;
     top: 1rem;
+    bottom: 1rem;
     
 }
 p{
@@ -78,19 +97,26 @@ button:focus{
     font-size: medium;
 }
 ::ng-deep .mat-tab-list .mat-tab-labels .mat-tab-label-active{
-    /* background-color: #00BCD4; */
-    color: #fff !important;
+
+    color: white !important;
     font-size: medium;
+    
+  
  }
  mat-grid-tile {
     background:  #fff;
     padding: 2px;
     padding-bottom: 0px;
   }
- 
+ ::ng-deep .mat-tab-label-content{
+    color: 	#FFFFFF;
+    mix-blend-mode: difference;
+    
+    
+ }
   .container-find{
       position: relative;
-      top:-8rem;
+      top:-24rem;
       margin: auto;
       justify-content: center;
   }
@@ -100,7 +126,6 @@ button:focus{
      
   }
   mat-divider {
-    
     width:20%;
     background-color: gray !important;
     padding-top: 1px;
@@ -116,3 +141,9 @@ mat-list-item{
 mat-list-item:hover{
 font-weight: bold;
 }
+.mat-divider-top{
+    background-color: white;
+}
+    .mat-white-icon  {
+        color: yellowgreen;
+      }

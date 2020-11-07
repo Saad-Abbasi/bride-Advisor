@@ -34,26 +34,25 @@ module.exports = (app) => {
     });
 
     app.post('/listing/:userId', listing.create);
-    //listing logo 
-
-    // app.post('/listing/logo/:listingId',upload.single('profileImage'), listing.create);
-    // app.post('/listingp',upload.single('file') ,(req,res)=>{
-    //     console.log(req.file)
-    // });
-
+  
     
-
+// get all isting
+app.get('/listings',listing.findAll)
     // Retrieve listing for particular id 
-   app.get('/listing/:listingId',listing.findOne);
+app.get('/listing/:listingId',listing.findOne);
     
    //Update listing 
-   app.put('/listing/:listingId', listing.update);
+ app.put('/listing/:listingId', listing.update);
    //Search for listing with region and category
-    app.get('/listing/find/:data',listing.findData)
+ app.get('/listing/find/:data',listing.findData)
     
     // Serach for listing with email to submit review
 
-    app.get('/find/listing/review/:data',listing.findListing)
+ app.get('/find/listing/review/:data',listing.findListing)
+  
+    //Delete listing
+
+ app.delete('/listing/delete/:listingId', listing.delete);
 
     
 }

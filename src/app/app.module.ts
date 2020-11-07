@@ -32,6 +32,13 @@ import { StripPaymentComponent } from './pages/dialogs/strip-payment/strip-payme
 import { TermsConditionComponent } from './pages/terms-condition/terms-condition.component';
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
 import { UpdatePasswordComponent } from './pages/update-password/update-password.component';
+import { DashboardComponent } from './pages/dashboard/dashboard/dashboard.component';
+import { NavHeaderAdminComponent } from './constants/nav-header-admin/nav-header-admin.component';
+import { ViewListingsComponent } from './pages/dashboard/listing/view-listings/view-listings.component';
+import { ViewReviewsComponent } from './pages/dashboard/view-reviews/view-reviews.component';
+import { ViewUsersComponent } from './pages/dashboard/view-users/view-users.component';
+import { EditListingDialogComponent } from './pages/dashboard/dialogues/edit-listing-dialog/edit-listing-dialog.component';
+import { ConfirmDialogComponent } from './pages/dashboard/dialogues/confirm-dialog/confirm-dialog.component';
 
 
 
@@ -59,7 +66,14 @@ import { UpdatePasswordComponent } from './pages/update-password/update-password
     StripPaymentComponent,
     TermsConditionComponent,
     ForgotPasswordComponent,
-    UpdatePasswordComponent
+    UpdatePasswordComponent,
+    DashboardComponent,
+    NavHeaderAdminComponent,
+    ViewListingsComponent,
+    ViewReviewsComponent,
+    ViewUsersComponent,
+    EditListingDialogComponent,
+    ConfirmDialogComponent
     
    
   ],
@@ -67,7 +81,9 @@ import { UpdatePasswordComponent } from './pages/update-password/update-password
     ProfileImgComponent,
     GalleryComponent,
     ImageDialogeComponent,
-    StripPaymentComponent
+    StripPaymentComponent,
+    EditListingDialogComponent,
+    ConfirmDialogComponent
   ],
   imports: [
     BrowserModule,

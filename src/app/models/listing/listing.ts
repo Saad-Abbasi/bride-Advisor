@@ -7,7 +7,9 @@ export interface Listing {
     website:String,
     address:String,
     category:Number,
-    
+    // modify 11-05-2020
+    listingStatus:string,
+    paymentStatus:string
     //<---Sub Categories-->
     fullPlaning:Boolean,
     partPlaning:Boolean,

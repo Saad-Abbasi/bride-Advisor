@@ -1,7 +1,39 @@
 <div class="container">
-<div class=" flex-container" fxLayout="column">
-  <mat-toolbar class="pt-5">
-    <div fxHide.gt-xs>
+<div class=" flex-container" >
+  <mat-toolbar class="pt-2">
+    <mat-toolbar-row>
+    <div fxFlex fxHide.xs  class="login-register">
+      
+        <ul  fxLayoutGap="5px" fxLayoutAlign="end" class="navigation-items">
+             <li *ngIf="!login()">
+              <a routerLink='/signin' >Login 
+              </a>
+            </li>
+            <li *ngIf="!login()">
+             <a href="#">/</a> 
+            </li>
+            <li *ngIf="!login()">
+              <a routerLink='/signup' >Register
+              </a>
+            </li>
+
+
+                             <!--Case of logged in   -->
+              <li *ngIf="login()">
+              <a ><emp >Welcome {{user?.firstName + user?.lastName}}</emp></a>
+            </li>
+              <li *ngIf="login()">
+                <a href="#">/</a>
+              </li>
+              <li *ngIf="login()">
+                <a (click)="logOut()" >Logout</a>
+              </li>
+        </ul>
+    </div>
+    </mat-toolbar-row>
+    <!-- Menu Items -->
+    <mat-toolbar-row>
+      <div fxHide.gt-xs>
         <button color="primary" mat-icon-button (click)="onToggleSidenav()">
             <mat-icon>menu</mat-icon>
         </button>
@@ -25,79 +57,23 @@
             <li>
               <a routerLink='/leave-review'>LEAVE A REVIEW</a>
             </li>
-            <li>
+            <li *ngIf="!login()">
+              <a  routerLink='/profile'>LIST YOUR BUSINESS FREE</a>
+            </li>
+            <li *ngIf="login()">
               <a  routerLink='/profile'>EDIT LISTING</a>
             </li>
             <li>
               <a routerLink='/support' >SUPPORT
               </a>
             </li>
-            <li>
-              <a ><emp *ngIf="login()">Welcome {{user?.firstName + user?.lastName}}</emp></a>
-              
-            </li>
-             <li>
-             <button mat-icon-button onclick="this.blur()" [matMenuTriggerFor]="menu">
-               <mat-icon color="primary">account_circle</mat-icon>
-             </button>
-              <mat-menu #menu="matMenu" >
-                
-                <button mat-menu-item routerLink='/signin' *ngIf="!login()">Login
-                  <mat-icon color="primary">login</mat-icon>
-                </button>
-                <!-- <button mat-menu-item routerLink='' *ngIf="login()">User
-                  <mat-icon color="primary">user</mat-icon>
-                </button> -->
-                <button mat-menu-item (click)="logOut()" *ngIf="login()">Logout
-                  <mat-icon color="primary">login</mat-icon>
-                </button>
-                <button mat-menu-item routerLink='/signup'  *ngIf="!login()">Register
-                  <mat-icon color="primary">how_to_reg</mat-icon>
-                </button>
-              </mat-menu>
-            </li>
-           <!-- <li>
-              <a routerLink='/leave-review'>LEAVE A REVIEW</a>
-            </li> -->
+           
         </ul>
     </div>
+    </mat-toolbar-row>
+    
   </mat-toolbar>
 </div>
   
 </div>
 
-
-<!-- 
-<div class="container">
-    
-    <nav class="navbar navbar-expand-md  align-items-center  navbar-light bg-faded text-uppercase " style="font-size:0.9375rem;text-shadow: 0.15em 0.15em 0.15em rgba(0,0,0,0.25)">
-        <a href="#" class="navbar-brand">
-            <img src="./../../../assets/logo.png" height="79" width="200" alt="bridal-Advisor">
-        </a>
-        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-    
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-            <div class="navbar-nav ml-auto">
-                <a routerLink='/find' class="nav-item nav-link active mr-3">FIND VENUES & VENDORS
-                </a>
-                <a routerLink='/leave-review' class="nav-item nav-link mr-3">LEAVE A REVIEW</a>
-                <a routerLink='/pricing' class="nav-item nav-link mr-3">ARE YOU A VENDOR?</a>
-                <a routerLink='/support' class="nav-item nav-link  mr-3">SUPPORT
-                </a>
-                
-           
-            <div class=" ml-auto collapse navbar-collapse text-sm " id="#navbarCollapse" style="position:absolute;top:1rem;right:1rem;text-shadow:none">
-               <small>
-                <a routerLink='/signup' class="nav-item nav-link">Login</a>
-               </small>
-               <small>/</small>
-               <small>
-                <a routerLink='/signin' class="nav-item nav-link mr-3">Register</a>
-               </small>
-            </div>
-        </div>
-        </div>
-    </nav>
-</div> -->

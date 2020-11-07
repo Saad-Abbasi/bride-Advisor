@@ -67,17 +67,17 @@ exports.create = async  (req, res)=> {
           
 
 };
-// exports.findAll = (req, res) => {
+exports.findAll = (req, res) => {
 
-//     Topic.find()
-//     .then(topic => {
-//         res.send(topic)
-//     }).catch(err => {
-//         res.status(500).send({
-//             message: err.message || "Some error occurred while retrieving Topics."
-//         });
-//     });
-// };
+    Listing.find()
+    .then(listings => {
+        res.send(listings)
+    }).catch(err => {
+        res.status(500).send({
+            message: err.message || "Some error occurred while retrieving listing."
+        });
+    });
+};
 exports.findOne = (req, res) => {
 
     // const listing = await Listing.findOne();
@@ -107,11 +107,9 @@ exports.findOne = (req, res) => {
 
 // Update a Listing identified by the listing id in the request
 exports.update = (req, res) => {
-   
-
+    console.log(req.body)
     // Find Listing and update it with the request body
     Listing.findByIdAndUpdate(req.params.listingId, {
-        
         listingType:req.body.listingType,
         business:req.body.business,
         tradingName:req.body.tradingName,
@@ -133,7 +131,9 @@ exports.update = (req, res) => {
         vVideoLink:req.body.vVideoLink,
         vatNumber:req.body.vatNumber,
         category:req.body.category,
-        region:req.body.region
+        region:req.body.region,
+        paymentStatus:req.body.paymentStatus,
+        listingStatus:req.body.listingStatus
         
       }, {new: true})
     .then(listing => {
@@ -214,5 +214,29 @@ exports.findListing = (req,res)=>{
     });
 
 };
-    // var queryParams= req.query
-    // res.json(queryParams);
+  //Delte Listin By Id 
+
+  // Delete a note with the specified noteId in the request
+exports.delete = (req, res) => {
+    console.log('Recived Delte',req.params.listingId)
+    Listing.findByIdAndRemove(req.params.listingId)
+    .then(listing => {
+        if(!listing) {
+            return res.status(404).send({
+                message: "Listing not found with id " + req.params.listingId
+            });
+        }
+        res.send({message: "listing deleted successfully!",
+                  business:listing.business});
+    }).catch(err => {
+        if(err.kind === 'ObjectId' || err.name === 'NotFound') {
+            return res.status(404).send({
+                message: "Listing not found with id " + req.params.listingId
+            });                
+        }
+        return res.status(500).send({
+            message: "Could not delete listing with id " + req.params.listingId
+        });
+    });
+
+};

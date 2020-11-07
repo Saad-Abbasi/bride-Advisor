@@ -1,0 +1,7 @@
+.container-flud{
+    background-image: url('../../../../assets/Dashboard-Back-ground.jpg');
+    background-size: cover;
+    background-position: center ;
+    min-height: 650px;
+    height:100%;
+}

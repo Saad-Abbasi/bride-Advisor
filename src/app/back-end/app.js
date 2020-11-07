@@ -37,7 +37,8 @@ app.use(passport.initialize());
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json());
 
-mongoose.set('useCreateIndex', true);
+mongoose.set('useCreateIndex', true );
+mongoose.set('useFindAndModify', false); 
 //routes
 app.get('/', (req, res) => {
     res.json({"message": "welcome to bridal advisor"});

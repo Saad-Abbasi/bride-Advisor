@@ -29,8 +29,15 @@ export class ListingService {
        catchError(this.handleError)
      ) 
    };
-
-   //get Listing 
+   getAllListing(){
+     console.log(this.apiUrl)
+    return this.http.get(`${this.apiUrl}/listings`)
+    .pipe(
+      retry(2),
+      catchError(this.handleError)
+    )
+  }
+   //get single Listing 
 
    getListing(id:String){
      return this.http.get(`${this.apiUrl}/listing/${id}`)
@@ -44,6 +51,16 @@ export class ListingService {
     console.log(listing)
   
     return this.http.put<Listing>(`${this.apiUrl}/listing/${id}`,JSON.stringify(listing),this.httpOptions,)
+     .pipe(
+       retry(2),
+       catchError(this.handleError)
+     ) 
+   };
+
+   //Delete Listing 
+
+   deleteListing(listingId:string) {
+    return this.http.delete(`${this.apiUrl}/listing/delete/${listingId}`,this.httpOptions,)
      .pipe(
        retry(2),
        catchError(this.handleError)

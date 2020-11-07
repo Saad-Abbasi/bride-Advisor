@@ -18,6 +18,12 @@ a:hover, a:active{
     /* padding: 0;
     margin: 0; */
 }
+.login-register{
+    margin-bottom: -36px;
+    font-size: smaller;
+    display: flex;
+    justify-content: flex-end;
+}
 
 mat-toolbar{
     border-radius: 3px;

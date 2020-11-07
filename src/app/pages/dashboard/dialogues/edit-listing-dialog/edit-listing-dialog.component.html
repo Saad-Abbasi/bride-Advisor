@@ -1,0 +1,51 @@
+<form [formGroup]="listingEditForm" (submit)="savaListing()">
+      <div class="form-group ">
+        <label for="inputEmail4">Business</label>
+        <input type="email" class="form-control"  formControlName="business">
+      </div>
+      <div class="form-group ">
+        <label for="inputPassword4">Category</label>
+        <select class="form-control"
+        formControlName="category">
+        <option value="">Select a Category</option>
+        <option value="1">Food and Drink</option>
+        <option value="2">Celebrants and Officiants</option>
+        <option value="3">Dresses, Suits and Accessories</option>
+        <option value="4">Entertainment</option>
+        <option value="5">Flowers</option>
+        <option value="6">Hair, Make-Up and Beauty</option>
+        <option value="7">Invitations and Stationery</option>
+        <option value="8">Jewellery</option>
+        <option value="9">Music</option>
+        <option value="10">Photography</option>
+        <option value="11">Cake Makers</option>
+        <option value="12">Transport</option>
+        <option value="13">Venues</option>
+        <option value="14">Wedding Planners</option>
+        <option value="15">Decorations and Hire</option>
+        <option value="16">Accommodation</option>
+
+        <option value="17">Videography</option>
+        <option value="18">Gifts and Favors</option>
+      </select>
+
+      </div>
+      <div class="form-group">
+        <label for="inputState">Status</label>
+        <select id="inputState" class="form-control" formControlName="listingStatus">
+          <option [value]="null">Choose...</option>
+          <option value="pending">Pending</option>
+          <option value="live">Live</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="inputState">Payment Status</label>
+        <select id="inputState" class="form-control" formControlName="paymentStatus">
+          <option  [value]="null">Choose</option>
+          <option value="premium">Premium</option>
+          <option value="free">Free</option>
+        </select>
+   
+    </div>
+    <button type="submit" class="btn pull-right btn-primary">Save</button>
+  </form>

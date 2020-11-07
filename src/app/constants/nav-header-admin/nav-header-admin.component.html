@@ -1,0 +1,80 @@
+
+<div class="container-flud">
+  
+  <div class="container flex-container">
+    <mat-toolbar class="pt-2">
+      <mat-toolbar-row>
+        <div fxFlex fxHide.xs class="login-register">
+
+          <ul fxLayoutGap="5px" fxLayoutAlign="end" class="navigation-items">
+            <li *ngIf="!login()">
+              <a routerLink='/signin'>Login
+              </a>
+            </li>
+            <li *ngIf="!login()">
+              <a href="#">/</a>
+            </li>
+            <li *ngIf="!login()">
+              <a routerLink='/signup'>Register
+              </a>
+            </li>
+
+
+            <!--Case of logged in   -->
+            <li *ngIf="login()">
+              <a>
+                <emp>Welcome {{user?.firstName + user?.lastName}}</emp>
+              </a>
+            </li>
+            <li *ngIf="login()">
+              <a href="#">/</a>
+            </li>
+            <li *ngIf="login()">
+              <a (click)="logOut()">Logout</a>
+            </li>
+          </ul>
+        </div>
+      </mat-toolbar-row>
+      <!-- Menu Items -->
+      <mat-toolbar-row>
+        <div fxHide.gt-xs>
+          <button color="primary" mat-icon-button (click)="onToggleSidenav()">
+            <mat-icon>menu</mat-icon>
+          </button>
+        </div>
+        <div class="img-container">
+          <a routerLink='/find'>
+            <img src="./../../../assets/logo2.png" height="79" width="200" alt="bridal-Advisor"></a>
+        </div>
+
+        <!-- <a routerLink="/home">Owner-Account</a> -->
+
+
+        <div fxFlex fxLayout fxLayoutAlign="end" fxHide.xs>
+
+          <ul fxLayout fxLayoutGap="15px" class="navigation-items">
+            <!-- <li>
+              <a routerLink='/find'>CATEGORIES
+              </a>
+            </li> -->
+            <li>
+              <a [routerLink]="['dashboard/view-listing']" >LISTINGS</a>
+            </li>
+            <li>
+              <a [routerLink]="['dashboard/view-reviews']">REVIEWS</a>
+            </li>
+            <li>
+              <a [routerLink]="['dashboard/view-users']">USERS
+              </a>
+            </li>
+
+          </ul>
+        </div>
+      </mat-toolbar-row>
+
+    </mat-toolbar>
+  </div>
+
+</div>
+      
+    

@@ -15,27 +15,37 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatTableModule} from '@angular/material/table';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatSortModule} from '@angular/material/sort';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input'
 // import {MatSnackBar} from '@angular/material/snack-bar'
 
 
 
 const materialCompon = [
   MatButtonModule,
+  MatInputModule,
   MatSidenavModule,
   MatToolbarModule,
   MatIconModule,
   LayoutModule,
+  MatPaginatorModule,
+  MatTableModule,
   MatListModule,
   MatMenuModule,
   MatSelectModule,
   MatCardModule,
   MatDialogModule,
+  MatSortModule,
   MatGridListModule,
   MatTooltipModule,
   MatTabsModule,
   MatDividerModule,
   MatProgressSpinnerModule,
-  MatSnackBarModule
+  MatSnackBarModule,
+  MatFormFieldModule
   // MatSnackBar
 
 

@@ -37,7 +37,7 @@ exports.create =  (req, res) => {
    //Sending Email Template 
    
     host=req.get('host');
-    link=`http://brideadviser-env.eba-qm32eea7.us-east-2.elasticbeanstalk.com/profile/verify/${secretToken}`;
+    link=`http://brideadviser-env.eba-qm32eea7.us-east-2.elasticbeanstalk.com/verify/${secretToken}`;
 
     const html = "Hello,<br> Please Click on the link to verify your email.<br><a href="+link+">Click here to verify</a>"
     

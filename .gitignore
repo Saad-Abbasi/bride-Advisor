@@ -1,5 +1,7 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
+#Secrets
+.env
 # compiled output
 /dist
 /tmp
@@ -9,6 +11,7 @@
 
 # dependencies
 /node_modules
+/src/app/back-end/node_modules
 
 # profiling files
 chrome-profiler-events*.json

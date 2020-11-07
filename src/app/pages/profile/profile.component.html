@@ -1,8 +1,8 @@
 <head>
-  
+
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
- 
+
 </head>
 
 <div class="container-fluid">
@@ -13,21 +13,23 @@
 
     <mat-toolbar>
 
-      <div fxFlex="60" fxLayoutAlign="end space-between" class="pr-2 " [matTooltip]="!isLogoEnable ? 'Please save your listing details before' : null" 
-      matTooltipPosition='after' [matTooltipHideDelay]="1000" >
+      <div fxFlex="60" fxLayoutAlign="end space-between" class="pr-2 "
+        [matTooltip]="!isLogoEnable ? 'Please save your listing details before' : null" matTooltipPosition='after'
+        [matTooltipHideDelay]="1000">
         <!-- <button mat-button >Open dialog</button> -->
         <!-- <div matTooltip="You cannot delete that" [matTooltipDisabled]="false"> -->
-          <label  class="hoverable text-center"  [ngClass]="{'disableDiv': !isLogoEnable}"   (click)="profileImageDialog()">
-            <img *ngIf="profileImage" class="logoimg" [src]="profileImage" >
-            <!-- <img class="logoimg" src="../../../assets//logo.png" > -->
-            <div class="hover-text">
-              <mat-icon class="hover-text">edit</mat-icon>
-            </div>
-            <div class="background"></div>
-          </label>
+        <label class="hoverable text-center" [ngClass]="{'disableDiv': !isLogoEnable}" (click)="profileImageDialog()">
+          <img *ngIf="profileImage" class="logoimg" [src]="profileImage">
+          <!-- <img class="logoimg" src="../../../assets//logo.png" > -->
+          <div class="hover-text">
+            <mat-icon class="hover-text">edit</mat-icon>
+          </div>
+          <div class="background"></div>
+        </label>
       </div>
-     
-      <button mat-icon-button class="changePswd btn1" aria-label="" fxFlex="20" fxHide.lt-md  [routerLink]="['/profile-view']">
+
+      <button mat-icon-button class="changePswd btn1" aria-label="" fxFlex="20" fxHide.lt-md
+        [routerLink]="['/profile-view']">
         <mat-icon>visibility</mat-icon>Preview your listing
       </button>
       <button mat-icon-button class="changePswd btn3" fxFlex="20" fxFlex.lt-md="40%" routerLink="/update-password">
@@ -37,8 +39,8 @@
   </mat-card>
 </div>
 <div class="container">
-  <mat-card fxLayout  fxLayoutAlign="space-between" fxLayoutGap="5px" class="custom">
-    
+  <mat-card fxLayout fxLayoutAlign="space-between" fxLayoutGap="5px" class="custom">
+
     <mat-card fxFlex class="custom mat-elevation-z0">
       <mat-card-title fxLayoutAlign="center center" class="m-3">Reviews</mat-card-title>
       <hr>
@@ -50,14 +52,12 @@
             </mat-card-title>
           </mat-card-header>
           <mat-card-header>
-            <mat-card-title >
-              <ul class="list-inline rating-list" *ngFor="let star of stars"
-                    style="display: inline-block">
-                    <li (click)="countStar(star)"
-                        [ngClass]="{'selected': (star <= review.rating)}">
-                        <i class="fa fa-star"></i>
-                    </li> 
-                </ul>
+            <mat-card-title>
+              <ul class="list-inline rating-list" *ngFor="let star of stars" style="display: inline-block">
+                <li (click)="countStar(star)" [ngClass]="{'selected': (star <= review.rating)}">
+                  <i class="fa fa-star"></i>
+                </li>
+              </ul>
             </mat-card-title>
           </mat-card-header>
         </div>
@@ -71,28 +71,28 @@
             </mat-card-subtitle>
           </mat-card-header>
         </div>
-         
-        
+
+
         <mat-card-content>
           <p>
             {{review.description}}
           </p>
         </mat-card-content>
       </mat-card>
-     
+
     </mat-card>
 
-                                               <!-- Update Listing -->
+    <!-- Update Listing -->
 
-    <mat-card fxFlex="45" class="child-2" >
+    <mat-card fxFlex="45" class="child-2">
       <mat-card-title fxLayoutAlign="center">{{listingTitle}}</mat-card-title>
       <mat-card-content>
 
         <div class="">
-         
+
           <hr>
-          <form  [formGroup]="businessDetails" (ngSubmit)="saveBusiness()">
-           
+          <form [formGroup]="businessDetails" (ngSubmit)="saveBusiness()">
+
             <div class="row mb-3">
               <div class="col">
                 <button type="button" onclick="location.reload()" class="btn btn-block btn-secondary">Discard
@@ -107,7 +107,7 @@
               <legend>Business Details</legend>
               <div class="form-group">
                 <label for="listing_listing_type">Listing Type</label>
-                <input value="Top" class="form-control"  type="text">
+                <input value="Free" class="form-control" type="text">
               </div>
               <div class="form-group">
                 <label for="listing_name">Business Name</label>
@@ -119,7 +119,7 @@
                   </div>
                 </div>
               </div>
-              <div class="form-group">
+              <!-- <div class="form-group">
                 <label for="listing_trading_name">Trading Name (optional)</label>
                 <div class="d-flex">
                   <input formControlName="tradingName" class="form-control" placeholder="Trading Name (optional)" type="text"
@@ -128,18 +128,17 @@
                     <span class="fa fa-pencil"></span>
                   </div>
                 </div>
-              </div>
-            
+              </div> -->
+
               <div class="form-group">
                 <label for="listing_email">Email Address</label>
                 <div class="d-flex">
                   <input formControlName="email" class="form-control" placeholder="Email Address" type="email" required
-                    value="" name="" id="" 
-                    [ngClass]="{ 'is-invalid': businessDetails.get('email').errors &&
+                    value="" name="" id="" [ngClass]="{ 'is-invalid': businessDetails.get('email').errors &&
                     businessDetails.get('email').touched }">
-                                   <div class="invalid-feedback">
-                                    Valid Email is required
-                                  </div>
+                  <div class="invalid-feedback">
+                    Valid Email is required
+                  </div>
                   <div class="edit-btn text-white p-2">
                     <span class="fa fa-pencil"></span>
                   </div>
@@ -158,33 +157,33 @@
               <div class="form-group">
                 <label for="listing_website">Website</label>
                 <div class="d-flex">
-                  <input formControlName="website" class="form-control" placeholder="Website" type="text"
-                    value="" name="" id="">
+                  <input formControlName="website" class="form-control" placeholder="Website" type="text" value=""
+                    name="" id="">
                   <div class="edit-btn text-white p-2">
                     <span class="fa fa-pencil"></span>
                   </div>
                 </div>
               </div>
               <div class="form-group">
-               <!-- <mat-label for="listing_website">Country/Region</mat-label> -->
+                <!-- <mat-label for="listing_website">Country/Region</mat-label> -->
                 <label for="listing_website">Choose a Location</label>
                 <div class="d-flex">
-                  <select id="country" name="listing[country]"formControlName="address" class="form-control">
+                  <select id="country" name="listing[country]" formControlName="address" class="form-control">
                     <option>Choose a Location</option>
-                    <option value="AU" >Australia</option>
+                    <option value="AU">Australia</option>
                     <option value="BB">Barbados</option>
                     <option value="BR">Brazil</option>
-                    <option value="CA" >Canada</option>
+                    <option value="CA">Canada</option>
                     <option value="CR">Costa Rica</option>
                     <option value="HR">Croatia</option>
                     <option value="FJ">Figi</option>
-                    <option value="FR" >France</option>
+                    <option value="FR">France</option>
                     <option value="DE">Germany</option>
                     <option value="GI">Gibraltar</option>
                     <option value="GR">Greece</option>
                     <option value="IS">Iceland</option>
                     <option value="ID">Indonesia - Bali</option>
-                    <option value="IT" >Italy</option>
+                    <option value="IT">Italy</option>
                     <option value="MT">Malta</option>
                     <option value="MU">Mauritius</option>
                     <option value="MX">Mexico</option>
@@ -198,8 +197,8 @@
                     <option value="ES">Spain</option>
                     <option value="TH">Thailand</option>
                     <option value="BS">The Bahamas</option>
-                    <option value="GB" >United Kingdom</option>
-                    <option value="US" >United States</option>
+                    <option value="GB">United Kingdom</option>
+                    <option value="US">United States</option>
                   </select>
                   <!-- <mat-select [(ngModel)]="selectedValue" color="primary" name="food" formControlName="website" class="form-control" >
                     <mat-label>Country/Region</mat-label>
@@ -216,62 +215,64 @@
               </div>
               <div class="form-group">
                 <!-- <mat-label for="listing_website">Country/Region</mat-label> -->
-                 <label for="listing_website">Select a Category</label>
-                 <div class="d-flex">
-                  
-                    <select class="form-control" name="listing[category_id]" id="listing_category_id" formControlName="category">
-                      <option value="">Select a Category</option>
-                      <option value="1">Food and Drink</option>
-                      <option value="2">Celebrants and Officiants</option>
-                      <option value="3">Dresses, Suits and Accessories</option>
-                      <option value="4">Entertainment</option>
-                      <option value="5">Flowers</option>
-                      <option value="6">Hair, Make-Up and Beauty</option>
-                      <option value="7">Invitations and Stationery</option>
-                      <option value="8">Jewellery</option>
-                      <option value="9">Music</option>
-                      <option value="10">Photography</option>
-                      <option value="11">Cake Makers</option>
-                      <option value="12">Transport</option>
-                      <option value="13">Venues</option>
-                      <option value="14">Wedding Planners</option>
-                      <option value="15">Decorations and Hire</option>
-                      <option value="16">Accommodation</option>
-                      
-                      <option value="17">Videography</option>
-                      <option value="18">Gifts and Favors</option>
-                    </select>
-                 
-                   <div class="edit-btn text-white p-2">
-                     <span class="fa fa-pencil"></span>
-                   </div>
-                 </div>
-               </div>
-             
+                <label for="listing_website">Select a Category</label>
+                <div class="d-flex">
+
+                  <select class="form-control" name="listing[category_id]" id="listing_category_id"
+                    formControlName="category">
+                    <option value="">Select a Category</option>
+                    <option value="1">Food and Drink</option>
+                    <option value="2">Celebrants and Officiants</option>
+                    <option value="3">Dresses, Suits and Accessories</option>
+                    <option value="4">Entertainment</option>
+                    <option value="5">Flowers</option>
+                    <option value="6">Hair, Make-Up and Beauty</option>
+                    <option value="7">Invitations and Stationery</option>
+                    <option value="8">Jewellery</option>
+                    <option value="9">Music</option>
+                    <option value="10">Photography</option>
+                    <option value="11">Cake Makers</option>
+                    <option value="12">Transport</option>
+                    <option value="13">Venues</option>
+                    <option value="14">Wedding Planners</option>
+                    <option value="15">Decorations and Hire</option>
+                    <option value="16">Accommodation</option>
+
+                    <option value="17">Videography</option>
+                    <option value="18">Gifts and Favors</option>
+                  </select>
+
+                  <div class="edit-btn text-white p-2">
+                    <span class="fa fa-pencil"></span>
+                  </div>
+                </div>
+              </div>
+
             </fieldset>
-    
+
             <hr>
             <fieldset>
               <legend>Description</legend>
               <div class="form-group">
                 <label for="listing_tagline">Tagline</label>
-                <input formControlName="tagline" class="form-control" placeholder="Tagline" type="text"
-                  value=" " name="" id="listing_tagline">
+                <input formControlName="tagline" class="form-control" placeholder="Tagline" type="text" value=" "
+                  name="" id="listing_tagline">
               </div>
               <div class="form-group">
                 <label for="listing_description">Description</label>
-                <textarea formControlName="description" class="form-control" placeholder="Description" rows="6" name="listing[description]"
-                  id="listing_description">  </textarea>
+                <textarea formControlName="description" class="form-control" placeholder="Description" rows="6"
+                  name="listing[description]" id="listing_description">  </textarea>
               </div>
               <hr>
             </fieldset>
             <fieldset class="">
               <legend>Social Media</legend>
 
-              <div class="form-group row"  >
+              <div class="form-group row">
                 <label class="col-4 col-form-label" for="listing_option_facebook">facebook.com/</label>
                 <div class="col-7 pr-0">
-                  <input formControlName="fLink" value=""  (focusout)="toggleDisable(1)" class="form-control" type="text" name="" id="listing_option_facebook">
+                  <input formControlName="fLink" value="" (focusout)="toggleDisable(1)" class="form-control" type="text"
+                    name="" id="listing_option_facebook">
                 </div>
                 <div class="col-1 pl-0 d-flex align-items-stretch justify-content-stretch">
                   <button type="button" data-toggle="form-control" data-target="#listing_option_facebook"
@@ -284,12 +285,13 @@
               <div class="form-group row">
                 <label class="col-4 col-form-label" for="listing_option_twitter">twitter.com/</label>
                 <div class="col-7 pr-0">
-                  <input formControlName="tLink" value="" class="form-control" 
-                    type="text" name="" id="listing_option_twitter" (focusout)="toggleDisable(2)">
+                  <input formControlName="tLink" value="" class="form-control" type="text" name=""
+                    id="listing_option_twitter" (focusout)="toggleDisable(2)">
                 </div>
                 <div class="col-1 pl-0 d-flex align-items-stretch justify-content-stretch">
                   <button type="button" data-toggle="form-control" data-target="#listing_option_twitter"
-                    class="edit-btn text-white btn-reset" style="width:100%" data-original-title="" title="" (click)="toggleEnable(2)" >
+                    class="edit-btn text-white btn-reset" style="width:100%" data-original-title="" title=""
+                    (click)="toggleEnable(2)">
                     <span class="fa fa-pencil"></span>
                   </button>
                 </div>
@@ -297,12 +299,13 @@
               <div class="form-group row">
                 <label class="col-4 col-form-label" for="listing_option_google">plus.google.com/</label>
                 <div class="col-7 pr-0">
-                  <input formControlName="gLink" value="" class="form-control"  type="text" name="listing_option[google]"
+                  <input formControlName="gLink" value="" class="form-control" type="text" name="listing_option[google]"
                     id="listing_option_google" (focusout)="toggleDisable(3)">
                 </div>
                 <div class="col-1 pl-0 d-flex align-items-stretch justify-content-stretch">
                   <button type="button" data-toggle="form-control" data-target="#listing_option_google"
-                    class="edit-btn text-white btn-reset" style="width:100%" data-original-title="" title="" (click)="toggleEnable(3)" >
+                    class="edit-btn text-white btn-reset" style="width:100%" data-original-title="" title=""
+                    (click)="toggleEnable(3)">
                     <span class="fa fa-pencil"></span>
                   </button>
                 </div>
@@ -310,12 +313,13 @@
               <div class="form-group row">
                 <label class="col-4 col-form-label" for="listing_option_instagram">instagram.com/</label>
                 <div class="col-7 pr-0">
-                  <input formControlName="iLink" value="" class="form-control" 
-                    type="text" name="" id="listing_option_instagram" (focusout)="toggleDisable(4)">
+                  <input formControlName="iLink" value="" class="form-control" type="text" name=""
+                    id="listing_option_instagram" (focusout)="toggleDisable(4)">
                 </div>
                 <div class="col-1 pl-0 d-flex align-items-stretch justify-content-stretch">
                   <button type="button" data-toggle="form-control" data-target="#listing_option_instagram"
-                    class="edit-btn text-white btn-reset" style="width:100%" data-original-title="" title="" (click)="toggleEnable(4)" >
+                    class="edit-btn text-white btn-reset" style="width:100%" data-original-title="" title=""
+                    (click)="toggleEnable(4)">
                     <span class="fa fa-pencil"></span>
                   </button>
                 </div>
@@ -323,12 +327,13 @@
               <div class="form-group row">
                 <label class="col-4 col-form-label" for="listing_option_pinterest">pinterest.com/</label>
                 <div class="col-7 pr-0">
-                  <input formControlName="pLink" value="" class="form-control" 
-                    type="text" name="" id="listing_option_pinterest" (focusout)="toggleDisable(5)">
+                  <input formControlName="pLink" value="" class="form-control" type="text" name=""
+                    id="listing_option_pinterest" (focusout)="toggleDisable(5)">
                 </div>
                 <div class="col-1 pl-0 d-flex align-items-stretch justify-content-stretch">
                   <button type="button" data-toggle="form-control" data-target="#listing_option_pinterest"
-                    class="edit-btn text-white btn-reset" style="width:100%" data-original-title="" title="" (click)="toggleEnable(5)" >
+                    class="edit-btn text-white btn-reset" style="width:100%" data-original-title="" title=""
+                    (click)="toggleEnable(5)">
                     <span class="fa fa-pencil"></span>
                   </button>
                 </div>
@@ -342,12 +347,13 @@
                 <label class="col-6 col-form-label"
                   for="listing_option_featured_video_youtube">youtube.com/watch?v=</label>
                 <div class="col-5 pr-0">
-                  <input formControlName="yVideoLink" value="" class="form-control"  type="text"
-                    name="listing_option[]" id="listing_option_featured_video_youtube"  (focusout)="toggleDisable(6)">
+                  <input formControlName="yVideoLink" value="" class="form-control" type="text" name="listing_option[]"
+                    id="listing_option_featured_video_youtube" (focusout)="toggleDisable(6)">
                 </div>
                 <div class="col-1 pl-0 d-flex align-items-stretch justify-content-stretch">
                   <button type="button" data-toggle="form-control" data-target="#listing_option_featured_video_youtube"
-                    class="edit-btn text-white btn-reset" style="width:100%" data-original-title="" title="" (click)="toggleEnable(6)">
+                    class="edit-btn text-white btn-reset" style="width:100%" data-original-title="" title=""
+                    (click)="toggleEnable(6)">
                     <span class="fa fa-pencil"></span>
                   </button>
                 </div>
@@ -355,12 +361,13 @@
               <div class="form-group row">
                 <label class="col-6 col-form-label" for="listing_option_featured_video_vimeo">vimeo.com/</label>
                 <div class="col-5 pr-0">
-                  <input formControlName="vVideoLink" value=" " class="form-control"  type="text"
-                    name="listing_option[]" id="listing_option_featured_video_vimeo" (focusout)="toggleDisable(7)">
+                  <input formControlName="vVideoLink" value=" " class="form-control" type="text" name="listing_option[]"
+                    id="listing_option_featured_video_vimeo" (focusout)="toggleDisable(7)">
                 </div>
                 <div class="col-1 pl-0 d-flex align-items-stretch justify-content-stretch">
                   <button type="button" data-toggle="form-control" data-target="#listing_option_featured_video_vimeo"
-                    class="edit-btn text-white btn-reset" style="width:100%" data-original-title="" title="" (click)="toggleEnable(7)" >
+                    class="edit-btn text-white btn-reset" style="width:100%" data-original-title="" title=""
+                    (click)="toggleEnable(7)">
                     <span class="fa fa-pencil"></span>
                   </button>
                 </div>
@@ -373,12 +380,13 @@
               <div class="form-group row">
                 <label class="col-6 col-form-label" for="listing_option_invoice_vat_number">Invoice VAT Number</label>
                 <div class="col-5 pr-0">
-                  <input formControlName="vatNumber" class="form-control"  type="text" name="listing_option[]"
+                  <input formControlName="vatNumber" class="form-control" type="text" name="listing_option[]"
                     id="listing_option_invoice_vat_number" (focusout)="toggleDisable(8)">
                 </div>
                 <div class="col-1 pl-0 d-flex align-items-stretch justify-content-stretch">
                   <button type="button" data-toggle="form-control" data-target="#listing_option_invoice_vat_number"
-                    class="edit-btn text-white btn-reset" style="width:100%" data-original-title="" title="" (click)="toggleEnable(8)" >
+                    class="edit-btn text-white btn-reset" style="width:100%" data-original-title="" title=""
+                    (click)="toggleEnable(8)">
                     <span class="fa fa-pencil"></span>
                   </button>
                 </div>
@@ -402,57 +410,57 @@
     </mat-card>
 
 
-                                                                 <!-- Gallery -->
+    <!-- Gallery -->
 
-                                                                 
-    <mat-card class="custom" fxFlex >
+
+    <mat-card class="custom" fxFlex>
       <mat-card-title fxLayoutAlign="center center" class="m-3">Gallery</mat-card-title>
       <mat-card-content>
-       
+
         <hr>
         <mat-grid-list *ngIf="galleryData" cols="2" rowHeight="2:2" gutterSize="5px" role="list">
-         
-          <mat-grid-tile  role="listitem" *ngFor="let g of galleryData.gallery">
+
+          <mat-grid-tile role="listitem" *ngFor="let g of galleryData.gallery">
             <div class="img-wrap">
-              <mat-icon class="close"  color="warn" (click)="deleteGallery(g._id)">delete</mat-icon>
-              <img class="gallery-img"[src]="g.image" alt="">
+              <mat-icon class="close" color="warn" (click)="deleteGallery(g._id)">delete</mat-icon>
+              <img class="gallery-img" [src]="g.image" alt="">
             </div>
-           </mat-grid-tile>
-           <mat-grid-tile role="listitem" >
-            <mat-icon class="add-image" color="primary" aria-labelledby="Add image to gallery" (click)="galleryDialog()" >add</mat-icon>
-          </mat-grid-tile >
-         </mat-grid-list>  
+          </mat-grid-tile>
+          <mat-grid-tile role="listitem">
+            <mat-icon class="add-image" color="primary" aria-labelledby="Add image to gallery"
+              (click)="galleryDialog()">add</mat-icon>
+          </mat-grid-tile>
+        </mat-grid-list>
 
-                                              <!-- Update listing Section  -->
+        <!-- Update listing Section  -->
 
-         <div class="mb-4 mt-5">
-          <mat-card-title fxLayoutAlign="center">Upgrade Listing</mat-card-title> 
+        <div class="mb-4 mt-5">
+          <!-- <mat-card-title fxLayoutAlign="center">Upgrade Listing</mat-card-title>  -->
           <hr>
-          <p class="text-muted text-sm">Upgrade your listing to appear in multiple categories</p>
-          <button type="button" data-remodal-target="addon-category" class="btn btn-block btn-primary">Add an extra category</button>
-          <hr>
-          <p class="text-muted text-sm">Upgrade your listing to appear in multiple countries</p>
-          <button type="button" data-remodal-target="addon-country" class="btn btn-block btn-primary">Add an extra country</button>
+          <!-- <p class="text-muted text-sm">Upgrade your listing to appear in multiple categories</p> -->
+          <button type="button" data-remodal-target="addon-category" class="btn btn-block btn-primary">Add an extra
+            category</button>
+          <!-- <hr> -->
+          <!-- <p class="text-muted text-sm">Upgrade your listing to appear in multiple countries</p> -->
+          <!-- <button type="button" data-remodal-target="addon-country" class="btn btn-block btn-primary">Add an extra country</button> -->
         </div>
-        
-                                                        <!-- Payment Section -->
 
-          <div class="mb-3 mt-5">
-          <mat-card-title fxLayoutAlign="center" >Change Payment Card</mat-card-title>
-          
+        <!-- Payment Section -->
+
+        <div class="mb-3 mt-4">
+          <!-- <mat-card-title fxLayoutAlign="center" >Change Payment Card</mat-card-title> -->
+
           <hr>
-          <p class="text-muted text-sm">Add and remove credit/debit cards and set your default card.</p>
-          <div class="container mt-5">
-            <h2>Upgrade Listing </h2>
-            <div class="row mt-5">
-              
-              <div class="col-md-12 mb-5">
-                
-                <button (click)="pay(30)" class="btn btn-success btn-block">Upgrade Your listing for $30</button>
-              </div>
-              
+          <!-- <p class="text-muted text-sm">Add and remove credit/debit cards and set your default card.</p> -->
+          <div class="container mt-4">
+            <h2 class="text-center">Upgrade Listing </h2>
+            <div class="row mt-4 mb-4">
+              <button (click)="pay(30)" class="btn btn-success btn-block">Upgrade to Premium <small>(€40 per
+                  year)</small> </button>
+
+
             </div>
-            
+
           </div>
           <!-- <table class="table table-stripe">
             <thead>
@@ -490,7 +498,7 @@
                 </tr>
             </tbody>
           </table> -->
-          <button type="button" data-remodal-target="add-card" class="btn btn-block btn-primary">Add New Default Card</button>
+          <!-- <button type="button" data-remodal-target="add-card" class="btn btn-block btn-primary">Add New Default Card</button> -->
         </div>
       </mat-card-content>
     </mat-card>

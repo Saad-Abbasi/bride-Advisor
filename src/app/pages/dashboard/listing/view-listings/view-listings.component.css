@@ -1,0 +1,24 @@
+.container-flud{
+    background-image: url('../../../../../assets/Dashboard-Back-ground.jpg');
+    background-size: cover;
+    background-position: center ;
+    min-height: 650px;
+    height:100%; 
+}
+.table_data{
+   padding: 20px 0px 20px 0px;
+}
+table {
+    width: 100%;
+  }
+th{
+    font-size: larger;
+    font-weight: bolder;
+}
+td{
+    text-transform: capitalize;
+}
+tr:nth-child(even) {
+    background: #4dd0e1;
+    color: white;
+}

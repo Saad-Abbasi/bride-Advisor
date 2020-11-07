@@ -1,0 +1,35 @@
+.container-flud{
+    background-image:url('../../../../assets/Dashboard-Back-ground.jpg');
+    background-size: cover;
+    background-position: center ;
+    min-height: 650px;
+    height:100%; 
+    
+}
+.table_data{
+    padding: 50px 0px 50px 0px;
+   
+}
+table {
+    width: 100%;
+  }
+th{
+    font-size: larger;
+    font-weight: bolder;
+}
+.message{
+    width: 45%;
+}
+tr:nth-child(even) {
+    background: #cccfcf;
+    color: white !important;
+}
+table th {
+    vertical-align: middle;
+    border-bottom: 2px solid #eceeef;
+}
+table td{
+    padding: 0.75rem;
+    vertical-align: middle;
+    border-top: 1px solid #eceeef;
+}

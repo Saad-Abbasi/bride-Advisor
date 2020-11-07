@@ -17,6 +17,10 @@ import { RatingDialogComponent } from './pages/dialogs/rating-dialog/rating-dial
 import { TermsConditionComponent } from './pages/terms-condition/terms-condition.component';
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
 import { UpdatePasswordComponent } from './pages/update-password/update-password.component';
+import { DashboardComponent } from './pages/dashboard/dashboard/dashboard.component';
+import { ViewListingsComponent } from './pages/dashboard/listing/view-listings/view-listings.component';
+import { ViewReviewsComponent } from './pages/dashboard/view-reviews/view-reviews.component';
+import { ViewUsersComponent } from './pages/dashboard/view-users/view-users.component';
 
 
 
@@ -37,6 +41,17 @@ const routes: Routes = [
   {path : 'terms-and-conditions', component : TermsConditionComponent},
   {path : 'forgot-password', component : ForgotPasswordComponent},
   {path : 'update-password', component : UpdatePasswordComponent,canActivate:[AuthGuard]},
+//Admin routes
+  {
+    path : 'dashboard',
+     component : DashboardComponent,
+     children:[
+      {path : 'view-listing', component : ViewListingsComponent},
+      {path : 'view-reviews', component : ViewReviewsComponent},
+      {path : 'view-users', component : ViewUsersComponent}
+     ]
+  },
+  
   {path : '' , pathMatch : 'full' ,component:FindComponent}
 ];
 

@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
 const listingSchema = mongoose.Schema({
+    
     //<---Business Details-->
     profileImage:String,
     listingType:String,
@@ -32,6 +33,14 @@ const listingSchema = mongoose.Schema({
     vVideoLink:String,//<---Vimeo Feture video link
     vatNumber:String,
     category:String,
+    paymentStatus: { 
+        type: String,
+        default: 'free'
+     },
+     listingStatus: { 
+        type: String,
+        default: 'live'
+     },
     reviews:[{
         type:mongoose.Schema.Types.ObjectId,
         ref:"review"
@@ -47,6 +56,8 @@ const listingSchema = mongoose.Schema({
         ref:"gallery"
         
     }]
+},
+{ timestamps: { createdAt: 'created_at' } 
 });
 
 module.exports = mongoose.model('listing', listingSchema);

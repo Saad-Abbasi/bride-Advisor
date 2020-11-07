@@ -78,3 +78,11 @@ body { padding: 2em; }
   align-items: center;
   justify-content: center;
 }
+a{
+  color: #00BCD4;
+}
+
+.btn:focus, .btn:active:focus, .btn.active:focus{
+  outline:none;
+  box-shadow:none;
+}

@@ -15,6 +15,7 @@ import {Router} from '@angular/router'
 export class FindComponent implements OnInit {
 data:SearchData = {};
 breakPoint:any;
+indexTab:number = 0;
 // category:String
 //  address:String;
  public selectedCategory ="";
@@ -55,7 +56,7 @@ breakPoint:any;
 
   }
   selectCategory(catValue:any,event){
-    
+    this.indexTab = 1;
     this.selectedCategory = event.srcElement.alt; //update button with current event
     this.data.category = catValue; //send value for search
   }
