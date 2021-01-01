@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import {FormControl,FormGroup,Validators}from '@angular/forms'
 import {LoginService} from '../../shared/login/login.service';
 import {ListingService} from '../../shared/listing/listing.service'
@@ -12,6 +12,7 @@ import {ReviewsService} from '../../shared/reviews/reviews.service'
 import { Review } from 'src/app/models/reviews/review';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
+import { GooglePlaceDirective } from 'ngx-google-places-autocomplete';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -41,8 +42,9 @@ export class ProfileComponent implements OnInit {
   selectedValue: string;
   selectedCar: string;
 
- 
-  
+
+@ViewChild('addressInput')
+addressInput: ElementRef;
 
   constructor(private _loginService :LoginService,
               private _listingService:ListingService,
@@ -50,7 +52,7 @@ export class ProfileComponent implements OnInit {
               private _dialog: MatDialog,
               private _http: HttpClient
               ) { }
-                  
+                         
   ngOnInit(){
     this.businessDetails = new FormGroup({
       listingType: new FormControl({ value: '', disabled: this.isDisabled}),
@@ -85,8 +87,10 @@ export class ProfileComponent implements OnInit {
     //getting profile detailse
     this.getUser();
     this.loadStripe();
+    
   }
   //methods
+  
   getUser(){
     this._loginService.getUser().
       subscribe((user)=>{
@@ -138,15 +142,24 @@ export class ProfileComponent implements OnInit {
      this.getGalleryImages(this.listingId)
     })
   } 
+
    //getting reviews
    getReviews(listingId:String){
+     
     this._reviewService.getReviews(listingId)
       .subscribe(result=>{
         console.log('reviews are ',result)
         this.reviews = result;
-        //  console.log(this.reviews[0].name)
+          this.reviews.forEach(review => {
+          let tempName = review.name.split(' ');
+           review.name = tempName[0];
+        });
+        
+       
       })
   }
+  
+
   //Edit profile 
 
   editProfile(listingData:Listing){
@@ -196,6 +209,7 @@ export class ProfileComponent implements OnInit {
       //  console.log(this.galleryData.gallery[0].image)
       })
    }
+   
   saveBusiness(){
     if (this.businessDetails.invalid) {
       alert('Email is required')
@@ -203,7 +217,12 @@ export class ProfileComponent implements OnInit {
     }
     if(!this.isListing()){
       console.log('Excute Post method')
-      // Add Listing 
+      // Add Listing
+      //getting address value from native Element ref
+      let inputValue = this.addressInput.nativeElement.value;
+      inputValue = inputValue.toLowerCase( )
+      
+      this.businessDetails.patchValue({address:inputValue});
       console.log(this.businessDetails.value)
       this._listingService.addListing(this.businessDetails.value,this.userId).
       subscribe((result)=>{
@@ -216,6 +235,11 @@ export class ProfileComponent implements OnInit {
     else{
       
       //Updating
+      //getting address value from native Element ref
+      let inputValue = this.addressInput.nativeElement.value;
+      inputValue = inputValue.toLowerCase( )
+
+      this.businessDetails.patchValue({address:inputValue});
       console.log(this.businessDetails.value)
       this._listingService.updateListing(this.businessDetails.value,this.listingId).
       subscribe((result)=>{
@@ -389,5 +413,22 @@ pay(amount) {
     amount: amount * 100
   });
 
+}
+
+//Load address 
+formattedaddress=" "; 
+  options={ 
+    // componentRestrictions:{ 
+    //   country:["AU","AU","BB","BR","CA","CR","HR","FJ","FR","DE","GI","GR","IS","ID","IT","MT","MU","MX","NZ","PE","PH","PT","IE","SG","ZA","ES","TH","BS","GB","US"] 
+    // },
+    types: ['address'] 
+    
+  }
+  public AddressChange(address: any) { 
+    //setting address from API to local variable 
+     this.formattedaddress=address.formatted_address 
+  }
+  public handleAddressChange(address: any) {
+    // Do some stuff
 }
 }

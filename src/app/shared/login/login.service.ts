@@ -78,8 +78,17 @@ export class LoginService {
      )
    };
 
-   //method to check login 
+   
+//method to get admins
+   getAllAdmins(){
+     return this.http.get(this.apiUrl+'/users/admin')
+     .pipe(
+      retry(2),
+      catchError(this.handleError)
+    )
+   };
 
+//method to check login 
    loggedIn(){
      return !!localStorage.getItem('token')
    }

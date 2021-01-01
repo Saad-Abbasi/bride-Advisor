@@ -11,5 +11,6 @@ module.exports = (app) => {
 app.get('/profile', auth, ctrlProfile.profileRead);
 
 
+
     
 }

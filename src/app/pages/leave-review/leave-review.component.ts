@@ -75,7 +75,8 @@ export class LeaveReviewComponent implements OnInit {
     //Submiting the request 
     this._reviewService.saveReview(this.reviewForm.value,this.listingId)
     .subscribe((result)=>{
-      console.log(result)
+      console.log(result);
+      location.reload();
     },
     (err)=>console.log(err))
   }

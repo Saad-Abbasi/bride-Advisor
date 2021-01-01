@@ -1,18 +1,18 @@
-<div class="container-fluid bg">
+<div *ngIf="galleryData " class="container-fluid bg" [style.backgroundImage]="'url('+backgroundImage+') '">
     <div fxLayout="row" fxLayoutAlign="center center" class="row-height">
         <div style="position:relative" class="container-fluid">
             <span class="d-inline-block text-uppercase text-white btn-primary  py-2 px-3"
                 style="position:absolute;top:1rem;right:0;background-color:#ADB3BC">
-                Top Listing
+                {{listingType}}
                 <!-- Update with Dynamic interpolation -->
             </span>
-            <div class="pt-3 pb-6" *ngIf="listingData">
-                <div class="container">
+            <div class="pt-3 pb-6" >
+                <div class="container add-overlay">
                     <div class="row text-center">
                         <div class="col-12">
                             <div class="d-inline-block mb-3  " style="position:relative">
-                                <img class="img-circle z-depth-1 shadow-lg " alt="Listing Logo" width="96"
-                                    height="96" [src]="profileImage">
+                                <img class="img-circle z-depth-1 shadow-lg " alt="Listing Logo" width="96" height="96"
+                                    [src]="profileImage">
                                 <!-- <button id="favourite-listing" type="button" data-toggle="tooltip" data-placement="right" title=""
                                     data-method="delete"
                                     class="d-flex align-items-center justify-content-center btn-reset bg-white z-depth-1"
@@ -32,11 +32,6 @@
                                                 <i class="fa fa-star"></i>
                                             </li>
                                         </ul>
-                                        <!-- <span  class="rating-star active" data-rating="5">☆</span>
-                                        <span class="rating-star" data-rating="4">☆</span>
-                                        <span class="rating-star" data-rating="3">☆</span>
-                                        <span class="rating-star" data-rating="2">☆</span>
-                                        <span class="rating-star" data-rating="1">☆</span> -->
                                     </span>
                                 </div>
                                 <a href="#" class="smooth-scroll text-white">View all Reviews</a>
@@ -47,28 +42,31 @@
                                     {{listingData.phone}}
                                 </li>
                                 <li class="list-inline-item">
-                                    <a class="text-white" target="_blank" href="#">
+                                    <a class="text-white" target="_blank" href="{{listingData.website }}">
                                         <span class="fa fa-globe"></span>
                                         {{listingData.website}}
                                     </a> </li>
                             </ul>
                             <nav class="nav justify-content-center mb-3">
-                                <a class="nav-link p-2 text-white" target="_blank" [href]="listingData.fLink">
+                                <a *ngIf="listingData.fLink" class="nav-link p-2 text-white" target="_blank" [href]="listingData.fLink">
                                     <span class="fa fa-facebook"></span>
-                                </a> <a class="nav-link p-2 text-white" target="_blank" [href]="listingData.fLink">
+                                </a>
+                                 <a *ngIf="listingData.tLink" class="nav-link p-2 text-white" target="_blank" [href]="listingData.fLink">
                                     <span class="fa fa-twitter"></span>
-                                </a> <a class="nav-link p-2 text-white" target="_blank" [href]="listingData.fLink">
+                                </a>
+                                 <a *ngIf="listingData.iLink"  class="nav-link p-2 text-white" target="_blank" [href]="listingData.fLink">
                                     <span class="fa fa-instagram"></span>
-                                </a> <a class="nav-link p-2 text-white" target="_blank" [href]="listingData.fLink">
+                                </a>
+                                 <a *ngIf="listingData.pLink" class="nav-link p-2 text-white" target="_blank" [href]="listingData.fLink">
                                     <span class="fa fa-pinterest"></span>
                                 </a> </nav>
                             <div class="btn-group">
                                 <!-- <button type="button" data-remodal-target="contact" class="btn btn-secondary p-2">Contact
                                     Us</button>
                                 <button type="button" data-remodal-target="review" class="btn btn-primary">Leave a Review</button> -->
-                                <button class="matbtn" mat-raised-button>Contact
+                                <button routerLink="/support" class="matbtn" mat-raised-button>Contact
                                     Us</button>
-                                <button mat-raised-button color="primary" class="text-white">Leave a Review</button>
+                                <button mat-raised-button color="primary" class="text-white" routerLink="/leave-review">Leave a Review</button>
                             </div>
                         </div>
                     </div>
@@ -79,25 +77,19 @@
 </div>
 <!-- Galler Section -->
 
-<section class="container-gallery">
-    <!-- <header class="text-center my-4">
-      <h1>Owl Carousel - PresentModule</h1>
-      <p>"autoplay=<span class="text-success">true</span>", "loop=<span class="text-success">true</span>"</p>
-    </header> -->
-    <div class="container-fluid slider-container" *ngIf="galleryData">
+<section>
+    <div class="container-fluid " *ngIf="galleryData">
         <div class="row">
             <div class="col-12 ">
-
                 <owl-carousel-o [options]="customOptions" (translated)="getPassedData($event)">
-
                     <ng-container *ngFor="let gallery of galleryData">
                         <!-- <ng-template carouselSlide [width]="item.width"> -->
                         <ng-template carouselSlide>
-                            <div class="slider p-3 ">
+                            <div class="slider  ">
                                 <!-- <p>{{item.text}}</p> -->
-                                <img id="#myImg" [src]="gallery.image" alt="{{gallery.description}}"
-                                    class="img-fluid  z-depth-1" (click)="openDialog(gallery.image)">
-                            </div><!-- /.carousel-item team-member -->
+                                <img id="myImg" [src]="gallery.image" alt="{{gallery.description}}"
+                                    class="img-fluid my-4 z-depth-1">
+                            </div>
                         </ng-template>
                     </ng-container>
 
@@ -109,10 +101,96 @@
 
     </div> <!-- /.container -->
 </section>
-
+                                                        <!-- Description -->
 <div class="container">
+    <div class="row">
 
-    <!-- <iframe width="100%" height="400" [src]="controllerSrc" frameborder="no"></iframe> -->
+        <div class="col"></div>
+
+    <div class="col-6 text-center m-5 desciption-container">
+            <mat-card *ngIf="listingData"> 
+                <mat-card-header class="desciption-header">
+                    <p >
+                        <mat-card-title class="mb-2 ">{{listingData.tagLine}}
+                        </mat-card-title>
+                        <em *ngIf= "!listingData.tagLine" >
+                            Please add your business Tagline
+                        </em>
+                    </p>
+                  </mat-card-header>
+                  
+                  <mat-card-content>
+                    <p  class=" business-desciption">{{listingData.description}}
+                    </p>
+                  </mat-card-content>
+            </mat-card>
+    </div>
+
+    <div class="col"></div>
+    </div>
+
+
+<section>
+    <div class="container-fluid " *ngIf="galleryData">
+        <div class="row">
+            <div class="col-12 ">
+                <owl-carousel-o [options]="reviewOptions" (translated)="getPassedData($event)">
+                    <ng-container *ngFor="let review of reviews">
+                        <!-- <ng-template carouselSlide [width]="item.width"> -->
+                        <ng-template carouselSlide>
+                            <div class="slider  ">
+                                <!-- <p>{{item.text}}</p> -->
+                                <mat-card class="review-card  my-4 z-depth-1" >
+
+                                    <div class="rating-header">
+                                        <mat-card-header>
+                                          <mat-card-title class="">
+                                            {{review.name}}
+                                          </mat-card-title>
+                                        </mat-card-header>
+                                        <mat-card-header>
+                                          <mat-card-title>
+                                            <ul class="list-inline rating-list" *ngFor="let star of stars" style="display: inline-block">
+                                              <li (click)="countStar(star)" [ngClass]="{'selected': (star <= review.rating)}">
+                                                <i class="fa fa-star"></i>
+                                              </li>
+                                            </ul>
+                                          </mat-card-title>
+                                        </mat-card-header>
+                                      </div>
+                                      <div class="rating-header rating-sub-header">
+                                        <mat-card-header>
+                                          <mat-card-subtitle class="">Member</mat-card-subtitle>
+                                        </mat-card-header>
+                                        <mat-card-header>
+                                          <mat-card-subtitle class="fill">
+                                            {{review.date|date}}
+                                          </mat-card-subtitle>
+                                        </mat-card-header>
+                                      </div>
+                              
+                              
+                                      <mat-card-content>
+                                        <p>
+                                          {{review.description}}
+                                        </p>
+                                      </mat-card-content>
+
+
+                                </mat-card>
+                                <!-- <img id="myImg" [src]="gallery.image" alt="{{gallery.description}}"
+                                    class="img-fluid my-4 z-depth-1"> -->
+                            </div>
+                        </ng-template>
+                    </ng-container>
+
+                </owl-carousel-o>
+
+            </div> <!-- /.col-sm-10 col-sm-offset-1 -->
+
+        </div> <!-- row -->
+
+    </div> <!-- /.container -->
+</section>
 </div>
 
-<!-- image model -->

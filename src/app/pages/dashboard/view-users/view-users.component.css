@@ -33,3 +33,9 @@ table td{
     vertical-align: middle;
     border-top: 1px solid #eceeef;
 }
+.example-spacer{
+    width: 40%;
+}
+.td-button{
+    text-align: center;
+}

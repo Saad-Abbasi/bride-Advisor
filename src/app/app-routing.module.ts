@@ -21,6 +21,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard/dashboard.compon
 import { ViewListingsComponent } from './pages/dashboard/listing/view-listings/view-listings.component';
 import { ViewReviewsComponent } from './pages/dashboard/view-reviews/view-reviews.component';
 import { ViewUsersComponent } from './pages/dashboard/view-users/view-users.component';
+import {ResolverService} from '../app/shared/resolver/resolver.service'
 
 
 
@@ -35,7 +36,8 @@ const routes: Routes = [
   {path : 'pricing', component : PricingComponent},
   {path : 'listing', component : ListingComponent},
   {path : 'profile', component:ProfileComponent,canActivate:[AuthGuard]},
-  {path : 'profile-view', component:ProfileViewComponent ,canActivate:[AuthGuard]},
+  {path : 'profile-view', component:ProfileViewComponent},
+  {path : 'view-listing/:id', component:ProfileViewComponent, resolve:{profileData:ResolverService}},
   {path : 'search-view', component : SearchViewComponent},
   {path : 'review', component : LeaveReviewComponent,canActivate:[AuthGuard]},
   {path : 'terms-and-conditions', component : TermsConditionComponent},

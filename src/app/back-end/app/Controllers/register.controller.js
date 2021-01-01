@@ -26,7 +26,7 @@ exports.create =  (req, res) => {
     const secretToken = randomstring.generate();
 
     const user = new User();
-    user.ac_Type = req.body.ac_Type;
+    user.ac_Type = req.body.acType;
     user.firstName = req.body.firstName;
     user.lastName = req.body.lastName;
     user.email = req.body.email;
@@ -174,4 +174,41 @@ module.exports.passUpdate = async function(req, res) {
   };
 
 
+//<==================Get Admins====================>
+module.exports.findAdmins = function(req, res)  {
+  
+  User.find({ac_Type: 'admin'},'email firstName lastName _id')
+  .then(admins => {
+      res.send(admins)
+  }).catch(err => {
+      res.status(500).send({
+          message: err.message || "Some error occurred while retrieving Admins."
+      });
+  });
+};
 
+// <===============Delete Admins=================>
+
+exports.deleteAdmin = (req, res) => {
+  console.log('Recived user id',req.params.userId)
+  User.findByIdAndRemove(req.params.userId)
+  .then(user => {
+      if(!user) {
+          return res.status(404).send({
+              message: "User  not found with id " + req.params.userId
+          });
+      }
+      res.send({message: "User deleted successfully!",
+                name :user.firstName});
+  }).catch(err => {
+      if(err.kind === 'ObjectId' || err.name === 'NotFound') {
+          return res.status(404).send({
+              message: "User not found with id " + req.params.userId
+          });                
+      }
+      return res.status(500).send({
+          message: "Could not delete user with id " + req.params.userId
+      });
+  });
+
+};

@@ -6,7 +6,7 @@
           <h1 class="head">Plan Your Perfect Wedding</h1>
           <p class="mx-auto mb-0" style="max-width:400px"><em>The</em> place to find wedding suppliers and vendors tried
             and tested by real brides</p>
-          <span class="btnSearch" *ngIf ="selectedCategory">
+          <span class="btnSearch" *ngIf="selectedCategory">
             <button mat-raised-button color="primary" type="submit" (click)="searchListing()">Find
               {{selectedCategory}}</button>
           </span>
@@ -16,18 +16,16 @@
   </div>
 </div>
 <!-- Spacer -->
-<div *ngIf ="selectedCategory" style="height: 40px;"></div> 
+<div *ngIf="selectedCategory" style="height: 40px;"></div>
 <!-- spacer End -->
-<div class="container-fluid  container-find">
-  <mat-tab-group animationDuration="2000ms" mat-align-tabs="center" [selectedIndex] ="indexTab">
-    <mat-tab label="Select Category"  >
+<div class="container  container-find">
+  <mat-tab-group animationDuration="2000ms" mat-align-tabs="center" [selectedIndex]="indexTab">
+    <mat-tab label="Select Category">
       <mat-toolbar class="category">
-        <a (click)="selectCategory(1,$event)" matTooltip="Food And Drink" matTooltipPosition="above" class="category-icon"
-          aria-label="Bride Advisor catergory search button">
-          <mat-icon (click)="selectCategory(1,$event)">
-            <img src="../../../assets/food.png" alt="Food & Drink" width="25px" height="25px">
-          </mat-icon>
-        </a>
+        <button mat-icon-button (click)="selectCategory(1,$event)" matTooltip="Food And Drink"
+          matTooltipPosition="above" class="icon-button" aria-label="Bride Advisor catergory search button">
+          <img  src="../../../assets/food.png" alt="Food & Drink"  width="25px" height="25px">
+        </button>
         <a matTooltip="Celebrants and Officiants" matTooltipPosition="above" class="category-icon"
           aria-label="Bride Advisor catergory search button">
           <mat-icon (click)="selectCategory(2,$event)">
@@ -133,39 +131,36 @@
         </a>
       </mat-toolbar>
     </mat-tab>
+    
     <mat-tab label="Select Country / Region" color="primary">
-
       <mat-grid-list cols="1" rowHeight="40px">
         <mat-grid-tile>
-          <h1 class="region"> Asia</h1>
+          <h1 class="region">AFRICA</h1>
         </mat-grid-tile>
       </mat-grid-list>
-      <mat-grid-list  rowHeight="100px" gutterSize="0px" [cols]="breakPoint"  (window:resize)="onResize($event)">
-
+      <mat-grid-list rowHeight="100px" gutterSize="0px" [cols]="breakPoint" (window:resize)="onResize($event)">
         <mat-grid-tile>
           <mat-list>
-            <mat-list-item (click)="findRegion('IN')">india </mat-list-item>
-            <mat-list-item (click)="findRegion('IL')">israel </mat-list-item>
+            <mat-list-item >Botswana</mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Egypt</mat-list-item>
           </mat-list>
         </mat-grid-tile>
         <mat-grid-tile>
           <mat-list>
-
-            <mat-list-item (click)="findRegion('SG')">Singapore </mat-list-item>
-            <mat-list-item (click)="findRegion('SK')">South Korea</mat-list-item>
-          </mat-list>
-        </mat-grid-tile>
-
-        <mat-grid-tile>
-          <mat-list>
-            <mat-list-item (click)="findRegion('TH')">Thailand </mat-list-item>
-            <mat-list-item (click)="findRegion('')"> </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Kenya  </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Morocco </mat-list-item>
           </mat-list>
         </mat-grid-tile>
         <mat-grid-tile>
           <mat-list>
-            <mat-list-item (click)="findRegion('VN')"> Vetnam </mat-list-item>
-            <mat-list-item (click)="findRegion('')"> </mat-list-item>
+            <mat-list-item [matMenuTriggerFor]="soutAfrica">South Africa</mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Swaziland </mat-list-item>
+          </mat-list>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <mat-list>
+            <mat-list-item (click)="findRegion($event)"> Vetnam </mat-list-item>
+            <mat-list-item (click)="findRegion($event)"> </mat-list-item>
           </mat-list>
         </mat-grid-tile>
       </mat-grid-list>
@@ -174,237 +169,321 @@
         <mat-grid-tile>
 
 
-          <h1 class="region"> United States</h1>
+          <h1 class="region">ASIA</h1>
 
         </mat-grid-tile>
       </mat-grid-list>
-      <mat-grid-list  rowHeight="520px" gutterSize="0px" [cols]="breakPoint"  (window:resize)="onResize($event)">
+      <mat-grid-list rowHeight="560px" gutterSize="0px" [cols]="breakPoint" (window:resize)="onResize($event)">
 
         <mat-grid-tile>
           <mat-list>
-            <mat-list-item (click)="findRegion('AL')">ALabama</mat-list-item>
-            <mat-list-item (click)="findRegion('')"> indiana </mat-list-item>
-            <mat-list-item (click)="findRegion('')">Alaska</mat-list-item>
-            <mat-list-item (click)="findRegion('')">Arizona</mat-list-item>
-            <mat-list-item (click)="findRegion('')">Arkansas</mat-list-item>
-            <mat-list-item (click)="findRegion('')">California</mat-list-item>
-            <mat-list-item (click)="findRegion('')">Colorado</mat-list-item>
-            <mat-list-item (click)="findRegion('')">Connecticut</mat-list-item>
-            <mat-list-item (click)="findRegion('')">Florida</mat-list-item>
-            <mat-list-item (click)="findRegion('')">Georgia</mat-list-item>
-            <mat-list-item (click)="findRegion('')">Hawaii</mat-list-item>
-            <mat-list-item (click)="findRegion('')">ldaho</mat-list-item>
-            <mat-list-item (click)="findRegion('')">Illinois</mat-list-item>
-
-          </mat-list>
-        </mat-grid-tile>
-        <mat-grid-tile>
-          <mat-list>
-            <mat-list-item (click)="findRegion('')">indiana</mat-list-item>
-            <mat-list-item (click)="findRegion('')">lowa</mat-list-item>
-            <mat-list-item (click)="findRegion('')">Kansas</mat-list-item>
-            <mat-list-item (click)="findRegion('')">Kentucky</mat-list-item>
-            <mat-list-item (click)="findRegion('')">Louisiana</mat-list-item>
-            <mat-list-item (click)="findRegion('')">Maine</mat-list-item>
-            <mat-list-item (click)="findRegion('')">Maryland</mat-list-item>
-            <mat-list-item (click)="findRegion('')">Massachusetts</mat-list-item>
-            <mat-list-item (click)="findRegion('')">Michigan</mat-list-item>
-            <mat-list-item (click)="findRegion('')">Minnesota</mat-list-item>
-            <mat-list-item (click)="findRegion('')">Mississippi</mat-list-item>
-            <mat-list-item (click)="findRegion('')">Missouri</mat-list-item>
-            <mat-list-item></mat-list-item>
-
+            <mat-list-item (click)="findRegion($event)">Afghanistan</mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Armenia  </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Azerbaijan</mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Bahrain</mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Bangladesh </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Bhutan </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Brunei</mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Cambodia </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">China </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">East Timor </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Georgia </mat-list-item>
+            <mat-list-item [matMenuTriggerFor]="india">India </mat-list-item>
+            <!-- <mat-list-item (click)="findRegion($event)">Indonesia </mat-list-item> -->
 
           </mat-list>
         </mat-grid-tile>
         <mat-grid-tile>
           <mat-list>
-            <mat-list-item (click)="findRegion('')">Montana</mat-list-item>
-            <mat-list-item (click)="findRegion('')">Nebraska</mat-list-item>
-            <mat-list-item (click)="findRegion('')">Nevada</mat-list-item>
-            <mat-list-item (click)="findRegion('')">New Hampshire</mat-list-item>
-            <mat-list-item (click)="findRegion('')">New Jersey</mat-list-item>
-            <mat-list-item (click)="findRegion('')">New Mexico</mat-list-item>
-            <mat-list-item (click)="findRegion('')">New York</mat-list-item>
-            <mat-list-item (click)="findRegion('')">North Carolina</mat-list-item>
-            <mat-list-item (click)="findRegion('')">North Dakota</mat-list-item>
-            <mat-list-item (click)="findRegion('')">Ohio</mat-list-item>
-            <mat-list-item (click)="findRegion('')">Oklahoma</mat-list-item>
-            <mat-list-item (click)="findRegion('')">Oregon</mat-list-item>
-            <mat-list-item (click)="findRegion('')"></mat-list-item>
-            <mat-list-item (click)="findRegion('')"> </mat-list-item>
-            <mat-list-item (click)="findRegion('')"></mat-list-item>
-          
+            <mat-list-item (click)="findRegion($event)">Indonesia </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Iran </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Iraq </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Israel </mat-list-item>
+            <mat-list-item [matMenuTriggerFor]="japan">Japan </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Jordan </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Kazakhstan </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Kuwait </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Kyrgyzstan </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Laos </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Lebanon </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Malaysia </mat-list-item>
+            
+
+
           </mat-list>
         </mat-grid-tile>
         <mat-grid-tile>
           <mat-list>
-            <mat-list-item (click)="findRegion('')">Pennsylvania</mat-list-item>
-            <mat-list-item (click)="findRegion('')">South Carolina</mat-list-item>
-            <mat-list-item (click)="findRegion('')">South Dakota</mat-list-item>
-            <mat-list-item (click)="findRegion('')">Tennessee</mat-list-item>
-            <mat-list-item (click)="findRegion('')">Texas</mat-list-item>
-            <mat-list-item (click)="findRegion('')">Utah</mat-list-item>
-            <mat-list-item (click)="findRegion('')">Vermont</mat-list-item>
-            <mat-list-item (click)="findRegion('')">Virginia</mat-list-item>
-            <mat-list-item (click)="findRegion('')">Washington</mat-list-item>
-            <mat-list-item (click)="findRegion('')">Washington Dc</mat-list-item>
-            <mat-list-item (click)="findRegion('')">Wisconsin</mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Mongolia </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Myanmar </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Nepal </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Oman </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Pakistan </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Philippines </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Palestine </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Qatar </mat-list-item>
+            <mat-list-item [matMenuTriggerFor]="russia">Russia</mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Saudi Arabia </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Singapore </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">South Korea </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Sri Lanka </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Tajikistan </mat-list-item>
+            <!-- <mat-list-item (click)="findRegion($event)">Thailand </mat-list-item> -->
+
+          </mat-list>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <mat-list>
+            <mat-list-item (click)="findRegion($event)">Turkey </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Turkmenistan </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Taiwan </mat-list-item>
+            <mat-list-item [matMenuTriggerFor]="uae">United Arab Emirates</mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Uzbekistan </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Vietnam </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Yemen</mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Indonesia </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Maldives</mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Thailand </mat-list-item>
+            <mat-list-item (click)="findRegion($event)"></mat-list-item>
+            <mat-list-item (click)="findRegion($event)"></mat-list-item>
           </mat-list>
         </mat-grid-tile>
       </mat-grid-list>
-      <mat-divider></mat-divider>
-      <mat-grid-list cols="1" rowHeight="40px">
-        <mat-grid-tile>
-          <h1 class="region">Canada</h1>
-        </mat-grid-tile>
-      </mat-grid-list>
-      <mat-grid-list  rowHeight="80px" gutterSize="0px" [cols]="breakPoint"  (window:resize)="onResize($event)">
-
-        <mat-grid-tile>
-          <mat-list>
-            <mat-list-item (click)="findRegion('')">Alberta</mat-list-item>
-            <mat-list-item (click)="findRegion('')">British Columbia</mat-list-item>
-          </mat-list>
-        </mat-grid-tile>
-        <mat-grid-tile>
-          <mat-list>
-
-            <mat-list-item (click)="findRegion('')">Manitoba</mat-list-item>
-            <mat-list-item (click)="findRegion('')">New Brunswick</mat-list-item>
-          </mat-list>
-        </mat-grid-tile>
-
-        <mat-grid-tile>
-          <mat-list>
-            <mat-list-item (click)="findRegion('')">Nova Scotia</mat-list-item>
-            <mat-list-item (click)="findRegion('')">Ontario</mat-list-item>
-          </mat-list>
-        </mat-grid-tile>
-        <mat-grid-tile>
-          <mat-list>
-            <mat-list-item (click)="findRegion('')">Quebec</mat-list-item>
-            <mat-list-item > </mat-list-item>
-          </mat-list>
-        </mat-grid-tile>
-      </mat-grid-list>
+     
       <mat-divider></mat-divider>
       <mat-grid-list cols="1" rowHeight="40px">
         <mat-grid-tile>
           <h1 class="region">Euorope</h1>
         </mat-grid-tile>
       </mat-grid-list>
-      <mat-grid-list  rowHeight="300px" gutterSize="0px" [cols]="breakPoint"  (window:resize)="onResize($event)">
+      <mat-grid-list rowHeight="505px" gutterSize="0px" [cols]="breakPoint" (window:resize)="onResize($event)">
 
         <mat-grid-tile>
           <mat-list>
-            <mat-list-item (click)="findRegion('AU')">Austria</mat-list-item>
-            <mat-list-item (click)="findRegion('')">Belgium</mat-list-item>
-            <mat-list-item (click)="findRegion('')">Croatia</mat-list-item>
-            <mat-list-item (click)="findRegion('')">Czech Republic</mat-list-item>
-            <mat-list-item (click)="findRegion('')">Denmark</mat-list-item>
-            <mat-list-item (click)="findRegion('')">France</mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Albania</mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Andorra</mat-list-item>
+            <mat-list-item [matMenuTriggerFor]="austria">Austria</mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Belarus</mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Bosnia and Herzegovina</mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Bulgaria</mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Luxembourg </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">North Macedonia</mat-list-item>
+            <mat-list-item [matMenuTriggerFor]="malta">Malta </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Slovakia </mat-list-item>
+            <mat-list-item [matMenuTriggerFor]="malta">Slovenia  </mat-list-item>
           </mat-list>
         </mat-grid-tile>
         <mat-grid-tile>
           <mat-list>
-            <mat-list-item (click)="findRegion('')">Germany</mat-list-item>
-            <mat-list-item (click)="findRegion('')">Greece</mat-list-item>
-            <mat-list-item (click)="findRegion('')">Hungary</mat-list-item>
-            <mat-list-item (click)="findRegion('')">Iceland</mat-list-item>
-            <mat-list-item (click)="findRegion('')">Ireland</mat-list-item>
-            <mat-list-item (click)="findRegion('IT')">Italy</mat-list-item>
-          </mat-list>
-        </mat-grid-tile>
-
-        <mat-grid-tile>
-          <mat-list>
-            <mat-list-item (click)="findRegion('')">Montenegro</mat-list-item>
-            <mat-list-item (click)="findRegion('')">Netheriands</mat-list-item>
-            <mat-list-item (click)="findRegion('')">Norway</mat-list-item>
-            <mat-list-item (click)="findRegion('')">Poland</mat-list-item>
-            <mat-list-item (click)="findRegion('')">Portugal</mat-list-item>
-            <mat-list-item (click)="findRegion('')">Russia</mat-list-item>
-          </mat-list>
-        </mat-grid-tile>
-        <mat-grid-tile>
-          <mat-list>
-            <mat-list-item (click)="findRegion('')">Slovenia</mat-list-item>
-            <mat-list-item (click)="findRegion('')">Spain</mat-list-item>
-            <mat-list-item (click)="findRegion('')">Sweden</mat-list-item>
-            <mat-list-item (click)="findRegion('')">Switzerland</mat-list-item>
-            <mat-list-item (click)="findRegion('UK')">United Kingdom</mat-list-item>
-            <mat-list-item> </mat-list-item>
-          </mat-list>
-        </mat-grid-tile>
-      </mat-grid-list>
-      <mat-divider></mat-divider>
-      <mat-grid-list cols="1" rowHeight="40px">
-        <mat-grid-tile>
-          <h1 class="region">Australia and South Pacific</h1>
-        </mat-grid-tile>
-      </mat-grid-list>
-      <mat-grid-list rowHeight="80px" gutterSize="0px" [cols]="breakPoint"  (window:resize)="onResize($event)">
-
-        <mat-grid-tile>
-          <mat-list>
-            <mat-list-item (click)="findRegion('')">Australia</mat-list-item>
-            <mat-list-item (click)="findRegion('')">Fiji</mat-list-item>
-          </mat-list>
-        </mat-grid-tile>
-        <mat-grid-tile>
-          <mat-list>
-
-            <mat-list-item (click)="findRegion('')">French Polynesia</mat-list-item>
-            <mat-list-item (click)="findRegion('')">Indonesia</mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Croatia </mat-list-item>
+            <mat-list-item [matMenuTriggerFor]="cyprus">Cyprus </mat-list-item>
+            <mat-list-item [matMenuTriggerFor]="czechRepublic">Czech Republic </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Denmark </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Estonia </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Finland </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Moldova  </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Monaco  </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Montenegro </mat-list-item>
+            <mat-list-item [matMenuTriggerFor]="spain">Spain   </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Sweden </mat-list-item>
           </mat-list>
         </mat-grid-tile>
 
         <mat-grid-tile>
           <mat-list>
-            <mat-list-item (click)="findRegion('')">New Zealand</mat-list-item>
-            <mat-list-item></mat-list-item>
+            <mat-list-item [matMenuTriggerFor]="france">France </mat-list-item>
+            <mat-list-item [matMenuTriggerFor]="germany">Germany </mat-list-item>
+            <mat-list-item [matMenuTriggerFor]="greece">Greece </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Hungary </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Iceland</mat-list-item>
+            <mat-list-item [matMenuTriggerFor]="republicOfIreland">Republic of Ireland </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Netherlands  </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Norway </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Poland</mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Switzerland  </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Ukraine </mat-list-item>
           </mat-list>
         </mat-grid-tile>
         <mat-grid-tile>
           <mat-list>
-            <mat-list-item></mat-list-item>
-            <mat-list-item> </mat-list-item>
+            <mat-list-item [matMenuTriggerFor]="italy">Italy </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Kosovo</mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Latvia </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Liechtenstein</mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Lithuania  </mat-list-item>
+            <mat-list-item [matMenuTriggerFor]="portugal">Portugal  </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Romania </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">San Marino </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Serbia  </mat-list-item>
+            <mat-list-item [matMenuTriggerFor]="uk">United Kingdom</mat-list-item>
+            <mat-list-item (click)="findRegion($event)"></mat-list-item>
           </mat-list>
         </mat-grid-tile>
       </mat-grid-list>
       <mat-divider></mat-divider>
       <mat-grid-list cols="1" rowHeight="40px">
         <mat-grid-tile>
-          <h1 class="region">Africa</h1>
+          <h1 class="region">NORTH AMERICA</h1>
         </mat-grid-tile>
       </mat-grid-list>
-      <mat-grid-list  rowHeight="80px" gutterSize="0px" [cols]="breakPoint"  (window:resize)="onResize($event)">
+      <mat-grid-list rowHeight="540px" gutterSize="0px" [cols]="breakPoint" (window:resize)="onResize($event)">
 
         <mat-grid-tile>
           <mat-list>
-            <mat-list-item (click)="findRegion('')">Morocco</mat-list-item>
-
+            <mat-list-item (click)="findRegion($event)">Antigua and Barbuda </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Anguilla </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Aruba </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">The Bahamas   </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Barbados   </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Belize  </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Bermuda  </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Bonaire   </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">British Virgin Islands</mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Saint Vincent and the Grenadines </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Sint Eustatius </mat-list-item>
           </mat-list>
         </mat-grid-tile>
         <mat-grid-tile>
           <mat-list>
 
-            <mat-list-item (click)="findRegion('')">South Africa</mat-list-item>
+            <mat-list-item [matMenuTriggerFor]="canada">Canada </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Cayman Islands  </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Clipperton Island </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Cuba   </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Curaçao   </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Dominica   </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Dominican Republic  </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">El Salvador  </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Greenland </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Sint Maarten </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Sint Maarten </mat-list-item>
+          </mat-list>
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+          <mat-list>
+            <mat-list-item (click)="findRegion($event)">Grenada </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Guadeloupe  </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Guatemala </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Haiti   </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Honduras   </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Jamaica  </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Martinique  </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Mexico   </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Montserrat </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Trinidad and Tobago </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Turks and Caicos </mat-list-item>
+          </mat-list>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <mat-list>
+            <mat-list-item (click)="findRegion($event)">Navassa Island </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Nicaragua  </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Panama (Panamá) </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Puerto Rico   </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Saba   </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Saint Barthelemy  </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Saint Lucia   </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Saint Martin   </mat-list-item>
+            <mat-list-item [matMenuTriggerFor]="uk">Saint Pierre and Miquelon </mat-list-item>
+            <mat-list-item [matMenuTriggerFor]="usa">United States of America </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">US Virgin Islands </mat-list-item>
+          </mat-list>
+        </mat-grid-tile>
+      </mat-grid-list>
+      <mat-divider></mat-divider>
+      <mat-grid-list cols="1" rowHeight="40px">
+        <mat-grid-tile>
+          <h1 class="region">SOUTH AMERICA</h1>
+        </mat-grid-tile>
+      </mat-grid-list>
+      <mat-grid-list rowHeight="200px" gutterSize="0px" [cols]="breakPoint" (window:resize)="onResize($event)">
+
+        <mat-grid-tile>
+          <mat-list>
+            <mat-list-item (click)="findRegion($event)">Argentina </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Bolivia </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Guyana </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Paraguay  </mat-list-item>
+          </mat-list>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <mat-list>
+
+            <mat-list-item [matMenuTriggerFor]="brazil">Brazil </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Chile </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Peru  </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">South Georgia and the South Sandwich Islands   </mat-list-item>
+          </mat-list>
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+          <mat-list>
+            <mat-list-item (click)="findRegion($event)">Colombia </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Ecuador </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Suriname  </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Uruguay  </mat-list-item>
+          </mat-list>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <mat-list>
+            <mat-list-item (click)="findRegion($event)">Falkland Islands </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">French Guiana  </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Venezuela </mat-list-item>
+            <mat-list-item (click)="findRegion($event)"> </mat-list-item>
+          </mat-list>
+        </mat-grid-tile>
+      </mat-grid-list>
+      <mat-divider></mat-divider>
+      <mat-grid-list cols="1" rowHeight="40px">
+        <mat-grid-tile>
+          <h1 class="region">OCEANIA & AUSTRALIA</h1>
+        </mat-grid-tile>
+      </mat-grid-list>
+      <mat-grid-list rowHeight="266px" gutterSize="0px" [cols]="breakPoint" (window:resize)="onResize($event)">
+
+        <mat-grid-tile>
+          <mat-list>
+            <mat-list-item (click)="findRegion($event)">Federated States of Micronesia </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Fiji  </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Kiribati  </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Marshall Islands  </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Nauru </mat-list-item>
+            <mat-list-item [matMenuTriggerFor]="newZealand">New Zealand  </mat-list-item>
+
+          </mat-list>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <mat-list>
+            <mat-list-item (click)="findRegion($event)">Palau </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Papua New Guinea  </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Samoa  </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Solomon Islands  </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Tonga  </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Tuvalu  </mat-list-item>
 
           </mat-list>
         </mat-grid-tile>
 
         <mat-grid-tile>
           <mat-list>
-            <mat-list-item></mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Vanuatu  </mat-list-item>
+            <mat-list-item [matMenuTriggerFor]="australia">Australia </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Flores </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Lombok </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Melanesia </mat-list-item>
+            <mat-list-item (click)="findRegion($event)"></mat-list-item>
 
           </mat-list>
         </mat-grid-tile>
         <mat-grid-tile>
           <mat-list>
-            <mat-list-item></mat-list-item>
-            <mat-list-item> </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">New Caledonia</mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Sulawesi</mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Sumbawa </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Timor </mat-list-item>
+            <mat-list-item (click)="findRegion($event)">New Guinea</mat-list-item>
+            <mat-list-item (click)="findRegion($event)"> </mat-list-item>
           </mat-list>
         </mat-grid-tile>
       </mat-grid-list>
@@ -414,26 +493,26 @@
           <h1 class="region">Americas</h1>
         </mat-grid-tile>
       </mat-grid-list>
-      <mat-grid-list  rowHeight="80px" gutterSize="0px" [cols]="breakPoint"  (window:resize)="onResize($event)">
+      <mat-grid-list rowHeight="80px" gutterSize="0px" [cols]="breakPoint" (window:resize)="onResize($event)">
 
         <mat-grid-tile>
           <mat-list>
-            <mat-list-item (click)="findRegion('')">Bahamas</mat-list-item>
-            <mat-list-item (click)="findRegion('')">Brazil</mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Bahamas</mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Brazil</mat-list-item>
           </mat-list>
         </mat-grid-tile>
         <mat-grid-tile>
           <mat-list>
 
-            <mat-list-item (click)="findRegion('')">Costa Rica</mat-list-item>
-            <mat-list-item (click)="findRegion('')">Ecuador</mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Costa Rica</mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Ecuador</mat-list-item>
           </mat-list>
         </mat-grid-tile>
 
         <mat-grid-tile>
           <mat-list>
-            <mat-list-item (click)="findRegion('')">Grenada</mat-list-item>
-            <mat-list-item (click)="findRegion('')">Mexico</mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Grenada</mat-list-item>
+            <mat-list-item (click)="findRegion($event)">Mexico</mat-list-item>
           </mat-list>
         </mat-grid-tile>
         <mat-grid-tile>
@@ -445,6 +524,572 @@
       </mat-grid-list>
     </mat-tab>
   </mat-tab-group>
+
+                                               <!-- States goes here -->
+
+
+<mat-menu #soutAfrica="matMenu">
+  <div class="select-region">
+    <mat-selection-list #state [multiple]="false"  >
+      <mat-list-option *ngFor="let state of statesOfSouthAfrica"  [value]="state" (click)="findRegion($event)">
+        {{state}}
+      </mat-list-option>
+    </mat-selection-list>
+  </div>
+  <!-- <button class="btn-primary btn-search-region" mat-raised-button>Find in </button> -->
+</mat-menu>
+
+<!-- India -->
+
+<mat-menu #india="matMenu">
+  <div class="select-region">
+    <mat-selection-list #state [multiple]="false" >
+      <mat-list-option *ngFor="let state of statesOfIndia" [value]="state" (click)="findRegion($event)">
+        {{state}}
+      </mat-list-option>
+    </mat-selection-list>
+  </div>
+  <!-- <button class="btn-primary btn-search-region" mat-raised-button>Find in </button> -->
+</mat-menu>
+<!-- Jaban -->
+<mat-menu #japan="matMenu">
+  <div class="select-region">
+    <mat-selection-list #state [multiple]="false"  >
+      <mat-list-option *ngFor="let state of statesOfJapan" [value]="state" (click)="findRegion($event)">
+        {{state}}
+      </mat-list-option>
+    </mat-selection-list>
+  </div>
+  <!-- <button class="btn-primary btn-search-region" mat-raised-button>Find in </button> -->
+</mat-menu>
+<!-- UAE -->
+<mat-menu #uae="matMenu">
+  <div class="select-region">
+    <mat-selection-list #state [multiple]="false" >
+      <mat-list-option *ngFor="let state of statesOfUAE" [value]="state" (click)="findRegion($event)" >
+        {{state}}
+      </mat-list-option>
+    </mat-selection-list>
+  </div>
+  <!-- <button class="btn-primary btn-search-region" mat-raised-button>Find in </button> -->
+</mat-menu>
+
+<!-- Russia -->
+
+<mat-menu #russia="matMenu">
+  <div class="select-region">
+    <mat-selection-list #state [multiple]="false"  >
+      <mat-list-option *ngFor="let state of statesOfRussia"  [value]="state" (click)="findRegion($event)">
+        {{state}}
+      </mat-list-option>
+    </mat-selection-list>
+  </div>
+  <!-- <button class="btn-primary btn-search-region" mat-raised-button>Find in </button> -->
+</mat-menu>
+
+<!-- Austria -->
+
+<mat-menu #austria="matMenu">
+  <div class="select-region">
+    <mat-selection-list #state [multiple]="false"  >
+      <mat-list-option *ngFor="let state of statesOfAstria" [value]="state" (click)="findRegion($event)">
+        {{state}}
+      </mat-list-option>
+    </mat-selection-list>
+  </div>
+  <!-- <button class="btn-primary btn-search-region" mat-raised-button>Find in </button> -->
+</mat-menu>
+
+<!-- Malta  -->
+
+<mat-menu #malta="matMenu">
+  <div class="select-region">
+    <mat-selection-list #state [multiple]="false"  >
+      <mat-list-option *ngFor="let state of statesOfMalta" [value]="state" (click)="findRegion($event)">
+        {{state}}
+      </mat-list-option>
+    </mat-selection-list>
+  </div>
+  <!-- <button class="btn-primary btn-search-region" mat-raised-button>Find in </button> -->
+</mat-menu>
+
+<!-- Cyprus -->
+
+<mat-menu #cyprus="matMenu">
+  <div class="select-region">
+    <mat-selection-list #state [multiple]="false"  >
+      <mat-list-option *ngFor="let state of statesOfCyprus" [value]="state" (click)="findRegion($event)">
+        {{state}}
+      </mat-list-option>
+    </mat-selection-list>
+  </div>
+  <!-- <button class="btn-primary btn-search-region" mat-raised-button>Find in </button> -->
+</mat-menu>
+
+<!-- Czech Republic -->
+
+<mat-menu #czechRepublic="matMenu">
+  <div class="select-region">
+    <mat-selection-list #state [multiple]="false"  >
+      <mat-list-option *ngFor="let state of statesOfCzechRepublic" [value]="state" (click)="findRegion($event)">
+        {{state}}
+      </mat-list-option>
+    </mat-selection-list>
+  </div>
+  <!-- <button class="btn-primary btn-search-region" mat-raised-button>Find in </button> -->
+</mat-menu>
+
+<!-- Spain -->
+
+
+<mat-menu #spain="matMenu">
+  <div class="select-region">
+    <mat-selection-list #state [multiple]="false"  >
+      <mat-list-option *ngFor="let state of statesOfCzechRepublic" [value]="state" (click)="findRegion($event)">
+        {{state}}
+      </mat-list-option>
+    </mat-selection-list>
+  </div>
+  <!-- <button class="btn-primary btn-search-region" mat-raised-button>Find in </button> -->
+</mat-menu>
+
+<!-- France -->
+
+
+<mat-menu #france="matMenu">
+  <div class="select-region">
+    <mat-selection-list #state [multiple]="false"  >
+      <mat-list-option *ngFor="let state of statesOfFrance" [value]="state" (click)="findRegion($event)">
+        {{state}}
+      </mat-list-option>
+    </mat-selection-list>
+  </div>
+  <!-- <button class="btn-primary btn-search-region" mat-raised-button>Find in </button> -->
+</mat-menu>
+
+<!-- German -->
+
+
+<mat-menu #germany="matMenu">
+  <div class="select-region">
+    <mat-selection-list #state [multiple]="false"  >
+      <mat-list-option *ngFor="let state of statesOfGermany" [value]="state" (click)="findRegion($event)">
+        {{state}}
+      </mat-list-option>
+    </mat-selection-list>
+  </div>
+  <!-- <button class="btn-primary btn-search-region" mat-raised-button>Find in </button> -->
+</mat-menu>
+
+<!-- Greece -->
+
+
+<mat-menu #greece="matMenu">
+  <div class="select-region">
+    <mat-selection-list #state [multiple]="false"  >
+      <mat-list-option *ngFor="let state of statesOfGreece" [value]="state" (click)="findRegion($event)">
+        {{state}}
+      </mat-list-option>
+    </mat-selection-list>
+  </div>
+  <!-- <button class="btn-primary btn-search-region" mat-raised-button>Find in </button> -->
+</mat-menu>
+
+<!-- Republic of Ireland -->
+
+
+<mat-menu #republicOfIreland="matMenu">
+  <div class="select-region">
+  <button  mat-menu-item [matMenuTriggerFor]="leinster">Leinster</button>
+  <button mat-menu-item [matMenuTriggerFor]="munster">Munster</button>
+  <button mat-menu-item [matMenuTriggerFor]="connacht">Connacht</button>
+  <button mat-menu-item [matMenuTriggerFor]="ulster">Ulster</button> 
+  </div>
+  <!-- <button class="btn-primary btn-search-region" mat-raised-button>Find in </button> -->
+</mat-menu>
+<!-- Sub menus of Ireland  -->
+<mat-menu #leinster="matMenu">
+  <div class="select-region">
+    <mat-selection-list #state [multiple]="false"  >
+      <mat-list-option *ngFor="let state of Leinster" [value]="state" (click)="findRegion($event)">
+        {{state}}
+      </mat-list-option>
+    </mat-selection-list>
+  </div>
+  <!-- <button class="btn-primary btn-search-region" mat-raised-button>Find in </button> -->
+</mat-menu>
+
+<mat-menu #munster="matMenu">
+  <div class="select-region">
+    <mat-selection-list #state [multiple]="false"  >
+      <mat-list-option *ngFor="let state of Munster" [value]="state" (click)="findRegion($event)">
+        {{state}}
+      </mat-list-option>
+    </mat-selection-list>
+  </div>
+  <!-- <button class="btn-primary btn-search-region" mat-raised-button>Find in </button> -->
+</mat-menu>
+
+<mat-menu #connacht="matMenu">
+  <div class="select-region">
+    <mat-selection-list #state [multiple]="false"  >
+      <mat-list-option *ngFor="let state of Connacht" [value]="state" (click)="findRegion($event)">
+        {{state}}
+      </mat-list-option>
+    </mat-selection-list>
+  </div>
+  <!-- <button class="btn-primary btn-search-region" mat-raised-button>Find in </button> -->
+</mat-menu>
+
+<mat-menu #ulster="matMenu">
+  <div class="select-region">
+    <mat-selection-list #state [multiple]="false"  >
+      <mat-list-option *ngFor="let state of Ulster" [value]="state" (click)="findRegion($event)">
+        {{state}}
+      </mat-list-option>
+    </mat-selection-list>
+  </div>
+  <!-- <button class="btn-primary btn-search-region" mat-raised-button>Find in </button> -->
+</mat-menu>
+
+
+<!--Italy-->
+
+
+<mat-menu #italy="matMenu">
+  <div class="select-region">
+    <mat-selection-list #state [multiple]="false"  >
+      <mat-list-option *ngFor="let state of statesOfItaly" [value]="state" (click)="findRegion($event)">
+        {{state}}
+      </mat-list-option>
+    </mat-selection-list>
+  </div>
+  <!-- <button class="btn-primary btn-search-region" mat-raised-button>Find in </button> -->
+</mat-menu>
+
+
+<!-- Portugal -->
+
+
+<mat-menu #portugal="matMenu">
+  <div class="select-region">
+    <mat-selection-list #state [multiple]="false"  >
+      <mat-list-option *ngFor="let state of statesOfPortugal" [value]="state" (click)="findRegion($event)">
+        {{state}}
+      </mat-list-option>
+    </mat-selection-list>
+  </div>
+  <!-- <button class="btn-primary btn-search-region" mat-raised-button>Find in </button> -->
+</mat-menu>
+
+<!--  United Kingdom -->
+
+
+<mat-menu #uk="matMenu">
+  <div class="select-region menu-button">
+  <button  mat-menu-item [matMenuTriggerFor]="england">England</button>
+  <button mat-menu-item [matMenuTriggerFor]="northernireland">Northern Ireland</button>
+  <button mat-menu-item [matMenuTriggerFor]="scotland">Scotland</button>
+  </div>
+  <!-- <button class="btn-primary btn-search-region" mat-raised-button>Find in </button> -->
+</mat-menu>
+<!-- Sub menus of United Kingdom  -->
+<mat-menu #england="matMenu">
+  <div class="select-region">
+    <mat-selection-list #state [multiple]="false"  >
+      <mat-list-option *ngFor="let state of England" [value]="state" (click)="findRegion($event)">
+        {{state}}
+      </mat-list-option>
+    </mat-selection-list>
+  </div>
+  <!-- <button class="btn-primary btn-search-region" mat-raised-button>Find in </button> -->
+</mat-menu>
+
+<mat-menu #northernireland="matMenu">
+  <div class="select-region">
+    <mat-selection-list #state [multiple]="false"  >
+      <mat-list-option *ngFor="let state of northernIreland" [value]="state" (click)="findRegion($event)">
+        {{state}}
+      </mat-list-option>
+    </mat-selection-list>
+  </div>
+  <!-- <button class="btn-primary btn-search-region" mat-raised-button>Find in </button> -->
+</mat-menu>
+
+<mat-menu #scotland="matMenu">
+  <div class="select-region">
+    <mat-selection-list #state [multiple]="false"  >
+      <mat-list-option *ngFor="let state of Scotland" [value]="state" (click)="findRegion($event)">
+        {{state}}
+      </mat-list-option>
+    </mat-selection-list>
+  </div>
+  <!-- <button class="btn-primary btn-search-region" mat-raised-button>Find in </button> -->
+</mat-menu>
+
+
+
+
+<!-- Canada  -->
+
+
+<mat-menu #canada="matMenu">
+  <div class="select-region">
+    <mat-selection-list #state [multiple]="false"  >
+      <mat-list-option *ngFor="let state of statesOfCanada" [value]="state" (click)="findRegion($event)">
+        {{state}}
+      </mat-list-option>
+    </mat-selection-list>
+  </div>
+  <!-- <button class="btn-primary btn-search-region" mat-raised-button>Find in </button> -->
+</mat-menu>
+
+<!-- Brazil -->
+
+
+<mat-menu #brazil="matMenu">
+  <div class="select-region">
+    <mat-selection-list #state [multiple]="false"  >
+      <mat-list-option *ngFor="let state of statesOfBrazil" [value]="state" (click)="findRegion($event)">
+        {{state}}
+      </mat-list-option>
+    </mat-selection-list>
+  </div>
+  <!-- <button class="btn-primary btn-search-region" mat-raised-button>Find in </button> -->
+</mat-menu>
+
+<!-- New zilan -->
+
+
+<mat-menu #newZealand="matMenu">
+  <div class="select-region">
+    <mat-selection-list #state [multiple]="false"  >
+      <mat-list-option *ngFor="let state of statesOfNewZealand" [value]="state" (click)="findRegion($event)">
+        {{state}}
+      </mat-list-option>
+    </mat-selection-list>
+  </div>
+  <!-- <button class="btn-primary btn-search-region" mat-raised-button>Find in </button> -->
+</mat-menu>
+
+<!-- Australia -->
+
+
+<mat-menu #australia="matMenu">
+  <div class="select-region menu-button">
+  <button  mat-menu-item [matMenuTriggerFor]="new_south_wale">New South Wale</button>
+  <button mat-menu-item [matMenuTriggerFor]="victoria">Victoria</button>
+  <button mat-menu-item [matMenuTriggerFor]="queensland">Queensland</button>
+  <button  mat-menu-item [matMenuTriggerFor]="western_australia">Western Australia</button>
+  <button mat-menu-item [matMenuTriggerFor]="south_australia">South Australia</button>
+  <button mat-menu-item [matMenuTriggerFor]="tasmania">Tasmania</button>
+  </div>
+  <!-- <button class="btn-primary btn-search-region" mat-raised-button>Find in </button> -->
+</mat-menu>
+
+<!-- Sub Menu/states of Australia -->
+
+<mat-menu #new_south_wale="matMenu">
+  <div class="select-region">
+    <mat-selection-list #state [multiple]="false"  >
+      <mat-list-option *ngFor="let state of newSouthWale" [value]="state" (click)="findRegion($event)">
+        {{state}}
+      </mat-list-option>
+      <button  mat-menu-item [matMenuTriggerFor]="california">California</button>
+    </mat-selection-list>
+  </div>
+  <!-- <button class="btn-primary btn-search-region" mat-raised-button>Find in </button> -->
+</mat-menu>
+
+<mat-menu #victoria="matMenu">
+  <div class="select-region">
+    <mat-selection-list #state [multiple]="false"  >
+      <mat-list-option *ngFor="let state of Victoria" [value]="state" (click)="findRegion($event)">
+        {{state}}
+      </mat-list-option>
+      
+    </mat-selection-list>
+  </div>
+  <!-- <button class="btn-primary btn-search-region" mat-raised-button>Find in </button> -->
+</mat-menu>
+
+<mat-menu #queensland="matMenu">
+  <div class="select-region">
+    <mat-selection-list #state [multiple]="false"  >
+      <mat-list-option *ngFor="let state of Queensland" [value]="state" (click)="findRegion($event)">
+        {{state}}
+      </mat-list-option>
+      <button  mat-menu-item [matMenuTriggerFor]="california">California</button>
+    </mat-selection-list>
+  </div>
+  <!-- <button class="btn-primary btn-search-region" mat-raised-button>Find in </button> -->
+</mat-menu>
+
+<mat-menu #western_australia="matMenu">
+  <div class="select-region">
+    <mat-selection-list #state [multiple]="false"  >
+      <mat-list-option *ngFor="let state of westernAustralia" [value]="state" (click)="findRegion($event)">
+        {{state}}
+      </mat-list-option>
+      
+    </mat-selection-list>
+  </div>
+  <!-- <button class="btn-primary btn-search-region" mat-raised-button>Find in </button> -->
+</mat-menu>
+
+<mat-menu #south_australia="matMenu">
+  <div class="select-region">
+    <mat-selection-list #state [multiple]="false"  >
+      <mat-list-option *ngFor="let state of southAustralia" [value]="state" (click)="findRegion($event)">
+        {{state}}
+      </mat-list-option>
+      <button  mat-menu-item [matMenuTriggerFor]="california">California</button>
+    </mat-selection-list>
+  </div>
+  <!-- <button class="btn-primary btn-search-region" mat-raised-button>Find in </button> -->
+</mat-menu>
+
+<mat-menu #tasmania="matMenu">
+  <div class="select-region">
+    <mat-selection-list #state [multiple]="false"  >
+      <mat-list-option *ngFor="let state of Tasmania" [value]="state" (click)="findRegion($event)">
+        {{state}}
+      </mat-list-option>
+      
+    </mat-selection-list>
+  </div>
+  <!-- <button class="btn-primary btn-search-region" mat-raised-button>Find in </button> -->
+</mat-menu>
+
+<mat-menu #usa="matMenu">
+  <div class="select-region">
+    <mat-selection-list #state [multiple]="false"  >
+      <mat-list-option *ngFor="let state of statesOfUSA" [value]="state" (click)="findRegion($event)">
+        {{state}}
+      </mat-list-option>
+      <button  mat-menu-item [matMenuTriggerFor]="california">California</button>
+    </mat-selection-list>
+  </div>
+  <!-- <button class="btn-primary btn-search-region" mat-raised-button>Find in </button> -->
+</mat-menu>
+
+<mat-menu #california="matMenu">
+  <div class="select-region">
+    <mat-selection-list #state [multiple]="false"  >
+      <mat-list-option *ngFor="let state of California" [value]="state" (click)="findRegion($event)">
+        {{state}}
+      </mat-list-option>
+      
+    </mat-selection-list>
+  </div>
+  <!-- <button class="btn-primary btn-search-region" mat-raised-button>Find in </button> -->
+</mat-menu>
+
+<mat-menu #usa="matMenu">
+  <div class="select-region">
+    <mat-selection-list #state [multiple]="false"  >
+      <mat-list-option *ngFor="let state of statesOfUSA" [value]="state" (click)="findRegion($event)">
+        {{state}}
+      </mat-list-option>
+      <button  mat-menu-item [matMenuTriggerFor]="california">California</button>
+    </mat-selection-list>
+  </div>
+  <!-- <button class="btn-primary btn-search-region" mat-raised-button>Find in </button> -->
+</mat-menu>
+
+<mat-menu #california="matMenu">
+  <div class="select-region">
+    <mat-selection-list #state [multiple]="false"  >
+      <mat-list-option *ngFor="let state of California" [value]="state" (click)="findRegion($event)">
+        {{state}}
+      </mat-list-option>
+      
+    </mat-selection-list>
+  </div>
+  <!-- <button class="btn-primary btn-search-region" mat-raised-button>Find in </button> -->
+</mat-menu>
+
+<mat-menu #usa="matMenu">
+  <div class="select-region">
+    <mat-selection-list #state [multiple]="false"  >
+      <mat-list-option *ngFor="let state of statesOfUSA" [value]="state" (click)="findRegion($event)">
+        {{state}}
+      </mat-list-option>
+      <button  mat-menu-item [matMenuTriggerFor]="california">California</button>
+    </mat-selection-list>
+  </div>
+  <!-- <button class="btn-primary btn-search-region" mat-raised-button>Find in </button> -->
+</mat-menu>
+
+<mat-menu #california="matMenu">
+  <div class="select-region">
+    <mat-selection-list #state [multiple]="false"  >
+      <mat-list-option *ngFor="let state of California" [value]="state" (click)="findRegion($event)">
+        {{state}}
+      </mat-list-option>
+      
+    </mat-selection-list>
+  </div>
+  <!-- <button class="btn-primary btn-search-region" mat-raised-button>Find in </button> -->
+</mat-menu>
+
+<mat-menu #usa="matMenu">
+  <div class="select-region">
+    <mat-selection-list #state [multiple]="false"  >
+      <mat-list-option *ngFor="let state of statesOfUSA" [value]="state" (click)="findRegion($event)">
+        {{state}}
+      </mat-list-option>
+      <button  mat-menu-item [matMenuTriggerFor]="california">California</button>
+    </mat-selection-list>
+  </div>
+  <!-- <button class="btn-primary btn-search-region" mat-raised-button>Find in </button> -->
+</mat-menu>
+
+<mat-menu #california="matMenu">
+  <div class="select-region">
+    <mat-selection-list #state [multiple]="false"  >
+      <mat-list-option *ngFor="let state of California" [value]="state" (click)="findRegion($event)">
+        {{state}}
+      </mat-list-option>
+      
+    </mat-selection-list>
+  </div>
+  <!-- <button class="btn-primary btn-search-region" mat-raised-button>Find in </button> -->
+</mat-menu> 
+
+<!-- End Australia -->
+
+
+
+
+
+<!-- States of USA  -->
+
+<mat-menu #usa="matMenu">
+  <div class="select-region">
+    <mat-selection-list #state [multiple]="false"  >
+      <mat-list-option *ngFor="let state of statesOfUSA" [value]="state" (click)="findRegion($event)">
+        {{state}}
+      </mat-list-option>
+      <button  mat-menu-item [matMenuTriggerFor]="california">California</button>
+    </mat-selection-list>
+  </div>
+  <!-- <button class="btn-primary btn-search-region" mat-raised-button>Find in </button> -->
+</mat-menu>
+
+<mat-menu #california="matMenu">
+  <div class="select-region">
+    <mat-selection-list #state [multiple]="false"  >
+      <mat-list-option *ngFor="let state of California" [value]="state" (click)="findRegion($event)">
+        {{state}}
+      </mat-list-option>
+      
+    </mat-selection-list>
+  </div>
+  <!-- <button class="btn-primary btn-search-region" mat-raised-button>Find in </button> -->
+</mat-menu>
+
+
   <!-- Search form goes here -->
 
   <!-- <button mat-raised-button color="primary">Hi I am </button> -->

@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import {HttpClientModule,HTTP_INTERCEPTORS} from '@angular/common/http'
 import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from "@angular/flex-layout";
-import {ReactiveFormsModule,FormsModule} from '@angular/forms'
+import {ReactiveFormsModule,FormsModule} from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavHeaderComponent } from './constants/nav-header/nav-header.component';
@@ -39,6 +39,9 @@ import { ViewReviewsComponent } from './pages/dashboard/view-reviews/view-review
 import { ViewUsersComponent } from './pages/dashboard/view-users/view-users.component';
 import { EditListingDialogComponent } from './pages/dashboard/dialogues/edit-listing-dialog/edit-listing-dialog.component';
 import { ConfirmDialogComponent } from './pages/dashboard/dialogues/confirm-dialog/confirm-dialog.component';
+import {ResolverService} from '../app/shared/resolver/resolver.service';
+import { GooglePlaceModule } from "ngx-google-places-autocomplete";
+import { AddUserDialogComponent } from './pages/dashboard/dialogues/add-user-dialog/add-user-dialog.component';
 
 
 
@@ -73,7 +76,8 @@ import { ConfirmDialogComponent } from './pages/dashboard/dialogues/confirm-dial
     ViewReviewsComponent,
     ViewUsersComponent,
     EditListingDialogComponent,
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
+    AddUserDialogComponent
     
    
   ],
@@ -95,12 +99,14 @@ import { ConfirmDialogComponent } from './pages/dashboard/dialogues/confirm-dial
     MaterialModule,
     FlexLayoutModule,
     CarouselModule,
+    GooglePlaceModule
     
   ],
-  providers: [LoginService,AuthGuard,
+  providers: [LoginService,ResolverService,AuthGuard,
     {
       provide: HTTP_INTERCEPTORS,
       useClass:TokenInterceptorService,
+      
       multi:true
     }
   ],

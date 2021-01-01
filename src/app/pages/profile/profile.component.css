@@ -166,3 +166,6 @@ mat-grid-tile{
   pointer-events:none;
   
 }
+.uppercase{
+  text-transform: capitalize;
+}

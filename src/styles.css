@@ -4,7 +4,9 @@ html, body {
     height: 100%;
 }
 
-
+  button:focus {
+    outline: none !important;
+}
 
 /* .navbar-nav{
     font-size:0.9375rem;

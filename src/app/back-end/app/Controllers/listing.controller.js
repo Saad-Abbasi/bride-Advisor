@@ -29,7 +29,7 @@ exports.create = async  (req, res)=> {
        fullPlaning:req.body.fullPlaning,
        partPlaning:req.body.partPlaning,
        coordinator:req.body.coordinator,
-       tagline:req.body.tagline,
+       tagLine:req.body.tagline,
        description:req.body.description,
        fLink:req.body.fLink,
        tLink:req.body.tLink,
@@ -108,7 +108,11 @@ exports.findOne = (req, res) => {
 // Update a Listing identified by the listing id in the request
 exports.update = (req, res) => {
     console.log(req.body)
+
+    
     // Find Listing and update it with the request body
+
+
     Listing.findByIdAndUpdate(req.params.listingId, {
         listingType:req.body.listingType,
         business:req.body.business,
@@ -120,7 +124,7 @@ exports.update = (req, res) => {
         fullPlaning:req.body.fullPlaning,
         partPlaning:req.body.partPlaning,
         coordinator:req.body.coordinator,
-        tagline:req.body.tagline,
+        tagLine:req.body.tagline,
         description:req.body.description,
         fLink:req.body.fLink,
         tLink:req.body.tLink,
@@ -158,15 +162,18 @@ exports.update = (req, res) => {
 exports.findData = (req,res)=>{
     const category = req.query.category;
     const address = req.query.address;
+   
+
     
-    console.log(category)
-    Listing.find({ address:address,category:category}).populate('logo')
+    console.log(category , address)
+    Listing.find({address: { $regex: '.*' + address + '.*' } ,category:category}).populate('logo')
     .then(listing => {
-        if(!listing) {
+        if(listing=='' || !listing) {
             return res.status(404).send({
                 message: "listing not found with id " 
             });            
         }
+        
         res.send(listing);
     }).catch(err => {
         if(err.kind === 'ObjectId') {

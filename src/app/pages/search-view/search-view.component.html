@@ -21,9 +21,8 @@
       <a routerLink="/find">Click here to search for other listing</a>
     </div>
     <mat-grid-list cols="4" rowHeight="1:1" gutterSize="5px">
-        <mat-grid-tile *ngFor="let result of results">
-            
-                <mat-card class="serchCard">
+        <mat-grid-tile class="conatiner-search-card" *ngFor="let result of results">
+                <mat-card class="serchCard" [style.background-image]="'url(' + backgroundImage + ')'">
                     <mat-card-header>
                       <div mat-card-avatar class="logo" [style.background-image]="'url(' + logo + ')'"></div>
                       <mat-card-title>
@@ -38,12 +37,14 @@
                       <!-- <mat-card-subtitle>abc</mat-card-subtitle> -->
                     </mat-card-header>
                     
-                    <mat-card-content class="content">
+                    <mat-card-content class="content" >
                       <h1>
                         {{result?.business}}
                       </h1>
                     </mat-card-content>
-                    
+                    <mat-card-actions align="end">
+                      <button mat-button color="primary" class="btn-viewProfile" (click)="viewProfile(result._id)" >View Profile</button>
+                    </mat-card-actions>
                   </mat-card>
                
         </mat-grid-tile>

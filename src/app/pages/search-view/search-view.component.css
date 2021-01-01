@@ -60,16 +60,25 @@ mat-grid-tile{
     max-width: 400px;
     min-height: 240px;
     max-height: 240px;
-    background-color: gray;
-    text-shadow: 0.1em 0.1em rgba(0,0,0,0.2) !important;
+    background-color:  #000;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.8), 0px 0px 2px  rgba(0,0,0,1);
     font-size: 37.5px !important;
-    font-weight: 500px !important;
+    font-weight: 600px !important;
     line-height: 1.1;
+    /* font-family: ; */
     color:#fff;
     font-size: 2.5rem;
-    /* border: none !important; */
     box-shadow: none !important;
-    /* padding: 0px !important; */
+    background-size: cover;
+    z-index: 100;
+  }
+
+    /* .serchCard .overlay.top {
+        top: 0px;
+    } */
+
+  .conatiner-search-card{
+    box-shadow: inset 0 0 10px #000000 !important;
   }
   
   .logo {
@@ -86,20 +95,22 @@ mat-grid-tile{
       bottom: 1px;
   }
 /* rating */
-.rating-list li {
+  /* rating Css */
+  .rating-list li {
     float: right;
     color: #ddd;
-    padding: 5px 2px;
+    padding: 0px 2px;
     font-size: 15px;
   
   }
   
-  .rating-list li:hover,
-  .rating-list li:hover ~ li, .rating-list li.selected {
-    color:#EDE083;
+  .rating-list,
+  .rating-list  ~ li, .rating-list li.selected {
+    color: #00BCD4;
   }
   
   .rating-list {
     display: inline-block;
     list-style: none;
   }
+  

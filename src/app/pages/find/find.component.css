@@ -8,9 +8,6 @@ select {
     background-size: cover;
     background-position: center ;
     min-height: 750px
-
-  
-    
 }
 /* .bg:before {
     content: '';
@@ -78,18 +75,23 @@ button:focus{
     outline: none !important;
 }
 .category{
-    background-color:transparent !important;
+    /* background-color:rgb(255, 255, 255); */
+    background-color:black;
+    max-width: fit-content;
     color: white;
+    margin:auto;
     text-overflow: none;
     position: relative;
     justify-content: center;
+    align-items: center;
+    z-index: 9;
+    border-radius: 2%;
     /* top: -1rem; */
 }
 .category-icon{
     padding:0px 5px;
     cursor: pointer;
-    
-    
+    z-index: 1;
 }
 ::ng-deep .mat-tooltip{
     background-color: #00BCD4;
@@ -147,3 +149,44 @@ font-weight: bold;
     .mat-white-icon  {
         color: yellowgreen;
       }
+
+.select-region{
+    margin-top: 3px;
+}
+.select-region button{
+    color:black !important;
+}
+.submenu{
+    position: relative;
+   }
+.submenu::before{
+   position: absolute; 
+   top: 5%;
+   left: 20px;
+   content: ''; 
+   width: 0; 
+   height: 0;
+   border-left:10px solid transparent;
+   border-right: 10px solid transparent;
+   border-bottom: 10px solid #00bcd4;
+    
+   }
+.btn-search-region{
+float:right;
+margin:5px 8px 5px 8px;
+padding:0px 8px;
+
+}
+
+.icon-button{
+    height: 4rem;
+   width: 4rem;
+}
+.icon-img{
+    height: 100%;
+   width: 100%;
+}
+
+.menu-button{
+    width: 150px !important;
+}

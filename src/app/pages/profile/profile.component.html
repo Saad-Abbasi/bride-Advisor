@@ -168,38 +168,39 @@
                 <!-- <mat-label for="listing_website">Country/Region</mat-label> -->
                 <label for="listing_website">Choose a Location</label>
                 <div class="d-flex">
-                  <select id="country" name="listing[country]" formControlName="address" class="form-control">
+                  <input #addressInput ngx-google-places-autocomplete [options]='options' #placesRef="ngx-places" class="form-control uppercase"  formControlName="address" (onAddressChange)="handleAddressChange($event)"/>
+                  <!-- <select id="country" name="listing[country]" formControlName="address" class="form-control">
                     <option>Choose a Location</option>
-                    <option value="AU">Australia</option>
-                    <option value="BB">Barbados</option>
-                    <option value="BR">Brazil</option>
-                    <option value="CA">Canada</option>
-                    <option value="CR">Costa Rica</option>
-                    <option value="HR">Croatia</option>
-                    <option value="FJ">Figi</option>
-                    <option value="FR">France</option>
-                    <option value="DE">Germany</option>
-                    <option value="GI">Gibraltar</option>
-                    <option value="GR">Greece</option>
-                    <option value="IS">Iceland</option>
-                    <option value="ID">Indonesia - Bali</option>
-                    <option value="IT">Italy</option>
-                    <option value="MT">Malta</option>
-                    <option value="MU">Mauritius</option>
-                    <option value="MX">Mexico</option>
-                    <option value="NZ">New Zealand</option>
-                    <option value="PE">Peru</option>
-                    <option value="PH" data-name="Philippines">Philippines</option>
-                    <option value="PT">Portugal</option>
-                    <option value="IE">Republic of Ireland</option>
-                    <option value="SG">Singapore</option>
-                    <option value="ZA">South Africa</option>
-                    <option value="ES">Spain</option>
-                    <option value="TH">Thailand</option>
-                    <option value="BS">The Bahamas</option>
-                    <option value="GB">United Kingdom</option>
-                    <option value="US">United States</option>
-                  </select>
+                    <option value="australia">Australia</option>
+                    <option value="barbados">Barbados</option>
+                    <option value="brazil">Brazil</option>
+                    <option value="canada">Canada</option>
+                    <option value="costa-rica">Costa Rica</option>
+                    <option value="croatia">Croatia</option>
+                    <option value="figi">Figi</option>
+                    <option value="france">France</option>
+                    <option value="germany">Germany</option>
+                    <option value="gibraltar">Gibraltar</option>
+                    <option value="greece">Greece</option>
+                    <option value="iceland">Iceland</option>
+                    <option value="indonesia-bali">Indonesia - Bali</option>
+                    <option value="italy">Italy</option>
+                    <option value="malta">Malta</option>
+                    <option value="mauritius">Mauritius</option>
+                    <option value="mexico">Mexico</option>
+                    <option value="new-zealand">New Zealand</option>
+                    <option value="peru">Peru</option>
+                    <option value="philippines" >Philippines</option>
+                    <option value="portugal">Portugal</option>
+                    <option value="republic-of-ireland">Republic of Ireland</option>
+                    <option value="singapore">Singapore</option>
+                    <option value="south-africa">South Africa</option>
+                    <option value="spain">Spain</option>
+                    <option value="thailand">Thailand</option>
+                    <option value="the-bahamas">The Bahamas</option>
+                    <option value="united-kingdom">United Kingdom</option>
+                    <option value="united-states">United States</option>
+                  </select> -->
                   <!-- <mat-select [(ngModel)]="selectedValue" color="primary" name="food" formControlName="website" class="form-control" >
                     <mat-label>Country/Region</mat-label>
                     <mat-option *ngFor="let food of foods" [value]="food.value">

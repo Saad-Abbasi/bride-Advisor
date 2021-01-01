@@ -61,7 +61,14 @@ register(user:User): Observable <User> {
      catchError(this.handleError)
    ) 
  };
-
+ //Delet password
+ deleteUser(userId:string) {
+  return this.http.delete(`${this.apiUrl}/users/admin/delete/${userId}`,this.httpOptions,)
+   .pipe(
+     retry(2),
+     catchError(this.handleError)
+   ) 
+ };
 //handling Errors
    handleError(error) {
     let errorMessage = '';
